@@ -16,6 +16,7 @@ import {
   X
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { trackEvent } from '@/lib/gtag';
 
 // CUSTOM SVG WHATSAPP ICON
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -46,6 +47,8 @@ export default function ApplyPage() {
     targets: ''
   });
 
+  const [calculatorStarted, setCalculatorStarted] = useState(false);
+
   // Transformation Calculator ratings
   const [ratings, setRatings] = useState({
     confidence: 5,
@@ -61,6 +64,10 @@ export default function ApplyPage() {
 
   const handleRatingChange = (key: keyof typeof ratings, val: number) => {
     setRatings((prev) => ({ ...prev, [key]: val }));
+    if (!calculatorStarted) {
+      setCalculatorStarted(true);
+      trackEvent({ action: 'assessment_start', category: 'Engagement', label: 'Admissions Presence Calculator' });
+    }
   };
 
   // Calculations
@@ -81,6 +88,10 @@ export default function ApplyPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    trackEvent({ action: 'form_submit_admissions', category: 'Lead Generation', label: 'Admissions Profile Form' });
+    if (calculatorStarted) {
+      trackEvent({ action: 'assessment_completion', category: 'Engagement', label: 'Admissions Presence Calculator' });
+    }
   };
 
   // Pre-filled WhatsApp message
@@ -379,12 +390,18 @@ export default function ApplyPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-4 bg-green-600 text-white hover:bg-green-700 text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg"
+                    onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Admissions Success WhatsApp Callback' })}
                   >
                     <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
                     <span>Secure Admissions Callback on WhatsApp</span>
                   </a>
 
-                  <Button href="https://wa.me/919880012345" variant="outline" className="w-full text-center">
+                  <Button 
+                    href="https://wa.me/919880012345" 
+                    variant="outline" 
+                    className="w-full text-center"
+                    onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Admissions Success Voice Screening' })}
+                  >
                     Initiate Direct Voice Screening
                   </Button>
                 </div>

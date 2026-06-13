@@ -13,6 +13,7 @@ import {
   ChevronRight 
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { trackEvent } from '@/lib/gtag';
 
 // CUSTOM SVG WHATSAPP ICON
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -124,6 +125,8 @@ export default function ConfidenceAssessmentPage() {
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLeadCaptured(false);
+    trackEvent({ action: 'form_submit_assessment_lead', category: 'Lead Generation', label: 'Assessment Lead Form' });
+    trackEvent({ action: 'assessment_completion', category: 'Engagement', label: 'Confidence Assessment Complete' });
   };
 
   // WhatsApp Pre-filled message
@@ -175,7 +178,14 @@ export default function ConfidenceAssessmentPage() {
                 <p className="text-xs text-pearl/60 font-sans max-w-md mx-auto leading-relaxed">
                   Evaluate your current skeletal stature, heels gait stability, style mapping, and voice modulation resonance across 6 parameters.
                 </p>
-                <Button type="button" onClick={() => setQuizStarted(true)} variant="solid">
+                 <Button 
+                   type="button" 
+                   onClick={() => {
+                     setQuizStarted(true);
+                     trackEvent({ action: 'assessment_start', category: 'Engagement', label: 'Confidence Assessment Start' });
+                   }} 
+                   variant="solid"
+                 >
                   Begin Diagnostic
                 </Button>
               </motion.div>
@@ -255,6 +265,7 @@ export default function ConfidenceAssessmentPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
+                    onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Assessment Result WhatsApp Check' })}
                   >
                     <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
                     <span>Review Score on WhatsApp</span>
@@ -266,6 +277,7 @@ export default function ConfidenceAssessmentPage() {
                       setCurrentQuestion(0);
                       setQuizStarted(false);
                       setLeadForm({ name: '', phone: '', email: '' });
+                      trackEvent({ action: 'assessment_retake', category: 'Engagement', label: 'Confidence Assessment Retake' });
                     }}
                     className="text-xs uppercase tracking-luxury text-rosegold hover:text-white transition-colors font-sans py-2.5 px-6 border border-rosegold/25 hover:border-rosegold cursor-pointer"
                   >

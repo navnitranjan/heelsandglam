@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,6 +67,7 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/apply"
+              onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Desktop Apply' })}
               className="px-6 py-2.5 text-xs uppercase tracking-luxury border border-gold text-gold hover:bg-gold hover:text-abyss transition-all duration-350 font-sans"
             >
               Apply Now
@@ -115,7 +117,10 @@ export default function Header() {
 
             <Link
               href="/apply"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Mobile Apply' });
+              }}
               className="w-full py-4 text-center text-xs uppercase tracking-luxury bg-gold text-abyss hover:bg-white hover:text-abyss transition-all font-sans"
             >
               Apply Now

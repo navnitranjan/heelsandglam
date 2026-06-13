@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Quote, Compass, Sparkles, Award, Layers } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { trackEvent } from '@/lib/gtag';
 
 export default function FounderExperiencePage() {
   return (
@@ -231,10 +232,19 @@ export default function FounderExperiencePage() {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-            <Button href="/apply" variant="solid">
+            <Button 
+              href="/apply" 
+              variant="solid"
+              onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Founder Page Apply CTA' })}
+            >
               Apply for Next Cohort
             </Button>
-            <Button href="https://wa.me/919880012345" variant="outline" className="border-green-500/50 hover:bg-green-600">
+            <Button 
+              href="https://wa.me/919880012345" 
+              variant="outline" 
+              className="border-green-500/50 hover:bg-green-600"
+              onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Founder Page WhatsApp Consult' })}
+            >
               Consult with Aakanksha via WhatsApp
             </Button>
           </div>

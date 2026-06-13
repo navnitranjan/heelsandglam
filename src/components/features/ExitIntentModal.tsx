@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Award } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { trackEvent } from '@/lib/gtag';
 
 export default function ExitIntentModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,7 +90,10 @@ export default function ExitIntentModal() {
                 <Button 
                   href="/confidence-assessment" 
                   variant="solid" 
-                  onClick={handleClose}
+                  onClick={() => {
+                    handleClose();
+                    trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Exit Intent Assessment CTA' });
+                  }}
                   className="py-3 px-6 text-center text-xs font-semibold tracking-luxury"
                 >
                   Reveal Presence Index

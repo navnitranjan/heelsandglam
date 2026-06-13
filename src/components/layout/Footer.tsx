@@ -2,12 +2,18 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { trackEvent } from '@/lib/gtag';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
+    trackEvent({
+      action: 'form_submit_newsletter',
+      category: 'Lead Generation',
+      label: 'Footer Newsletter Join'
+    });
     // Newsletter integration callback
   };
 

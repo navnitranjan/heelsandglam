@@ -35,6 +35,7 @@ import {
   UserCheck
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { trackEvent } from '@/lib/gtag';
 
 // CUSTOM SVG BRAND ICONS
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -76,6 +77,46 @@ const TIMELINE_STAGES = [
   { stage: "Stage 05", title: "Poise & Presence", desc: "Re-pattern your walk in heels. Command visual angles, delay eye contact turns, and walk with straight knees." },
   { stage: "Stage 06", title: "Personal Branding", desc: "Establish offline and online presence. Create dynamic Instagram grids and capture high-value video scripts." },
   { stage: "Stage 07", title: "Transformation Showcase", desc: "Catwalk graduation runway. Secure your professional lookbook shoots directed by Aakanksha Anand." }
+];
+
+// 1a. CINEMATIC JOURNEY CHAPTERS (PHASE 3)
+const JOURNEY_CHAPTERS = [
+  {
+    id: 1,
+    chapter: "Chapter 01",
+    title: "Awareness",
+    subtitle: "Skeletal Self-Discovery & Diagnostics",
+    desc: "The path of poise begins by mapping physical reality. Coached by Aakanksha Anand, we audit your musculoskeletal baseline. Through video posture mappings, we identify tech-neck slumping, pelvic alignment deviations, and joint compensations.",
+    metrics: ["Skeletal Posture Mapping", "Tech-Neck Degree Audit", "Foot Strike Gait Assessment", "Center of Gravity Check"],
+    image: "/images/founder-portrait-red-half.jpg"
+  },
+  {
+    id: 2,
+    chapter: "Chapter 02",
+    title: "Confidence",
+    subtitle: "Musculoskeletal Decompression & Stature Reset",
+    desc: "Correcting habitual postural slumping. We release back tension, open the shoulder plates, and execute vertical spine wall resets. Coupled with diaphragmatic breathing and vocal exercises, we lower pitch and stabilize delivery.",
+    metrics: ["Shoulder Plate Expansion", "Spine Wall Calibration", "Diaphragmatic Breathing Checks", "Vocal Filler Elimination"],
+    image: "/images/traditional-saree-styling.jpg"
+  },
+  {
+    id: 3,
+    chapter: "Chapter 03",
+    title: "Presence",
+    subtitle: "Catwalk Kinetics & Stature Mastery",
+    desc: "Mastering the physics of motion in heels. Learn to step straight-kneed, balance weight systematically, and glide. We coordinate turns with the high-contrast gaze delay turn pivot.",
+    metrics: ["Straight-Knee Stride Balance", "Catwalk Pivot turns", "Evening Gown Carriage Flow", "Delayed Eye Gaze Mechanics"],
+    image: "/images/runway-saree-lotus.jpg"
+  },
+  {
+    id: 4,
+    chapter: "Chapter 04",
+    title: "Transformation",
+    subtitle: "Personal Branding & Spotlight Graduation",
+    desc: "Architecting your market positioning. We build custom skin undertone wardrobe palettes, map body silhouette profiles, record camera-facing speech tests, and design dynamic digital grids.",
+    metrics: ["Skin undertone styling maps", "Camera-Facing Speech Kinetic", "Digital Media Grid Curation", "Atelier Spotlight Graduation"],
+    image: "/images/fashion-week-runway-jeans.jpg"
+  }
 ];
 
 // 2. ASSESSMENT QUIZ (PHASE 4)
@@ -133,25 +174,31 @@ const CINEMATIC_STORIES = [
     name: "Aparna Sharma",
     role: "Pageant Finalist & Alumna",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800",
-    before: "Struggled with chronic tech-neck slumping, walked with bent knees in high heels, and lacked posture verticality in social pageants.",
-    during: "Mentored under Aakanksha Anand. Realigned center of gravity, stabilized hip movement, and practiced fabric control.",
-    after: "Walks with straight knees and open chest. Placed in the Top 5 of national pageants and works with prominent agencies."
+    before: "Skeletal slumping (tech-neck) and dropped chin.",
+    challenge: "Muscular fatigue after 15 minutes of wearing 4-inch stilettos; bent knees walk gait pattern.",
+    journey: "Custom skeletal wall alignment checkups, pelvic stabilizer corrections, and straight-knee step kinetics coached by Aakanksha.",
+    transformation: "Integrated delayed eye gaze pivots and evening gown carriage balance.",
+    result: "Secured Top 5 National Pageant placement and runs catwalks with 98% posture symmetry."
   },
   {
     name: "Dr. Nikita Lal",
     role: "VP, Corporate Operations",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-    before: "Experienced vocal shaking, fast speaking, and uptalk in high-stakes boardroom keynotes.",
-    during: "Focused on diaphragmatic resonance projection, pause training metrics, and corporate styling modules.",
-    after: "Commands the boardroom with authority. lower vocal pitch, clear modulation, and conducts elite media interviews."
+    before: "Rapid, nervous speaking speed and shoulders collapsed forward.",
+    challenge: "Shaky pitch resonance under high presentation pressure; filler word traps (ums, likes).",
+    journey: "Diaphragmatic pitch checkups, modular pacing exercises, and high-society social dining protocols.",
+    transformation: "Styled into a custom-fitted structured capsule blazer styling grid.",
+    result: "Commands international operational assemblies with absolute vocal poise and posture composure."
   },
   {
     name: "Rhea Sen",
     role: "Founder, Creators Atelier",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
-    before: "Lacked styling presence, felt self-conscious on camera, and had a fragmented digital brand image.",
-    during: "Completed body geometry mapping, personal capsule creation, and on-camera lens reading simulations.",
-    after: "Built a cohesive personal brand with 150k+ followers, styling deals, and steps into shoots with absolute confidence."
+    before: "Camera lens anxiety, flat posing profiles.",
+    challenge: "Fragmented style identity; nervous fidgeting in front of studio cameras.",
+    journey: "Personal skin undertone color mapping, body silhouette geometry, and media turn checks.",
+    transformation: "Curated a signature digital lookbook and calibrated gaze delay transitions.",
+    result: "Expanded her atelier brand to 150k+ followers with clean camera-facing confidence."
   }
 ];
 
@@ -414,6 +461,9 @@ export default function Home() {
   // Cinematic Testimonials Index
   const [testimonialIdx, setTestimonialIdx] = useState(0);
 
+  // Journey Chapter System State (Phase 3)
+  const [activeJourneyChapter, setActiveJourneyChapter] = useState(1);
+
   // Founder Story Active Chapter
   const [activeChapter, setActiveChapter] = useState(FOUNDER_CHAPTERS[0].id);
 
@@ -527,10 +577,20 @@ export default function Home() {
           </motion.p>
 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center z-30">
-            <Button href="#quiz-presence" variant="solid" className="w-full sm:w-auto">
+            <Button 
+              href="#quiz-presence" 
+              variant="solid" 
+              className="w-full sm:w-auto"
+              onClick={() => trackEvent({ action: 'click_discover_presence_score', category: 'Engagement', label: 'Homepage Hero Discover Presence' })}
+            >
               Discover Your Presence Score
             </Button>
-            <Button href="#about" variant="outline" className="w-full sm:w-auto">
+            <Button 
+              href="#about" 
+              variant="outline" 
+              className="w-full sm:w-auto"
+              onClick={() => trackEvent({ action: 'click_read_philosophy', category: 'Engagement', label: 'Homepage Hero Read Philosophy' })}
+            >
               Read Philosophy
             </Button>
           </div>
@@ -876,13 +936,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PHASE 3: INTERACTIVE TRANSFORMATION ROADMAP */}
+      {/* PHASE 3: INTERACTIVE TRANSFORMATION ROADMAP (CINEMATIC CHAPTERS) */}
       <section id="journey-presence" className="relative py-28 md:py-40 border-b border-gold/10 bg-editorial-grey/5">
-        <div className="luxury-container flex flex-col items-center text-center mb-20">
+        <div className="luxury-container flex flex-col items-center text-center mb-16">
           <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
             Milestones of Poise
           </span>
-          <h2 className="text-4xl md:text-7xl font-serif text-white">
+          <h2 className="text-4xl md:text-7xl font-serif text-white uppercase">
             Your Journey To Presence
           </h2>
           <div className="w-12 h-[1px] bg-gold/40 mt-4 mb-6" />
@@ -891,41 +951,98 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Vertical Connected Stage road */}
-        <div className="luxury-container relative max-w-5xl">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gold/25 -translate-x-1/2" />
+        {/* Chapter Selection Bar */}
+        <div className="luxury-container max-w-4xl flex justify-center space-x-2 border-b border-gold/10 pb-6 mb-16 overflow-x-auto">
+          {JOURNEY_CHAPTERS.map((ch) => (
+            <button
+              key={ch.id}
+              onClick={() => {
+                setActiveJourneyChapter(ch.id);
+                trackEvent({ action: 'journey_chapter_view', category: 'Engagement', label: `Viewed ${ch.chapter}` });
+              }}
+              className={`px-6 py-3 text-[10px] uppercase tracking-luxury font-sans font-bold transition-all border shrink-0 ${
+                activeJourneyChapter === ch.id
+                  ? 'bg-gold text-abyss border-gold'
+                  : 'bg-editorial-grey/10 text-alabaster/40 border-gold/15 hover:border-gold/30 hover:text-white'
+              } cursor-pointer`}
+            >
+              {ch.chapter}
+            </button>
+          ))}
+        </div>
 
-          <div className="space-y-12">
-            {TIMELINE_STAGES.map((item, index) => (
-              <div 
-                key={index}
-                className={`relative flex flex-col md:flex-row items-start ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                {/* Visual node marker */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-gold border-4 border-abyss z-10 shadow-[0_0_10px_rgba(197,160,89,0.5)]" />
-
-                {/* Content block */}
-                <div className="pl-12 md:pl-0 md:w-1/2 px-0 md:px-8">
-                  <div className="p-8 border border-gold/15 bg-editorial-grey/10 hover:border-gold/30 hover:bg-editorial-grey/15 transition-all duration-350 shadow-xl">
-                    <span className="text-[10px] uppercase tracking-widest text-gold font-bold font-sans block mb-1">
-                      {item.stage}
+        {/* Chapter Content Grid */}
+        <div className="luxury-container max-w-5xl">
+          <AnimatePresence mode="wait">
+            {JOURNEY_CHAPTERS.filter(ch => ch.id === activeJourneyChapter).map((ch) => {
+              const chMessage = encodeURIComponent(
+                `Hi Aakanksha! I am reviewing the ${ch.chapter} (${ch.title}) on your transformation roadmap and want to enroll.`
+              );
+              return (
+                <motion.div
+                  key={ch.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+                >
+                  {/* Left detail column */}
+                  <div className="lg:col-span-7 space-y-6">
+                    <span className="text-[10px] uppercase tracking-widest text-gold font-bold font-sans">
+                      {ch.chapter} • {ch.subtitle}
                     </span>
-                    <h4 className="text-xl font-serif text-white mb-2">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
-                      {item.desc}
+                    <h3 className="text-3xl md:text-5xl font-serif text-white uppercase leading-tight">
+                      {ch.title}
+                    </h3>
+                    <div className="w-12 h-[1px] bg-gold/45" />
+                    
+                    <p className="text-xs md:text-sm text-pearl/70 font-sans leading-relaxed">
+                      {ch.desc}
                     </p>
-                  </div>
-                </div>
 
-                {/* Empty block for layout grid */}
-                <div className="hidden md:block md:w-1/2" />
-              </div>
-            ))}
-          </div>
+                    {/* Metrics check grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-sans text-xs">
+                      {ch.metrics.map((metric) => (
+                        <div key={metric} className="flex items-center space-x-2">
+                          <Check className="w-4 h-4 text-gold shrink-0" />
+                          <span className="text-pearl/65">{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="pt-6 flex flex-wrap gap-4">
+                      <a
+                        href={`https://wa.me/919880012345?text=${chMessage}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
+                        onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: `WhatsApp ${ch.chapter}` })}
+                      >
+                        <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
+                        <span>Lock Chapter Spot</span>
+                      </a>
+                      <Button href="/apply" variant="outline" onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: `Apply from ${ch.chapter}` })}>
+                        Submit Admissions Profile
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Right visual column with overlay */}
+                  <div className="lg:col-span-5 relative aspect-[3/4] border border-gold/15 overflow-hidden shadow-2xl">
+                    <div className="absolute inset-4 border border-gold/10 -translate-x-3 translate-y-3 pointer-events-none z-10" />
+                    <Image
+                      src={ch.image}
+                      alt={ch.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-abyss/90 via-transparent to-transparent z-10" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
       </section>
 
@@ -1161,6 +1278,8 @@ export default function Home() {
                     onSubmit={(e) => {
                       e.preventDefault();
                       setConsultationBooked(true);
+                      trackEvent({ action: 'assessment_complete', category: 'Funnel', label: 'Somatic Quiz Completion', value: quizResultInfo?.score });
+                      trackEvent({ action: 'form_submit_lead', category: 'Lead Generation', label: 'Confidence Lead Capture' });
                     }}
                     className="space-y-4 max-w-md mx-auto"
                   >
@@ -1259,16 +1378,16 @@ export default function Home() {
           </div>
 
           {/* Before-During-After Storyboards */}
-          <div className="min-h-[420px] w-full flex items-center justify-center">
+          <div className="min-h-[460px] w-full flex items-center justify-center">
             <AnimatePresence mode="wait">
-              {CINEMATIC_STORIES.filter((_, idx) => idx === testimonialIdx).map((story, index) => (
+              {CINEMATIC_STORIES.filter((_, idx) => idx === testimonialIdx).map((story) => (
                 <motion.div
                   key={story.name}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.6 }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center animate-fade-in"
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
                 >
                   {/* Photo panel */}
                   <div className="lg:col-span-5 relative aspect-[3/4] border border-gold/15 overflow-hidden shadow-2xl">
@@ -1285,21 +1404,34 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Stories Details */}
-                  <div className="lg:col-span-7 flex flex-col space-y-6 font-sans">
-                    <div className="border-b border-gold/10 pb-4">
-                      <span className="text-[9px] uppercase tracking-widest text-red-400 font-bold block mb-1">Before: The Challenge</span>
-                      <p className="text-xs md:text-sm text-alabaster/60 leading-relaxed italic">&quot;{story.before}&quot;</p>
+                  {/* 5-Stage Editorial Stories Details */}
+                  <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-xs">
+                    <div className="p-4 border border-red-500/10 bg-red-950/5 rounded-xs flex flex-col space-y-1">
+                      <span className="text-[8px] uppercase tracking-widest text-red-400 font-bold">01. Before</span>
+                      <p className="text-pearl/60 italic leading-relaxed">&ldquo;{story.before}&rdquo;</p>
                     </div>
 
-                    <div className="border-b border-gold/10 pb-4">
-                      <span className="text-[9px] uppercase tracking-widest text-gold font-bold block mb-1">During: The Transformation</span>
-                      <p className="text-xs md:text-sm text-alabaster/70 leading-relaxed italic">&quot;{story.during}&quot;</p>
+                    <div className="p-4 border border-rosegold/15 bg-editorial-grey/5 rounded-xs flex flex-col space-y-1">
+                      <span className="text-[8px] uppercase tracking-widest text-rosegold font-bold">02. The Challenge</span>
+                      <p className="text-pearl/70 leading-relaxed">&ldquo;{story.challenge}&rdquo;</p>
                     </div>
 
-                    <div>
-                      <span className="text-[9px] uppercase tracking-widest text-green-400 font-bold block mb-1">After: The Poise</span>
-                      <p className="text-xs md:text-sm text-white font-medium leading-relaxed italic">&quot;{story.after}&quot;</p>
+                    <div className="p-4 border border-gold/10 bg-editorial-grey/5 rounded-xs flex flex-col space-y-1">
+                      <span className="text-[8px] uppercase tracking-widest text-gold font-bold">03. The Journey</span>
+                      <p className="text-pearl/75 leading-relaxed">&ldquo;{story.journey}&rdquo;</p>
+                    </div>
+
+                    <div className="p-4 border border-gold/15 bg-editorial-grey/5 rounded-xs flex flex-col space-y-1">
+                      <span className="text-[8px] uppercase tracking-widest text-gold font-bold">04. The Transformation</span>
+                      <p className="text-pearl/85 leading-relaxed">&ldquo;{story.transformation}&rdquo;</p>
+                    </div>
+
+                    <div className="sm:col-span-2 p-5 border border-gold/25 bg-gold/5 rounded-xs flex flex-col space-y-1.5">
+                      <span className="text-[9px] uppercase tracking-widest text-gold font-bold flex items-center space-x-1">
+                        <span>05. The Result</span>
+                        <Sparkles className="w-3 h-3 animate-pulse text-gold" />
+                      </span>
+                      <p className="text-white text-xs leading-relaxed font-medium">&ldquo;{story.result}&rdquo;</p>
                     </div>
                   </div>
                 </motion.div>
@@ -1519,11 +1651,16 @@ export default function Home() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="py-3.5 px-8 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
+                onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Social Funnel WhatsApp' })}
               >
                 <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
                 <span>Message Admissions Desk</span>
               </a>
-              <Button href="/apply" variant="outline">
+              <Button 
+                href="/apply" 
+                variant="outline"
+                onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Social Funnel Apply' })}
+              >
                 Initiate Assessment Funnel
               </Button>
             </div>
@@ -1591,6 +1728,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PHASE 6: PRESENCE MANIFESTO */}
+      <section className="relative min-h-screen py-36 bg-abyss flex items-center justify-center border-b border-gold/10 overflow-hidden">
+        {/* Glow element */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-burgundy/5 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="luxury-container text-center max-w-5xl relative z-10 space-y-16">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-sans font-semibold">
+            THE PRESENCE MANIFESTO
+          </span>
+
+          <h2 className="text-4xl md:text-8xl font-serif text-white tracking-luxury leading-none uppercase">
+            Poise is the Stature<br />
+            <span className="text-champagne">of Authority</span>
+          </h2>
+
+          <div className="w-16 h-[1px] bg-gold/30 mx-auto" />
+
+          {/* Large typography lines */}
+          <div className="space-y-12 text-center">
+            {[
+              { num: "I", text: "POSTURE IS SKELETAL POWER. WE STAND TALL NOT TO DOMINATE, BUT TO CLAIM THE SPATIAL RIGHTS TO OUR FRAME." },
+              { num: "II", text: "GAIT IS KINETIC ELEGANCE. THE STRAIGHT-KNEE STRIDE AND DELAYED GAZE TURN ARE THE MARKS OF ABSOLUTE POISE." },
+              { num: "III", text: "VOICE IS RESONANT AUTHORITY. DIAPHRAGMATIC PROJECTING AND SYSTEMATIC PAUSING COMMAND RESPECT IN SILENCE." },
+              { num: "IV", text: "STYLE IS GEOMETRY. WE MAP SKIN COLOR THEORY AND SILHOUETTES AS AN ACT OF IDENTITY ENGINEERING." },
+              { num: "V", text: "CONFIDENCE IS NOT INHERITED. IT IS CONSCIOUSLY ALIGNED, HABITUATED, AND LIVED UNCONDITIONALLY." }
+            ].map((p, idx) => (
+              <div key={idx} className="max-w-3xl mx-auto space-y-2">
+                <span className="font-serif text-gold text-lg block">{p.num}</span>
+                <p className="font-sans font-light text-xs md:text-sm tracking-[0.2em] text-alabaster/75 leading-relaxed uppercase">
+                  {p.text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-8">
+            <Button href="/apply" variant="solid" onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Manifesto Apply CTA' })}>
+              Accept the Code & Apply
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* ADMISSION CONTACT CTA */}
       <section id="contact" className="relative py-28 md:py-40 border-b border-gold/10 scroll-mt-24">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16">
@@ -1625,7 +1805,13 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="block text-green-400 uppercase tracking-widest text-[9px] font-semibold">Admissions Desk WhatsApp</span>
-                  <a href="https://wa.me/919880012345" target="_blank" rel="noopener noreferrer" className="text-alabaster/80 hover:text-gold transition-colors font-medium">
+                  <a 
+                    href="https://wa.me/919880012345" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-alabaster/80 hover:text-gold transition-colors font-medium"
+                    onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Contact Panel WhatsApp Link' })}
+                  >
                     +91 98800 12345 (Direct Inquiries)
                   </a>
                 </div>
@@ -1643,11 +1829,21 @@ export default function Home() {
             </div>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <Button href="/apply" variant="solid" className="flex items-center space-x-2">
+              <Button 
+                href="/apply" 
+                variant="solid" 
+                className="flex items-center space-x-2"
+                onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Contact Panel Start Application' })}
+              >
                 <span>Start Application Funnel</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
-              <Button href="https://wa.me/919880012345" variant="outline" className="flex items-center space-x-2 border-green-500/50 hover:bg-green-600 hover:border-green-600">
+              <Button 
+                href="https://wa.me/919880012345" 
+                variant="outline" 
+                className="flex items-center space-x-2 border-green-500/50 hover:bg-green-600 hover:border-green-600"
+                onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Contact Panel WhatsApp Button' })}
+              >
                 <WhatsAppIcon className="w-4 h-4 text-green-400 fill-green-400 group-hover:text-white" />
                 <span>Chat on WhatsApp</span>
               </Button>
@@ -1664,6 +1860,7 @@ export default function Home() {
                     onSubmit={(e) => {
                       e.preventDefault();
                       setContactSubmitted(true);
+                      trackEvent({ action: 'form_submit_consultation', category: 'Lead Generation', label: 'Request Consultation Form' });
                     }}
                     className="flex flex-col space-y-6"
                     initial={{ opacity: 0 }}

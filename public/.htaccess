@@ -1,0 +1,31 @@
+# Custom 404 error page mapping
+ErrorDocument 404 /404/index.html
+
+# Enable rewrite engine
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Ensure directory matches are routed to index.html internally
+  # This is handled automatically by Litespeed/Apache for subdirectories with index.html,
+  # but these rewrite conditions enforce that requests have standard trailing slashes.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+</IfModule>
+
+# Caching directives for static assets to optimize loading speeds
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

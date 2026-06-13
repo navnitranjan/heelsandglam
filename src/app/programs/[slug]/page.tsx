@@ -1,5 +1,13 @@
 import React from 'react';
 
+export async function generateStaticParams() {
+  return [
+    { slug: 'elite-runway-poise' },
+    { slug: 'executive-grace-presence' },
+    { slug: 'pageant-guild-masterclass' }
+  ];
+}
+
 interface ProgramDetailProps {
   params: Promise<{ slug: string }>;
 }

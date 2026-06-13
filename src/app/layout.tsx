@@ -20,23 +20,46 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Heels & Glam | Luxury Grooming, Modelling & Fashion Academy',
+  title: 'Heels & Glam | Grooming, Confidence & Modelling Academy in India',
   description:
-    'An elite personal transformation academy for women and aspiring models. Elevate posture, camera confidence, and presence under founder Aakanksha Anand.',
+    'Heels & Glam by Aakanksha Anand is India\'s premium academy for grooming, confidence-building, ramp walk training, modelling courses, and personal branding for women.',
   keywords: [
-    'modeling academy',
-    'grooming school',
-    'confidence building classes',
+    'modelling classes',
+    'modelling academy',
+    'ramp walk training',
+    'grooming classes',
+    'personality development for women',
+    'fashion academy',
     'pageant training',
-    'Aakanksha Anand',
-    'luxury grooming classes',
+    'confidence coaching for women',
+    'modelling course in India',
+    'personal branding academy',
+    'grooming and etiquette classes',
+    'Aakanksha Anand'
   ],
   openGraph: {
-    title: 'Heels & Glam | Luxury Grooming & Modelling Academy',
+    title: 'Heels & Glam | Luxury Grooming, Modelling & Personal Branding Academy',
     description:
-      'Unlock your absolute self. Personalized posture, elegance, and fashion direction coached by industry expert Aakanksha Anand.',
+      'Unlock your absolute presence. Learn ramp walk mechanics, poise, executive styling, and confidence mentored by Aakanksha Anand.',
+    url: 'https://heelsandglam.com',
+    siteName: 'Heels & Glam',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800',
+        width: 1200,
+        height: 630,
+        alt: 'Heels & Glam Academy by Aakanksha Anand'
+      }
+    ],
+    locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Heels & Glam | Personal Grooming & Modelling Academy',
+    description: 'Transform your confidence and own every room with India\'s elite poise and personal branding programs.',
+    images: ['https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800'],
+  }
 };
 
 export default function RootLayout({
@@ -47,6 +70,37 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-abyss text-alabaster antialiased">
+        {/* Global JSON-LD Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "EducationalOrganization",
+              "name": "Heels & Glam Academy by Aakanksha Anand",
+              "url": "https://heelsandglam.com",
+              "logo": "https://heelsandglam.com/logo.png",
+              "description": "Premium personal grooming, confidence-building, modelling, and personal branding academy in India.",
+              "founder": {
+                "@type": "Person",
+                "name": "Aakanksha Anand",
+                "jobTitle": "Founder & Head Coach"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Lavelle Road",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "addressCountry": "IN"
+              },
+              "offers": {
+                "@type": "Offer",
+                "category": "Grooming & Modelling Coaching"
+              }
+            })
+          }}
+        />
+
         {/* Preloader animation screen */}
         <Preloader />
 

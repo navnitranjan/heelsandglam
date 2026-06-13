@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { Check } from 'lucide-react';
+import { Check, HelpCircle } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
 // CUSTOM SVG WHATSAPP ICON
@@ -37,6 +37,21 @@ export default function ConfidenceCoachingPage() {
     "Hi Aakanksha! I am exploring the Confidence Coaching page and want to check seat availability for the upcoming cohort."
   );
 
+  const faqs = [
+    {
+      q: "What does somatic alignment mean?",
+      a: "Somatic alignment focuses on the physical structure of your body—such as spine elongation, pelvic placement, and vocal breathing—to naturally trigger feelings of confidence and project status."
+    },
+    {
+      q: "How does this coaching help with public speaking?",
+      a: "We train deep diaphragmatic breathing to stabilize your vocal cords, resolve filler word habits, and adjust your speaking pace under spotlight stress."
+    },
+    {
+      q: "Is the mindset coaching clinical?",
+      a: "No. It is a behavioral performance coaching system focused on overcoming impostor doubt, adjusting postures associated with stress, and commanding spatial authority."
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-obsidian text-pearl py-12 md:py-24 relative overflow-hidden">
       {/* Glow elements */}
@@ -59,7 +74,7 @@ export default function ConfidenceCoachingPage() {
       </div>
 
       {/* Spacing & Content section */}
-      <section className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20 relative z-10">
+      <section className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-28 relative z-10">
         {/* Visual column */}
         <div className="lg:col-span-5 relative aspect-[3/4] border border-rosegold/15 overflow-hidden shadow-2xl">
           <Image 
@@ -114,6 +129,24 @@ export default function ConfidenceCoachingPage() {
               Initiate Admissions Profile
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="luxury-container max-w-4xl relative z-10 border-t border-rosegold/10 pt-16 mb-12">
+        <div className="text-center mb-12">
+          <HelpCircle className="w-8 h-8 text-rosegold mx-auto mb-3" />
+          <h3 className="text-2xl font-serif text-white uppercase tracking-wider">Frequently Asked Questions</h3>
+          <div className="w-8 h-[1px] bg-rosegold/30 mx-auto mt-3" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+          {faqs.map((faq, index) => (
+            <div key={index} className="p-6 border border-rosegold/10 bg-editorial-grey/5 flex flex-col space-y-3">
+              <h4 className="text-sm font-serif text-white uppercase tracking-wide">{faq.q}</h4>
+              <p className="text-xs text-pearl/60 leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

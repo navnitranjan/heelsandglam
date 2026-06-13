@@ -5,6 +5,8 @@ import Preloader from '@/components/layout/Preloader';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
+import ExitIntentModal from '@/components/features/ExitIntentModal';
+
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -249,6 +251,9 @@ export default function RootLayout({
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
           </svg>
         </a>
+
+        {/* Global Exit Intent Dialog */}
+        <ExitIntentModal />
       </body>
     </html>
   );

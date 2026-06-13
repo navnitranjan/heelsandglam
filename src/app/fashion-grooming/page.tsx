@@ -20,35 +20,35 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const metadata: Metadata = {
-  title: 'Personal Grooming Classes | Styling & Etiquette Academy India',
-  description: 'Elevate your personal presentation, grooming routines, and wardrobe styling under Aakanksha Anand. Join Heels & Glam to refine your styling geometry.',
+  title: 'Fashion Grooming Academy | Saree Draping & Wardrobe Styling India',
+  description: 'Master personal styling, fabric carriage, and lookbook posing. Discover your signature color palette and saree draping geometry under Aakanksha Anand.',
   keywords: [
-    'grooming classes',
-    'personal grooming academy',
-    'styling classes for women',
-    'etiquette and grooming training',
-    'wardrobe styling course',
-    'makeup and skincare basics'
+    'fashion grooming',
+    'saree draping classes',
+    'wardrobe styling training',
+    'personal color mapping',
+    'lookbook photography posing',
+    'fashion design and grooming'
   ]
 };
 
-export default function GroomingClassesPage() {
+export default function FashionGroomingPage() {
   const waMessage = encodeURIComponent(
-    "Hi Aakanksha! I am exploring the Grooming Classes page and want to check seat availability for the upcoming cohort."
+    "Hi Aakanksha! I am exploring the Fashion Grooming page and want to check seat availability for the upcoming cohort."
   );
 
   const faqs = [
     {
-      q: "What is skin undertone mapping?",
-      a: "It is a system to determine whether your skin has a cool, warm, or neutral undertone, allowing us to specify colors that make your style project status."
+      q: "What does fabric manipulation involve?",
+      a: "Fabric manipulation focuses on walking, turning, and posing while wearing heavy gowns, traditional lehengas, and sarees. We teach how to prevent fabric tripping and manage silhouettes elegantly."
     },
     {
-      q: "Does this program cover social etiquette?",
-      a: "Yes. Our curriculum includes multi-course table dining setups, high-society conversation etiquette, and host protocols."
+      q: "Is color theory analysis individualized?",
+      a: "Yes. Every student receives a custom skin undertone check to map their ideal wardrobe color palettes, ensuring choices align with their personal branding."
     },
     {
-      q: "How large are the batch sizes?",
-      a: "To ensure individualized coaching and posture analysis, our cohort classes are limited to 12 candidates per batch."
+      q: "Do I get a portfolio photoshoot?",
+      a: "Our advanced cohorts include studio lookbook shoots where students practice camera angles, posture coordinates, and fabric carriage under expert direction."
     }
   ];
 
@@ -61,15 +61,15 @@ export default function GroomingClassesPage() {
       {/* Main Header */}
       <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 relative z-10">
         <span className="text-[10px] uppercase tracking-[0.35em] text-rosegold font-sans font-bold mb-4">
-          Premium Grooming Academy • Aesthetic Refinement
+          Fashion Grooming masterclass • Aesthetic Alignment
         </span>
         <h1 className="text-4xl md:text-8xl font-serif tracking-luxury text-white uppercase mb-6 leading-none">
-          Grooming<br />
-          <span className="text-champagne font-serif">Classes</span>
+          Fashion<br />
+          <span className="text-champagne font-serif">Grooming</span>
         </h1>
         <div className="w-16 h-[1px] bg-rosegold/30 mx-auto mb-8" />
         <p className="text-sm tracking-wide text-champagne max-w-xl leading-relaxed font-sans font-light">
-          Unlock your visual signature. From color analysis to styling geometry, learn how to present your best self in every social and professional arena.
+          Master the physics of high-fashion styling. From structural saree draping to lookbook posing mechanics, align your wardrobe with your presence.
         </p>
       </div>
 
@@ -79,7 +79,7 @@ export default function GroomingClassesPage() {
         <div className="lg:col-span-5 relative aspect-[3/4] border border-rosegold/15 overflow-hidden shadow-2xl">
           <Image 
             src="/images/traditional-saree-styling.jpg"
-            alt="Traditional saree styling and grooming workshop"
+            alt="Traditional saree styling and fabric draping workshop"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
             className="object-cover"
@@ -90,23 +90,23 @@ export default function GroomingClassesPage() {
 
         {/* Details column */}
         <div className="lg:col-span-7 space-y-6">
-          <span className="text-xs uppercase tracking-widest text-rosegold font-sans font-bold">The Styling Geometry</span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight uppercase">Refine Your Style Code</h2>
+          <span className="text-xs uppercase tracking-widest text-rosegold font-sans font-bold">Fabric Mechanics</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-white leading-tight uppercase">Master the Art of Draping & Posing</h2>
           <div className="w-12 h-[1px] bg-rosegold/40" />
 
           <p className="text-xs md:text-sm text-pearl/70 font-sans leading-relaxed">
-            True grooming is not about superficial trends; it is a systematic integration of color psychology, body symmetry, and behavioral polish. Our grooming masterclass equips you with a permanent blueprint for high-stature presentation.
+            Elegance is defined by how you move in relation to your clothing. Our fashion grooming syllabus systematically trains you in color coordination, body contour silhouette selections, and traditional fabric carriage kinetics, ensuring you walk with stability in heavy sarees and gowns.
           </p>
 
           {/* Bullet syllabus details */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-sans text-xs">
             {[
-              "Personal Color Analysis & Undertone Mapping",
-              "Symmetrical Styling & Silhouettes for Body Cuts",
-              "Capsule Wardrobe Rules & Selection Methods",
-              "Everyday and Camera-Ready Makeup Geometry",
-              "Skincare & Hair Health Rituals for Stage",
-              "Premium Dining & High-Society Social Etiquette"
+              "Personal Color Theory & Skin Tone Analysis",
+              "Structural Saree Draping & Pallu Control Kinetics",
+              "Silhouette Profiling matching Body Geometry",
+              "Lookbook Posing Angles & Studio Light Sync",
+              "Fabric Manipulation (managing heavy fabrics & gowns)",
+              "Capsule Wardrobe Rules for Creative Leaders"
             ].map((item) => (
               <div key={item} className="flex items-center space-x-2">
                 <Check className="w-4 h-4 text-rosegold shrink-0" />
@@ -123,7 +123,7 @@ export default function GroomingClassesPage() {
               className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg"
             >
               <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
-              <span>Lock Grooming Class Seat</span>
+              <span>Lock Fashion Grooming Seat</span>
             </a>
             <Button href="/apply" variant="outline">
               Initiate Admissions Profile

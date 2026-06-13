@@ -1,9 +1,7 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Check, Star, Calendar, Users, Compass, ArrowRight } from 'lucide-react';
+import { Metadata } from 'next';
+import { Check, HelpCircle } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
 // CUSTOM SVG WHATSAPP ICON
@@ -21,10 +19,38 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+export const metadata: Metadata = {
+  title: 'Professional Ramp Walk Training | Catwalk Kinetics Academy India',
+  description: 'Master the kinetics of heels catwalk presentation under coach Aakanksha Anand. Elevate your center of gravity and glide with stability.',
+  keywords: [
+    'ramp walk training',
+    'catwalk walk classes',
+    'heel walk kinetics',
+    'pageant catwalk coach',
+    'posture alignment for walk',
+    'ramp walk tutorials India'
+  ]
+};
+
 export default function RampWalkTrainingPage() {
   const waMessage = encodeURIComponent(
     "Hi Aakanksha! I am exploring the Ramp Walk Training page and want to check seat availability for the upcoming cohort."
   );
+
+  const faqs = [
+    {
+      q: "How tall do I need to be to join?",
+      a: "There are no height restrictions. Our classes are designed for personal poise, self-development, pageant carriage, as well as editorial modelling."
+    },
+    {
+      q: "Do you teach walking in different heel heights?",
+      a: "Yes. We train students to stabilize their weight in 3-inch, 4-inch, and 5-inch heels, focusing on foot strikes and knee straightening mechanics."
+    },
+    {
+      q: "Can I take this class for posture correction only?",
+      a: "Yes. Many corporate professionals and creators enroll specifically to correct slouching, forward neck tilt, and to build spatial confidence."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-obsidian text-pearl py-12 md:py-24 relative overflow-hidden">
@@ -33,7 +59,7 @@ export default function RampWalkTrainingPage() {
       <div className="absolute top-3/4 right-0 w-[400px] h-[400px] bg-rosegold/5 rounded-full blur-[130px] pointer-events-none" />
 
       {/* Main Header */}
-      <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 animate-fade-in relative z-10">
+      <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 relative z-10">
         <span className="text-[10px] uppercase tracking-[0.35em] text-rosegold font-sans font-bold mb-4">
           Professional Ramp Walk Training • Somatic Pacing
         </span>
@@ -48,7 +74,7 @@ export default function RampWalkTrainingPage() {
       </div>
 
       {/* Spacing & Content section */}
-      <section className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20 relative z-10">
+      <section className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-28 relative z-10">
         {/* Visual column */}
         <div className="lg:col-span-5 relative aspect-[3/4] border border-rosegold/15 overflow-hidden shadow-2xl">
           <Image 
@@ -57,6 +83,7 @@ export default function RampWalkTrainingPage() {
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
             className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent z-10" />
         </div>
@@ -105,6 +132,23 @@ export default function RampWalkTrainingPage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="luxury-container max-w-4xl relative z-10 border-t border-rosegold/10 pt-16 mb-12">
+        <div className="text-center mb-12">
+          <HelpCircle className="w-8 h-8 text-rosegold mx-auto mb-3" />
+          <h3 className="text-2xl font-serif text-white uppercase tracking-wider">Frequently Asked Questions</h3>
+          <div className="w-8 h-[1px] bg-rosegold/30 mx-auto mt-3" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+          {faqs.map((faq, index) => (
+            <div key={index} className="p-6 border border-rosegold/10 bg-editorial-grey/5 flex flex-col space-y-3">
+              <h4 className="text-sm font-serif text-white uppercase tracking-wide">{faq.q}</h4>
+              <p className="text-xs text-pearl/60 leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

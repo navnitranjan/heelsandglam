@@ -3,10 +3,21 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Calendar, Clock, Award, ChevronRight, Share2, ArrowRight } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Award, ChevronRight, X } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
-// 1. THE 25 SEO-READY BLOG TOPICS
+// 1. THE 6 OFFICIAL CATEGORIES
+const CATEGORIES = [
+  "All",
+  "Confidence",
+  "Grooming",
+  "Personal Branding",
+  "Modelling",
+  "Women Empowerment",
+  "Fashion"
+];
+
+// 2. THE 25 SEO-READY INDEX TOPICS (SIDEBAR PREVIEW)
 const BLOG_TOPICS = [
   "The Science of Walk: Spine Alignment & Heel Balance Kinetics",
   "Tech-Neck Correction: 5 Exercises to Realign Cervical Spine Slumping",
@@ -35,7 +46,7 @@ const BLOG_TOPICS = [
   "Musculoskeletal Poise: How core stability improves posture alignment"
 ];
 
-// 2. THE 5 COMPLETE BLOG ARTICLES WITH ACTUAL CONTENT
+// 3. THE 10 COMPLETE BLOG ARTICLES WITH BRAND CONTENT
 const COMPLETE_ARTICLES = [
   {
     id: 1,
@@ -43,7 +54,7 @@ const COMPLETE_ARTICLES = [
     slug: "science-of-walk-kinetics",
     date: "June 10, 2026",
     readTime: "6 min read",
-    category: "catwalk-poise",
+    category: "Modelling",
     excerpt: "Walking in high heels is not merely a styling choice; it is an active biomechanical equation. Discover how spine verticality and center of gravity check change your gait.",
     imageSrc: "/images/runway-saree-lotus.jpg",
     content: `Walking in high heels is not merely a styling choice; it is an active biomechanical equation. When you elevate your heels, you shift your center of gravity forward. Without conscious posture correction, the body compensates by tilting the pelvis, bending the knees, and slumping the shoulders—leading to strain, instability, and a heavy gait.
@@ -58,7 +69,7 @@ Secondly, stabilize the pelvis. Engaging the lower core prevents the lower back 
     slug: "tech-neck-correction-exercises",
     date: "May 28, 2026",
     readTime: "5 min read",
-    category: "somatic-poise",
+    category: "Grooming",
     excerpt: "Hours spent looking at laptops and phones compress the cervical vertebrae. Learn 5 essential posture routines to open your shoulders and lift your crown.",
     imageSrc: "/images/founder-portrait-red-full.jpg",
     content: `Modern lifestyles dictate that we look down at screens for hours daily. This forward head posture—commonly called 'tech-neck'—adds up to 30 pounds of pressure on the cervical spine, leading to slouched shoulders, shallow breathing, and a projection of insecurity.
@@ -76,8 +87,8 @@ To correct tech-neck slumping, practice these five daily skeletal exercises:
     slug: "runway-catwalk-mechanics",
     date: "May 15, 2026",
     readTime: "7 min read",
-    category: "modelling",
-    excerpt: " Catwalk presentation is built on pacing, timing, and center of gravity pivots. Study the structural walk elements directed by Aakanksha Anand.",
+    category: "Modelling",
+    excerpt: "Catwalk presentation is built on pacing, timing, and center of gravity pivots. Study the structural walk elements directed by Aakanksha Anand.",
     imageSrc: "/images/fashion-week-runway-jeans.jpg",
     content: `Catwalk presentation is a discipline of visual timing. A great model does not rush; she controls the music's tempo through her strides.
 
@@ -91,7 +102,7 @@ When you reach the runway end, execute the pivot turn. Transfer your weight comp
     slug: "vocal-projection-executive-speech",
     date: "April 30, 2026",
     readTime: "6 min read",
-    category: "communication",
+    category: "Confidence",
     excerpt: "True authority is vocalized. Learn the diaphragmatic breathing and verbal pacing techniques that command boardrooms and keynotes.",
     imageSrc: "/images/founder-portrait-red-half.jpg",
     content: `True authority is vocalized. Many women struggle with 'uptalk' (rising pitch at the end of sentences) or high speed of speech under pressure, which signals insecurity.
@@ -106,7 +117,7 @@ Secondly, implement the 'pause strategy'. Never rush to fill silence. Pausing be
     slug: "wardrobe-styling-capsule",
     date: "April 12, 2026",
     readTime: "5 min read",
-    category: "styling",
+    category: "Grooming",
     excerpt: "Your wardrobe is a visual statement. Learn the body geometry profiling and color mapping rules to align your daily style with your branding targets.",
     imageSrc: "/images/traditional-saree-styling.jpg",
     content: `Your wardrobe is a visual statement. It is the first message you send before you speak. Curating a personal capsule wardrobe is a strategic branding exercise.
@@ -114,17 +125,93 @@ Secondly, implement the 'pause strategy'. Never rush to fill silence. Pausing be
 First, determine your body geometry profile. Knowing your structural lines allows you to select silhouettes that fit you cleanly. 
 
 Secondly, apply color theory. Identify whether cool or warm tones align with your skin tone. A premium capsule wardrobe should contain high-quality staples in neutral shades—a tailored blazer, a silk shirt, and clean-cut trousers. These pieces can be styled in multiple ways to project elegance in corporate boardrooms, creative agencies, and social galas.`
+  },
+  {
+    id: 6,
+    title: "The Art of Presence: Personal Branding Frameworks for Aspiring Leaders",
+    slug: "art-of-presence-personal-branding",
+    date: "March 28, 2026",
+    readTime: "8 min read",
+    category: "Personal Branding",
+    excerpt: "Building a personal brand online and offline requires a cohesive visual, behavioral, and vocal framework. Discover Aakanksha Anand's branding blueprint.",
+    imageSrc: "/images/founder-portrait-red-full.jpg",
+    content: `Personal branding is more than a social media profile; it is a holistic blueprint of how you present your authority to the world. It starts with self-consistency. Your styling, body language, and communication style must speak the same language.
+
+First, define your visual signature. Select structural blazers, fitting silhouettes, and a distinct palette. 
+
+Secondly, master on-camera mechanics. Read to camera lenses with deliberate eye delay. Frame your thoughts in structured formats and maintain vocal projection. By aligning your digital grids with your offline poise, you build deep credibility and step into every space as an established authority.`
+  },
+  {
+    id: 7,
+    title: "Social Space Domination: Non-Verbal Communication and Stature Mechanics",
+    slug: "social-space-domination-mechanics",
+    date: "March 15, 2026",
+    readTime: "6 min read",
+    category: "Confidence",
+    excerpt: "Your carriage dictates how people perceive your authority before you speak. Learn the non-verbal stance and spatial coordinates to own any room.",
+    imageSrc: "/images/founder-portrait-red-half.jpg",
+    content: `First impressions are visual. Stature is not about your physical height; it is about how much spatial volume you command with your frame. When people feel anxious, they slump, cross their arms, and look down—effectively shrinking themselves.
+
+To project absolute authority, practice spatial presence. Stand with your feet aligned to your hips, distributing your weight equally. Keep your hands relaxed by your sides or use controlled gestures. Avoid checking your phone as a nervous default. Keep your head level and maintain a calm scanning gaze. When you claim your space physically, the room adjusts to your presence.`
+  },
+  {
+    id: 8,
+    title: "Breaking the Glass Runway: Women Empowerment through Decisive Carriage",
+    slug: "women-empowerment-decisive-carriage",
+    date: "March 01, 2026",
+    readTime: "7 min read",
+    category: "Women Empowerment",
+    excerpt: "Physical poise is a vehicle for personal empowerment. Read how physical realignment builds mental resilience and breaks glass ceilings.",
+    imageSrc: "/images/fashion-week-runway-jeans.jpg",
+    content: `Empowerment is not just a concept; it manifests physically. When a woman realigns her skeletal structure, she shifts her mental self-perception. Decisive carriage—shoulders relaxed, head tall, chest open—actively reduces stress hormones and increases testosterone levels, generating feelings of power.
+
+At Heels & Glam, we view poise training as a vehicle for personal growth. By conquering postural slouching and heels walk discomfort, women release positional anxiety. When you command your frame, you assert your right to belong in executive boardrooms, political keynotes, and high-fashion stages alike.`
+  },
+  {
+    id: 9,
+    title: "Couture Anatomy: Understanding Fabric Movement and Camera Geometry",
+    slug: "couture-anatomy-fabric-movement",
+    date: "Feb 18, 2026",
+    readTime: "8 min read",
+    category: "Fashion",
+    excerpt: "High-fashion lookbook shoots require coordination with lighting and fabric movement. Discover the geometry behind successful lookbook poses.",
+    imageSrc: "/images/runway-saree-lotus.jpg",
+    content: `Posing for high-fashion campaigns is a collaborative choreography between your body and the fabric. You must understand how fabrics drape, catch lighting shadows, and sway with movements.
+
+First, analyze your clothing weight. Heavy silks, organzas, and gowns require slow walks to allow fabrics to settle. 
+
+Secondly, map your physical geometry to camera angles. Create high-contrast shapes—tilting your head slightly, placing a hand on your waist to show elbow angles, and pointing your toes. Never face cameras flat; tilt your chest 45 degrees to capture shadows. By matching fabric mechanics with body geometry, you build stunning lookbooks.`
+  },
+  {
+    id: 10,
+    title: "Modern Etiquette: Navigating High-Society Salons and Diplomatic Boardrooms",
+    slug: "modern-etiquette-high-society",
+    date: "Feb 05, 2026",
+    readTime: "6 min read",
+    category: "Grooming",
+    excerpt: "Modern social protocols require absolute mastery of table setting layouts, toast etiquette, and entering formal salons with grace.",
+    imageSrc: "/images/traditional-saree-styling.jpg",
+    content: `Elegance is complete when your carriage is matched by your social grace. Etiquette protocols protect you from social anxiety and ensure you blend seamlessly into high-stakes diplomatic and high-society environments.
+
+First, master dining mechanics. Know which utensil to pick (work from the outside in) and how to rest silverware to signal pauses or completion. 
+
+Secondly, toast and dialogue with poise. Maintain brief, confident eye contact, modulate your voice, and keep posture straight when seated. Elegant carriage, matched with refined speech protocols, opens doors to key networks.`
   }
 ];
 
 export default function JournalPage() {
   const [activeArticle, setActiveArticle] = useState<typeof COMPLETE_ARTICLES[0] | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredArticles = selectedCategory === "All"
+    ? COMPLETE_ARTICLES
+    : COMPLETE_ARTICLES.filter(a => a.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-abyss text-alabaster py-12 md:py-24">
+    <div className="min-h-screen bg-abyss text-alabaster py-12 md:py-24 relative overflow-hidden">
       
       {/* Page Title */}
-      <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 animate-fade-in">
+      <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 animate-fade-in relative z-10">
         <span className="text-[10px] uppercase tracking-[0.3em] text-gold font-sans font-semibold mb-4">
           The Intellect
         </span>
@@ -137,7 +224,7 @@ export default function JournalPage() {
         </p>
       </div>
 
-      <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
         
         {/* LEFT COLUMN: SELECTED ARTICLE VIEWER OR LIST */}
         <div className="lg:col-span-8 space-y-12">
@@ -149,11 +236,11 @@ export default function JournalPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.4 }}
-                className="space-y-6 animate-fade-in"
+                className="space-y-6"
               >
                 <button 
                   onClick={() => setActiveArticle(null)}
-                  className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans flex items-center space-x-1"
+                  className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans flex items-center space-x-1 cursor-pointer"
                 >
                   <span>← Back to Articles</span>
                 </button>
@@ -200,47 +287,74 @@ export default function JournalPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <h2 className="text-2xl font-serif text-white uppercase tracking-wider border-b border-gold/10 pb-4">Featured Articles</h2>
+                <div className="border-b border-gold/10 pb-4 space-y-6">
+                  <h2 className="text-2xl font-serif text-white uppercase tracking-wider">Featured Essays</h2>
+                  
+                  {/* Category Selector Filter Bar */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {CATEGORIES.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setSelectedCategory(cat)}
+                        className={`px-3.5 py-1.5 text-[9px] uppercase tracking-widest font-sans font-semibold transition-all border ${
+                          selectedCategory === cat
+                            ? 'bg-gold text-abyss border-gold'
+                            : 'bg-editorial-grey/10 text-alabaster/50 border-gold/15 hover:border-gold/30 hover:text-white'
+                        } cursor-pointer`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 
-                {COMPLETE_ARTICLES.map((article) => (
-                  <div 
-                    key={article.id}
-                    className="group grid grid-cols-1 md:grid-cols-12 gap-6 items-center p-6 border border-gold/15 bg-editorial-grey/5 hover:border-gold/35 transition-all duration-350"
-                  >
-                    <div className="md:col-span-4 relative aspect-[4/3] overflow-hidden border border-gold/10">
-                      <Image 
-                        src={article.imageSrc}
-                        alt={article.title}
-                        fill
-                        className="object-cover transition-transform duration-75 group-hover:scale-105"
-                      />
-                    </div>
-                    
-                    <div className="md:col-span-8 flex flex-col space-y-3">
-                      <div className="flex space-x-3 text-[10px] font-sans text-alabaster/40 uppercase tracking-widest">
-                        <span>{article.date}</span>
-                        <span>•</span>
-                        <span>{article.readTime}</span>
+                {filteredArticles.length > 0 ? (
+                  filteredArticles.map((article) => (
+                    <div 
+                      key={article.id}
+                      className="group grid grid-cols-1 md:grid-cols-12 gap-6 items-center p-6 border border-gold/15 bg-editorial-grey/5 hover:border-gold/35 transition-all duration-350"
+                    >
+                      <div className="md:col-span-4 relative aspect-[4/3] overflow-hidden border border-gold/10">
+                        <Image 
+                          src={article.imageSrc}
+                          alt={article.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-103"
+                        />
                       </div>
                       
-                      <h3 className="text-xl md:text-2xl font-serif text-white group-hover:text-gold transition-colors duration-300">
-                        {article.title}
-                      </h3>
-                      
-                      <p className="text-xs text-alabaster/55 font-sans leading-relaxed line-clamp-2">
-                        {article.excerpt}
-                      </p>
+                      <div className="md:col-span-8 flex flex-col space-y-3">
+                        <div className="flex space-x-3 text-[10px] font-sans text-alabaster/40 uppercase tracking-widest">
+                          <span>{article.date}</span>
+                          <span>•</span>
+                          <span>{article.readTime}</span>
+                          <span>•</span>
+                          <span className="text-gold font-semibold">{article.category}</span>
+                        </div>
+                        
+                        <h3 className="text-xl md:text-2xl font-serif text-white group-hover:text-gold transition-colors duration-300">
+                          {article.title}
+                        </h3>
+                        
+                        <p className="text-xs text-alabaster/55 font-sans leading-relaxed line-clamp-2">
+                          {article.excerpt}
+                        </p>
 
-                      <button
-                        onClick={() => setActiveArticle(article)}
-                        className="text-[10px] uppercase tracking-luxury text-gold group-hover:text-white transition-colors font-sans font-semibold self-start flex items-center space-x-1 pt-2"
-                      >
-                        <span>Read Full Essay</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
+                        <button
+                          onClick={() => setActiveArticle(article)}
+                          className="text-[10px] uppercase tracking-luxury text-gold group-hover:text-white transition-colors font-sans font-semibold self-start flex items-center space-x-1 pt-2 cursor-pointer"
+                        >
+                          <span>Read Full Essay</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
+                  ))
+                ) : (
+                  <div className="text-center py-16 border border-gold/10 bg-editorial-grey/5">
+                    <p className="text-xs text-alabaster/40 font-sans tracking-wide">No essays published in this category yet.</p>
                   </div>
-                ))}
+                )}
               </motion.div>
             )}
           </AnimatePresence>
@@ -257,7 +371,7 @@ export default function JournalPage() {
               The Journal Index
             </h3>
             <p className="text-[10px] text-alabaster/40 font-sans tracking-wide mb-6 uppercase">
-              25 SEO-Ready Topics Under Editorial Review
+              25 Topics Under Editorial Review
             </p>
 
             <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">

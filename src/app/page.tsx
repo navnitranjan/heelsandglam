@@ -294,17 +294,6 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-abyss text-alabaster overflow-hidden">
 
-      {/* FLOATING WHATSAPP CTA (PHASE 9) */}
-      <a 
-        href="https://wa.me/919880012345" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="fixed bottom-6 right-6 z-40 p-4 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110 border border-white/10"
-        aria-label="Direct WhatsApp Inquiries Desk"
-      >
-        <WhatsAppIcon className="w-6 h-6 fill-white text-white" />
-      </a>
-
       {/* PHASE 2: EDITORIAL MAGAZINE HERO SECTION */}
       <section className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
         <motion.div 

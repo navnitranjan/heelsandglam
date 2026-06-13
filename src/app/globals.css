@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --color-abyss: #0B0B0C;
+  --color-alabaster: #F7F5F0;
+  --color-gold: #C5A059;
+  --color-gold-dust: #D4AF37;
+  --color-champagne: #E8DCC4;
+  --color-editorial-grey: #2E2E30;
+  
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  --background: var(--color-abyss);
+  --foreground: var(--color-alabaster);
+}
+
+@theme {
+  --color-abyss: var(--color-abyss);
+  --color-alabaster: var(--color-alabaster);
+  --color-gold: var(--color-gold);
+  --color-gold-dust: var(--color-gold-dust);
+  --color-champagne: var(--color-champagne);
+  --color-editorial-grey: var(--color-editorial-grey);
+  
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  
+  --animate-fade-up: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: var(--color-abyss);
+    color: var(--color-alabaster);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 300;
+  }
+
+  /* Thin Elegant Gold Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-abyss);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dust);
+  }
+}
+
+/* Custom Editorial Micro-layouts */
+.luxury-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 5vw, 5rem);
+  padding-right: clamp(1rem, 5vw, 5rem);
+}
+
+.luxury-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(197, 160, 89, 0.15);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(11, 11, 12, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 160, 89, 0.15);
+}

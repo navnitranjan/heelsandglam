@@ -27,11 +27,30 @@ import {
   Info,
   Layers,
   TrendingUp,
-  MessageCircle
+  MessageCircle,
+  Play,
+  Volume2,
+  X,
+  FileText,
+  UserCheck
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
 // CUSTOM SVG BRAND ICONS
+const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={props.className}
+  >
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+  </svg>
+);
+
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
@@ -48,290 +67,328 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={props.className}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-  </svg>
-);
+// 1. TIMELINE STAGES (PHASE 3)
+const TIMELINE_STAGES = [
+  { stage: "Stage 01", title: "Self Discovery", desc: "Biometric and posture baseline analysis. Identify spine curvatures, pelvic tilt issues, and custom style metrics." },
+  { stage: "Stage 02", title: "Confidence Foundation", desc: "Release musculoskeletal tension. Train basic balancing coordinates and decompress positional slumps." },
+  { stage: "Stage 03", title: "Grooming Mastery", desc: "Personal skin care regimens and styling theory. Match fabrics, silhouettes, and wardrobe capsule profiles." },
+  { stage: "Stage 04", title: "Communication Excellence", desc: "Speak from the diaphragm. Learn to modulation pitch, remove filler speech, and speak with vocal resonance." },
+  { stage: "Stage 05", title: "Poise & Presence", desc: "Re-pattern your walk in heels. Command visual angles, delay eye contact turns, and walk with straight knees." },
+  { stage: "Stage 06", title: "Personal Branding", desc: "Establish offline and online presence. Create dynamic Instagram grids and capture high-value video scripts." },
+  { stage: "Stage 07", title: "Transformation Showcase", desc: "Catwalk graduation runway. Secure your professional lookbook shoots directed by Aakanksha Anand." }
+];
 
-// 1. OFFICIAL MASTER PROGRAMS DATA
-const SIGNATURE_PROGRAMS = [
+// 2. ASSESSMENT QUIZ (PHASE 4)
+const QUIZ_QUESTIONS = [
   {
-    id: 'personal-grooming',
-    slug: 'personal-grooming-mastery',
-    name: 'Personal Grooming Mastery',
-    tagline: 'Learn appearance management, styling fundamentals, and self-presentation techniques.',
-    imageSrc: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800',
-    curriculums: [
-      'Haute couture styling & color alignment templates',
-      'Wardrobe engineering & capsule creation',
-      'Daily beauty fundamentals & skincare architecture',
-      'Personal poise & elegance posture realignment'
+    category: "Self Image",
+    question: "When looking in a mirror before an event, your internal dialogue is typically:",
+    options: [
+      { text: "Critical. Focusing on posture slumps, neck folds, or styling errors.", score: 15 },
+      { text: "Indifferent. Defaulting to comfort styling, wishing to get it over with.", score: 45 },
+      { text: "Constructive. Recognizing body geometry, aligning shoulder plates, and walking tall.", score: 95 }
     ]
   },
   {
-    id: 'confidence-presence',
-    slug: 'confidence-presence-program',
-    name: 'Confidence & Presence Program',
-    tagline: 'Build self-belief, body language communication, and executive presence.',
-    imageSrc: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&q=80&w=800',
-    curriculums: [
-      'Musculoskeletal alignment and body language confidence',
-      'Public speaking gravitas & articulation structures',
-      'Postural confidence coaching & mental boundary building',
-      'Social etiquette & elite group interaction pacing'
+    category: "Confidence",
+    question: "Standing in front of a high-profile audience, you experience:",
+    options: [
+      { text: "Physical anxiety, chest breathing, rapid speed of speech, and neck tension.", score: 15 },
+      { text: "Manageable nerves, but default to filler words like 'um' and 'like' to fill spaces.", score: 50 },
+      { text: "Decompressed spine, steady pace, speaking from the diaphragm, and using pauses.", score: 95 }
     ]
   },
   {
-    id: 'runway-modelling',
-    slug: 'runway-modelling-fundamentals',
-    name: 'Runway & Modelling Fundamentals',
-    tagline: 'Learn posture, catwalk kinetics, and fashion presentation techniques.',
-    imageSrc: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800',
-    curriculums: [
-      'Ramp walk mechanics, balance, and pacing physics',
-      'Studio posing templates & structural modeling postures',
-      'Facial expression control & emotional focus projection',
-      'Spotlight mapping & camera angles confidence'
+    category: "Grooming",
+    question: "Your wardrobe styling and daily self-presentation habits are:",
+    options: [
+      { text: "Unplanned. Grabbing whatever is clean, ignoring body geometry lines.", score: 20 },
+      { text: "Balanced but default to corporate templates; lacking a distinctive brand color strategy.", score: 60 },
+      { text: "Curated. Hand-picked fabrics, harmonized styling grids, and custom fitting coordinates.", score: 95 }
     ]
   },
   {
-    id: 'personal-branding',
-    slug: 'personal-branding-program',
-    name: 'Personal Branding Program',
-    tagline: 'Build a strong, distinct personal identity both online and offline.',
-    imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
-    curriculums: [
-      'Social media profile positioning & grid design aesthetics',
-      'Speaking confidently on camera & video communication',
-      'Professional identity coaching & corporate styling templates',
-      'Strategic self-branding & local media marketing'
+    category: "Personal Presence",
+    question: "When crossing thresholds or entering crowded boardrooms/galas:",
+    options: [
+      { text: "Drop your chin, avoid scanning, and slide to the corners to blend in.", score: 15 },
+      { text: "Enter quickly, checking your phone screen to simulate looking occupied.", score: 40 },
+      { text: "Glide tall, head level, shoulders down and back, scanning spaces calmly.", score: 95 }
+    ]
+  },
+  {
+    category: "Public Speaking",
+    question: "When reading to camera lenses or speaking into spotlight microphones:",
+    options: [
+      { text: "Lock up completely, speak fast, and rush the script delivery to finish.", score: 10 },
+      { text: "Deliver the contents but lose physical coordination and hand pacing controls.", score: 55 },
+      { text: "Coordinate eye contact delay, hold camera focus, and modulate vocal resonance.", score: 95 }
     ]
   }
 ];
 
-// 2. OFFICIAL ROADMAP PHASES
-const TRANSFORMATION_ROADMAP = [
-  { phase: 'Phase 1', title: 'Assessment & Self Discovery', desc: 'Determine baseline posture, walk physics, personal style metrics, and confidence blockages.' },
-  { phase: 'Phase 2', title: 'Confidence Foundation', desc: 'Break down physical sub-consciousness, and study standard posture alignment techniques.' },
-  { phase: 'Phase 3', title: 'Grooming & Styling', desc: 'Personal color styling analysis, wardrobe mapping, and high-end aesthetic presentation habits.' },
-  { phase: 'Phase 4', title: 'Communication & Presence', desc: 'Train vocal projection, speech modulation, active presence, and non-verbal body kinetics.' },
-  { phase: 'Phase 5', title: 'Modelling & Presentation', desc: 'Study the physical parameters of ramp walking, pose framing, and camera angle control.' },
-  { phase: 'Phase 6', title: 'Personal Brand Development', desc: 'Synthesize your story into a strong online presence and professional media packaging.' },
-  { phase: 'Phase 7', title: 'Transformation Showcase', desc: 'Step out onto the graduation catwalk and capture your professional before/after lookbook.' }
-];
-
-// 3. OFFICIAL TESTIMONIALS
-const OFFICIAL_TESTIMONIALS = [
+// 3. CINEMATIC STORIES (PHASE 5)
+const CINEMATIC_STORIES = [
   {
-    quote: "Joining Heels & Glam transformed the way I carry myself. I learned confidence, communication and presentation skills that continue to help me every day.",
     name: "Aparna Sharma",
-    role: "Pageant Runner-up & Runway Alumna",
-    avatarSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150"
+    role: "Pageant Finalist & Alumna",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800",
+    before: "Struggled with chronic tech-neck slumping, walked with bent knees in high heels, and lacked posture verticality in social pageants.",
+    during: "Mentored under Aakanksha Anand. Realigned center of gravity, stabilized hip movement, and practiced fabric control.",
+    after: "Walks with straight knees and open chest. Placed in the Top 5 of national pageants and works with prominent agencies."
   },
   {
-    quote: "The academy helped me overcome self-doubt and become more comfortable in professional and social settings. The posture training is unmatched.",
     name: "Dr. Nikita Lal",
-    role: "Corporate Leader & Public Speaker",
-    avatarSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150"
+    role: "VP, Corporate Operations",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+    before: "Experienced vocal shaking, fast speaking, and uptalk in high-stakes boardroom keynotes.",
+    during: "Focused on diaphragmatic resonance projection, pause training metrics, and corporate styling modules.",
+    after: "Commands the boardroom with authority. lower vocal pitch, clear modulation, and conducts elite media interviews."
   },
   {
-    quote: "The grooming and confidence modules gave me practical tools that improved both my personal and professional life. Aakanksha Anand is a brilliant mentor.",
     name: "Rhea Sen",
-    role: "Content Creator & Entrepreneur",
-    avatarSrc: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150"
+    role: "Founder, Creators Atelier",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
+    before: "Lacked styling presence, felt self-conscious on camera, and had a fragmented digital brand image.",
+    during: "Completed body geometry mapping, personal capsule creation, and on-camera lens reading simulations.",
+    after: "Built a cohesive personal brand with 150k+ followers, styling deals, and steps into shoots with absolute confidence."
   }
 ];
 
-// 4. OFFICIAL FAQS
-const OFFICIAL_FAQS = [
+// 4. FOUNDER CHAPTERS (PHASE 8)
+const FOUNDER_CHAPTERS = [
   {
-    q: "Who can join?",
-    a: "Any woman seeking confidence, grooming, communication or personal presence development. Our students range from young students to mature executives."
+    id: "chap-1",
+    title: "Chapter 1: The Beginning",
+    content: "Growing up, I realized that posture is not just an aesthetic parameter—it is where confidence starts. Watching women lose their presence due to musculoskeletal sub-consciousness drove me to study body mechanics."
   },
   {
-    q: "Do I need modelling experience?",
-    a: "No. Beginners are welcome. We start from ground-level posture mechanics, balance points, and walk basics."
+    id: "chap-2",
+    title: "Chapter 2: The Vision",
+    content: "I didn't want to build a simple modeling school. My vision was to create a luxury transformation guild where corporate leaders, creators, and pageant contenders could acquire the physical kinetics of authority."
   },
   {
-    q: "Is this only for aspiring models?",
-    a: "No. Our programs benefit college students, corporate professionals, entrepreneurs, and creators who wish to stand tall and project authority."
+    id: "chap-3",
+    title: "Chapter 3: The Transformation Philosophy",
+    content: "Elegance is a structured physics. By realigning the center of gravity, stabilising pelvic tilt, and mastering vocal resonance, we decompress the frame and teach women to carry themselves with gravitas."
   },
   {
-    q: "Are classes online or offline?",
-    a: "Program formats vary by batch. We organize intensive, physical runway bootcamps alongside select online theory/branding modules."
+    id: "chap-4",
+    title: "Chapter 4: Empowering Women",
+    content: "Empowerment is not a statement; it is a physical reality. When a woman stands tall, opens her chest, and modularizes her voice, the room shifts. I guide women to claim their spaces unconditionally."
   },
   {
-    q: "How do I apply?",
-    a: "You can apply directly via our admissions questionnaire page or schedule a free consultation with our coaching team on WhatsApp."
+    id: "chap-5",
+    title: "Chapter 5: The Future",
+    content: "Heels & Glam is expanding the Lavelle Road flagship atelier, integrating AI gait metrics, and introducing private styling retreats to make luxury poise training accessible to ambitious leaders across India."
   }
+];
+
+// 5. GALLERY DATA (PHASE 7)
+const GALLERY_MOCK = [
+  { title: "Runway Walking Mechanics", desc: "Catwalk balance prep.", url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=600" },
+  { title: "Personal Styling Studio", desc: "Haute couture wardrobes.", url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=600" },
+  { title: "Somatic Posture Class", desc: "Spine verticality checks.", url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600" },
+  { title: "Pageant Spotlight Rehearsal", desc: "Gown carriage training.", url: "https://images.unsplash.com/photo-1496449903678-c8dd735012ba?auto=format&fit=crop&q=80&w=600" }
 ];
 
 export default function Home() {
-  const [sliderPosition, setSliderPosition] = useState(50);
+  // Real-time Countdown Timer (Phase 9)
+  const [timeLeft, setTimeLeft] = useState({ days: 12, hours: 8, minutes: 24, seconds: 50 });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        if (prev.days > 0) return { days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
+        return prev;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Posture Compare Slider States
+  const [sliderPos, setSliderPos] = useState(50);
   const sliderRef = useRef<HTMLDivElement>(null);
-
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
-  // Parallax Scroller Setup
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  const heroBgY = useTransform(scrollY, [0, 800], [0, 200]);
-
-  // Form states
-  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   const handleSliderMove = (clientX: number) => {
     if (!sliderRef.current) return;
     const rect = sliderRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percentage);
+    setSliderPos(Math.max(0, Math.min(100, (x / rect.width) * 100)));
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    handleSliderMove(e.clientX);
-  };
+  // Quiz States (Phase 4)
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [scores, setScores] = useState<number[]>([]);
+  const [quizFinished, setQuizFinished] = useState(false);
+  const [quizResultInfo, setQuizResultInfo] = useState<{ score: number; category: string; description: string } | null>(null);
+  
+  // Lead Capture state
+  const [leadForm, setLeadForm] = useState({ name: '', phone: '', email: '' });
+  const [consultationBooked, setConsultationBooked] = useState(false);
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length > 0) {
-      handleSliderMove(e.touches[0].clientX);
+  const handleQuizAnswer = (score: number) => {
+    const nextScores = [...scores, score];
+    setScores(nextScores);
+
+    if (currentQuestion + 1 < QUIZ_QUESTIONS.length) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      const avg = Math.round(nextScores.reduce((a, b) => a + b, 0) / nextScores.length);
+      let category = "Emerging";
+      let desc = "You need basic postural decompression, styling coordinates, and diaphragmatic breathing patterns.";
+      
+      if (avg >= 85) {
+        category = "Exceptional";
+        desc = "Your posture is symmetrical, and vocal projection commands authority. Ideal for lookbooks.";
+      } else if (avg >= 65) {
+        category = "Refined";
+        desc = "Strong style and confidence; needs slight heel gait pacing adjustments and online branding strategy.";
+      } else if (avg >= 40) {
+        category = "Developing";
+        desc = "Some alignment and presence blocks. Focus on Tech-Neck release and speech rate modulation.";
+      }
+
+      setQuizResultInfo({ score: avg, category, description: desc });
+      setQuizFinished(true);
     }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTestimonialIndex((prev) => (prev + 1) % OFFICIAL_TESTIMONIALS.length);
-    }, 9000);
-    return () => clearInterval(interval);
-  }, []);
+  const resetQuiz = () => {
+    setScores([]);
+    setCurrentQuestion(0);
+    setQuizFinished(false);
+    setQuizResultInfo(null);
+    setQuizStarted(false);
+    setConsultationBooked(false);
+    setLeadForm({ name: '', phone: '', email: '' });
+  };
+
+  // Cinematic Testimonials Index
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
+
+  // Founder Story Active Chapter
+  const [activeChapter, setActiveChapter] = useState(FOUNDER_CHAPTERS[0].id);
+
+  // Gallery Selected Lookbook
+  const [selectedPhoto, setSelectedPhoto] = useState<typeof GALLERY_MOCK[0] | null>(null);
+
+  // Contact status
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+
+  // Accordion active FAQ
+  const [faqActive, setFaqActive] = useState<number | null>(null);
+
+  // Form Pre-filled WhatsApp link text
+  const waConsultMessage = encodeURIComponent(
+    `Hi Aakanksha! I completed my Presence Score check.\n\n` +
+    `*My Score:* ${quizResultInfo?.score}%\n` +
+    `*Category:* ${quizResultInfo?.category}\n\n` +
+    `I would like to book my private consultation to review my postural alignment.`
+  );
 
   return (
     <div className="relative min-h-screen bg-abyss text-alabaster overflow-hidden">
-      
-      {/* 1. CINEMATIC HERO SECTION */}
-      <section ref={heroRef} className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
+
+      {/* FLOATING WHATSAPP CTA (PHASE 9) */}
+      <a 
+        href="https://wa.me/919880012345" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="fixed bottom-6 right-6 z-40 p-4 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110 border border-white/10"
+        aria-label="Direct WhatsApp Inquiries Desk"
+      >
+        <WhatsAppIcon className="w-6 h-6 fill-white text-white" />
+      </a>
+
+      {/* PHASE 2: EDITORIAL MAGAZINE HERO SECTION */}
+      <section className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
         <motion.div 
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ 
             backgroundImage: `url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920')`,
-            y: heroBgY 
           }}
+          initial={{ scale: 1.05 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.8, ease: "easeOut" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-abyss/85 via-abyss/45 to-abyss z-10" />
 
-        {/* Floating background lights */}
-        <div className="absolute top-1/4 left-1/3 w-[350px] h-[350px] bg-gold/5 rounded-full blur-[100px] pointer-events-none z-10" />
-        <div className="absolute bottom-1/4 right-1/3 w-[350px] h-[350px] bg-gold-dust/5 rounded-full blur-[100px] pointer-events-none z-10" />
+        <div className="luxury-container relative z-20 flex flex-col items-center text-center px-4 max-w-5xl">
+          <span className="text-[10px] tracking-[0.35em] text-gold uppercase font-sans font-bold mb-6">
+            The Digital Poise Atelier
+          </span>
+          
+          <h1 className="text-6xl md:text-9xl font-serif tracking-luxury text-white uppercase leading-none mb-6">
+            Transform Your Confidence.<br />
+            <span className="text-gold font-serif">Own Every Room.</span>
+          </h1>
 
-        <div className="luxury-container relative z-20 flex flex-col items-center text-center px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center"
-          >
-            <span className="text-[10px] tracking-[0.3em] text-gold uppercase font-sans font-medium mb-6">
-              Heels & Glam Academy by Aakanksha Anand
-            </span>
-            
-            <h1 className="text-5xl md:text-8xl font-serif tracking-luxury text-white uppercase leading-none mb-6">
-              Transform Your Confidence.<br />
-              <span className="text-gold font-serif">Own Every Room.</span>
-            </h1>
+          <p className="text-sm md:text-lg text-champagne/85 font-sans tracking-wide max-w-2xl leading-relaxed mb-10">
+            India&apos;s premier boutique personal grooming, confidence-building, modelling, and personal branding academy. 
+            We believe confidence is not inherited—it is cultivated.
+          </p>
 
-            <p className="text-sm md:text-lg text-champagne/80 font-sans tracking-wide max-w-2xl leading-relaxed mb-10">
-              India&apos;s premier boutique personal grooming, confidence-building, modelling, and personal branding academy. 
-              We believe confidence is not inherited—it is cultivated.
-            </p>
-
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center">
-              <Button href="/apply" variant="solid" className="w-full sm:w-auto">
-                Book Free Consultation
-              </Button>
-              <Button href="#programs" variant="outline" className="w-full sm:w-auto">
-                Join Next Batch
-              </Button>
-            </div>
-          </motion.div>
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center z-30">
+            <Button href="#quiz-presence" variant="solid" className="w-full sm:w-auto">
+              Discover Your Presence Score
+            </Button>
+            <Button href="#about" variant="outline" className="w-full sm:w-auto">
+              Read Philosophy
+            </Button>
+          </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-2">
-          <span className="text-[9px] tracking-[0.25em] text-alabaster/40 font-sans uppercase">Discover Presence</span>
-          <motion.div 
-            className="w-[1px] h-10 bg-gold/30 relative overflow-hidden"
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <motion.div 
-              className="absolute top-0 left-0 w-full h-1/2 bg-gold"
-              animate={{ y: ["0%", "200%"] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            />
-          </motion.div>
+        {/* Phase 9 Countdown Timer Overlay */}
+        <div className="absolute bottom-12 left-6 right-6 z-20 flex flex-col md:flex-row md:items-center justify-between border-t border-gold/10 pt-6 luxury-container">
+          <div className="flex items-center space-x-3 mb-4 md:mb-0">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+            <span className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">
+              Admissions Status: Autumn Batch September 2026. Only 3 Seats Remaining!
+            </span>
+          </div>
+
+          <div className="flex items-center space-x-4 font-sans text-xs">
+            <span className="text-alabaster/40 uppercase tracking-widest text-[9px]">Batch Starts in:</span>
+            <div className="flex space-x-2 text-center text-white">
+              <div><span className="font-serif font-bold text-sm text-gold">{timeLeft.days}d</span></div>
+              <div><span className="font-serif font-bold text-sm text-gold">{timeLeft.hours}h</span></div>
+              <div><span className="font-serif font-bold text-sm text-gold">{timeLeft.minutes}m</span></div>
+              <div><span className="font-serif font-bold text-sm text-gold">{timeLeft.seconds}s</span></div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 2. ABOUT HEELS & GLAM */}
-      <section id="about" className="relative py-24 md:py-36 border-t border-gold/10">
+      {/* CHAPTER 1 (PHASE 2): EDITORIAL MAGAZINE PHILOSOPHY */}
+      <section id="about" className="relative py-28 md:py-40 border-t border-gold/10">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           <div className="lg:col-span-7 flex flex-col space-y-8">
             <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium">
-              Transformation Guild
+              Vogue Lookbook • Philosophy
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
+            <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight">
               Elegance is More Than Appearance.
             </h2>
             <div className="w-12 h-[1px] bg-gold/40" />
 
-            <div className="space-y-4 text-sm md:text-base text-alabaster/70 font-sans leading-relaxed">
-              <p className="font-serif italic text-gold text-lg mb-2">
+            <div className="space-y-6 text-sm md:text-base text-alabaster/70 font-sans leading-relaxed">
+              <p className="font-serif italic text-gold text-xl mb-4 border-l-2 border-gold/30 pl-6">
                 &quot;It is the confidence to enter a room without hesitation. It is the ability to communicate with clarity. It is the posture that reflects self-belief. It is the presence that leaves a lasting impression.&quot;
               </p>
               <p>
                 At Heels & Glam, we help women develop these qualities through structured training, expert mentorship, and practical, real-world transformation. 
-                Our academy combines poise, body posture, vocal projection, wardrobe styling, dining etiquette, runway walk, and personal branding into a unified curriculum.
+                Our programs are designed not only for aspiring runway models but also for college students, corporate professionals, entrepreneurs, content creators, and ambitious women who wish to stand tall and project authority.
               </p>
-              <p>
-                Our transformation programs are designed not only for aspiring runway models but also for college students, corporate professionals, entrepreneurs, content creators, and ambitious women who wish to project authority and style.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 pt-6">
-              <div className="flex space-x-3 items-start">
-                <div className="p-2 border border-gold/20 bg-editorial-grey/20 mt-1">
-                  <ShieldCheck className="w-4 h-4 text-gold" />
-                </div>
-                <div>
-                  <h4 className="text-xs uppercase tracking-luxury text-gold mb-1 font-sans font-semibold">Structured Poise</h4>
-                  <p className="text-xs text-alabaster/55 font-sans leading-snug">Spine-crown decompression, gait kinetics, and core elevation training.</p>
-                </div>
-              </div>
-
-              <div className="flex space-x-3 items-start">
-                <div className="p-2 border border-gold/20 bg-editorial-grey/20 mt-1">
-                  <Sparkles className="w-4 h-4 text-gold" />
-                </div>
-                <div>
-                  <h4 className="text-xs uppercase tracking-luxury text-gold mb-1 font-sans font-semibold">Empowerment Blueprint</h4>
-                  <p className="text-xs text-alabaster/55 font-sans leading-snug">Personal style mapping, current affairs communication, and online branding.</p>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Overlapping editorial layout */}
+          {/* Large Magazine Layout Photo */}
           <div className="lg:col-span-5 relative w-full aspect-[3/4] flex justify-center items-center">
             <div className="absolute inset-4 border border-gold/25 -translate-x-4 translate-y-4 pointer-events-none" />
             <div className="relative w-full h-full overflow-hidden border border-gold/15 shadow-2xl">
@@ -342,199 +399,122 @@ export default function Home() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-abyss/80 via-transparent to-transparent" />
-            </div>
-            
-            <div className="absolute bottom-6 right-[-10px] p-6 glass-panel flex flex-col space-y-2 max-w-[240px]">
-              <span className="text-[9px] tracking-widest uppercase text-gold font-sans font-semibold">The Core Philosophy</span>
-              <span className="text-base font-serif text-white leading-tight">Confidence is Cultivated</span>
-              <p className="text-[10px] text-alabaster/50 font-sans leading-normal">Elegance is not inherited. It is a refined skill practiced with purpose.</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 via-transparent to-transparent" />
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* 3. FOUNDER AUTHORITY SECTION */}
-      <section id="founder" className="relative py-24 md:py-36 bg-editorial-grey/10 border-y border-gold/10">
+      {/* PHASE 8: FOUNDER STORYTELLING EXPERIENCE */}
+      <section id="founder" className="relative py-28 md:py-40 bg-editorial-grey/10 border-y border-gold/10">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          {/* Portrait Grid */}
+          {/* Portrait Image */}
           <div className="lg:col-span-5 relative aspect-[3/4] overflow-hidden border border-gold/20 shadow-2xl">
             <Image 
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-              alt="Aakanksha Anand"
+              alt="Aakanksha Anand Portrait"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-abyss via-transparent to-transparent opacity-85" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold block mb-1">Academy Founder & Head Coach</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-abyss/80 via-transparent to-transparent opacity-85" />
+            <div className="absolute bottom-6 left-6 right-6 z-20">
+              <span className="text-[9px] uppercase tracking-widest text-gold font-sans font-bold block mb-1">Founder & Head Coach</span>
               <h3 className="text-3xl font-serif text-white">Aakanksha Anand</h3>
             </div>
           </div>
 
-          {/* Founder Story content */}
+          {/* Chapters Storytelling */}
           <div className="lg:col-span-7 flex flex-col space-y-8">
             <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium">
-              Vogue Mentorship
+              Vogue Profile • Chapters
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
-              Meet Aakanksha Anand.
-            </h2>
-            <div className="w-12 h-[1px] bg-gold/40" />
+            
+            <div className="flex space-x-2 overflow-x-auto py-1 border-b border-gold/10 pb-4">
+              {FOUNDER_CHAPTERS.map((chap) => (
+                <button
+                  key={chap.id}
+                  onClick={() => setActiveChapter(chap.id)}
+                  className={`px-4 py-2 text-[10px] uppercase tracking-luxury font-sans font-semibold transition-all shrink-0 border border-transparent ${
+                    activeChapter === chap.id 
+                      ? 'text-gold border-gold/30 bg-editorial-grey/25' 
+                      : 'text-alabaster/40 hover:text-white'
+                  }`}
+                >
+                  {chap.title.split(':')[0]}
+                </button>
+              ))}
+            </div>
 
-            <blockquote className="text-lg md:text-xl font-serif italic text-champagne/90 leading-relaxed pl-6 border-l border-gold/30">
+            <AnimatePresence mode="wait">
+              {FOUNDER_CHAPTERS.filter(c => c.id === activeChapter).map((chap) => (
+                <motion.div
+                  key={chap.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-4 font-sans text-xs md:text-sm text-alabaster/70 leading-relaxed min-h-[160px] animate-fade-in"
+                >
+                  <h3 className="text-xl md:text-2xl font-serif text-white font-medium">{chap.title}</h3>
+                  <div className="w-8 h-[1px] bg-gold/30 mt-2 mb-4" />
+                  <p>{chap.content}</p>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
+            <blockquote className="text-lg font-serif italic text-champagne/90 pl-6 border-l border-gold/25 mt-6">
               &quot;Confidence changes the way the world sees you. More importantly, it changes the way you see yourself.&quot;
             </blockquote>
 
-            <div className="space-y-4 text-xs md:text-sm text-alabaster/70 font-sans leading-relaxed">
-              <p>
-                Aakanksha Anand founded Heels & Glam with a clear vision: to help women become the most confident and expressive versions of themselves. 
-                Having experienced the profound personal transformation of grooming, styling, and presence firsthand, she created a platform dedicated to coaching skills that extend far beyond aesthetics.
-              </p>
-              <p>
-                Through individual posture correction, vocal modulation, and media branding mentorship, she has helped thousands of college students, corporate professionals, and pageant titleholders build authority and authentic presence.
-              </p>
+            <div className="pt-4 flex flex-wrap gap-4">
+              <Button href="/academy" variant="solid">Read Complete Pedigree</Button>
+              <Button href="https://wa.me/919880012345" variant="outline">WhatsApp Dialogue Desk</Button>
             </div>
-
-            {/* Performance Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/10">
-              <div>
-                <span className="block text-3xl md:text-4xl font-serif text-gold font-light">100%</span>
-                <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">Empowerment Rate</span>
-              </div>
-              <div>
-                <span className="block text-3xl md:text-4xl font-serif text-gold font-light">1,000s</span>
-                <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">Alumni Coached</span>
-              </div>
-              <div>
-                <span className="block text-3xl md:text-4xl font-serif text-gold font-light">Lavelle Rd</span>
-                <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">Flagship Atelier</span>
-              </div>
-            </div>
-
-            <Button href="/academy" variant="outline" className="self-start">
-              Read Founder Story
-            </Button>
           </div>
+
         </div>
       </section>
 
-      {/* 4. SIGNATURE PROGRAMS */}
-      <section id="programs" className="relative py-24 md:py-36 border-b border-gold/10">
-        <div className="luxury-container flex flex-col items-center text-center mb-16">
+      {/* PHASE 3: INTERACTIVE TRANSFORMATION ROADMAP */}
+      <section id="journey-presence" className="relative py-28 md:py-40 border-b border-gold/10 bg-editorial-grey/5">
+        <div className="luxury-container flex flex-col items-center text-center mb-20">
           <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-            Elite Curriculums
+            Milestones of Poise
           </span>
-          <h2 className="text-4xl md:text-6xl font-serif text-white">
-            Signature Programs
+          <h2 className="text-4xl md:text-7xl font-serif text-white">
+            Your Journey To Presence
           </h2>
           <div className="w-12 h-[1px] bg-gold/40 mt-4 mb-6" />
           <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl leading-relaxed">
-            Four specialized courses designed to cultivate posture, style, speaking gravitas, and personal identity.
+            Our step-by-step development roadmap designed to structure physical posture, style, and vocal self-possession.
           </p>
         </div>
 
-        {/* Programs Grid */}
-        <div className="luxury-container grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SIGNATURE_PROGRAMS.map((program) => (
-            <div 
-              key={program.id}
-              className="group relative flex flex-col bg-editorial-grey/10 border border-gold/15 transition-all duration-500 hover:border-gold/50 hover:bg-editorial-grey/20 p-8"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                
-                {/* Program Card Visual */}
-                <div className="lg:col-span-5 relative aspect-square overflow-hidden border border-gold/10">
-                  <Image 
-                    src={program.imageSrc}
-                    alt={program.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 15vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-abyss/40 to-transparent" />
-                </div>
-
-                {/* Program Details */}
-                <div className="lg:col-span-7 flex flex-col">
-                  <h3 className="text-xl md:text-2xl font-serif text-white group-hover:text-gold transition-colors duration-300 mb-2">
-                    {program.name}
-                  </h3>
-                  <p className="text-xs text-alabaster/60 font-sans leading-relaxed mb-4">
-                    {program.tagline}
-                  </p>
-                  
-                  {/* Curriculums mapping */}
-                  <div className="space-y-1.5 mb-6">
-                    {program.curriculums.map((item, idx) => (
-                      <div key={idx} className="flex items-start space-x-2 text-[10px] text-alabaster/80 font-sans">
-                        <Check className="w-3 h-3 text-gold shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link 
-                    href="/programs"
-                    className="text-[10px] uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans font-semibold self-start flex items-center space-x-1"
-                  >
-                    <span>View Cohort Details</span>
-                    <ChevronRight className="w-3 h-3" />
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button href="/programs" variant="solid">
-            Explore All Syllabus Details
-          </Button>
-        </div>
-      </section>
-
-      {/* 5. STUDENT TRANSFORMATION JOURNEY */}
-      <section id="roadmap" className="relative py-24 md:py-36 bg-editorial-grey/5 border-b border-gold/10">
-        <div className="luxury-container flex flex-col items-center text-center mb-16">
-          <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-            Gait & Style Milestones
-          </span>
-          <h2 className="text-4xl md:text-6xl font-serif text-white">
-            Student Transformation Journey
-          </h2>
-          <div className="w-12 h-[1px] bg-gold/40 mt-4 mb-6" />
-          <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl leading-relaxed">
-            Our step-by-step development pipeline designed to structure confidence, styling, and personal presence.
-          </p>
-        </div>
-
-        {/* Interactive Roadmap Layout */}
+        {/* Vertical Connected Stage road */}
         <div className="luxury-container relative max-w-5xl">
-          {/* Central Connecting Vertical Line for desktop */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gold/20 -translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gold/25 -translate-x-1/2" />
 
           <div className="space-y-12">
-            {TRANSFORMATION_ROADMAP.map((item, index) => (
+            {TIMELINE_STAGES.map((item, index) => (
               <div 
                 key={index}
                 className={`relative flex flex-col md:flex-row items-start ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
-                {/* Node Pointer */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold border-4 border-abyss z-10" />
+                {/* Visual node marker */}
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-gold border-4 border-abyss z-10 shadow-[0_0_10px_rgba(197,160,89,0.5)]" />
 
-                {/* Content Panel */}
+                {/* Content block */}
                 <div className="pl-12 md:pl-0 md:w-1/2 px-0 md:px-8">
-                  <div className="p-6 border border-gold/15 bg-editorial-grey/10 hover:border-gold/30 transition-all duration-350">
-                    <span className="text-[10px] uppercase tracking-widest text-gold font-semibold font-sans block mb-1">
-                      {item.phase}
+                  <div className="p-8 border border-gold/15 bg-editorial-grey/10 hover:border-gold/30 hover:bg-editorial-grey/15 transition-all duration-350 shadow-xl">
+                    <span className="text-[10px] uppercase tracking-widest text-gold font-bold font-sans block mb-1">
+                      {item.stage}
                     </span>
-                    <h4 className="text-lg font-serif text-white mb-2">
+                    <h4 className="text-xl font-serif text-white mb-2">
                       {item.title}
                     </h4>
                     <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
@@ -543,7 +523,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Empty Spacer Column for layout */}
+                {/* Empty block for layout grid */}
                 <div className="hidden md:block md:w-1/2" />
               </div>
             ))}
@@ -551,18 +531,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BEFORE/AFTER SKELETAL COMPARISON */}
-      <section id="somatic-comparison" className="relative py-24 md:py-36 border-b border-gold/10">
+      {/* SOMATIC BEFORE vs AFTER COMPARISON */}
+      <section className="relative py-28 md:py-40 border-b border-gold/10">
         <div className="luxury-container flex flex-col items-center text-center mb-16">
           <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-            Somatic Posture Analysis
+            Somatic Mechanics
           </span>
-          <h2 className="text-4xl md:text-6xl font-serif text-white">
-            Before vs After Transformation
+          <h2 className="text-4xl md:text-7xl font-serif text-white">
+            Somatic Posture Realignment
           </h2>
           <div className="w-12 h-[1px] bg-gold/40 mt-4 mb-6" />
           <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl leading-relaxed">
-            Drag the cursor overlay to analyze postural alignment correction, tech-neck release, and core elevation.
+            Drag the cursor handle to evaluate postural alignment correction, tech-neck release, and core elevation coordinates.
           </p>
         </div>
 
@@ -571,8 +551,8 @@ export default function Home() {
           <div 
             ref={sliderRef}
             className="relative w-full max-w-3xl aspect-[16/10] md:aspect-[16/9] bg-abyss border border-gold/15 overflow-hidden select-none cursor-ew-resize"
-            onMouseMove={handleMouseMove}
-            onTouchMove={handleTouchMove}
+            onMouseMove={(e) => handleSliderMove(e.clientX)}
+            onTouchMove={(e) => { if (e.touches.length > 0) handleSliderMove(e.touches[0].clientX); }}
           >
             {/* Before (Slouched) */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -594,7 +574,7 @@ export default function Home() {
             {/* After (Correct) */}
             <div 
               className="absolute inset-0 flex items-center justify-center bg-abyss"
-              style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+              style={{ clipPath: `polygon(0 0, ${sliderPos}% 0, ${sliderPos}% 100%, 0 100%)` }}
             >
               <div 
                 className="absolute inset-0 bg-cover bg-center opacity-75"
@@ -614,7 +594,7 @@ export default function Home() {
             {/* Drag Handle */}
             <div 
               className="absolute top-0 bottom-0 w-[1px] bg-gold z-10 pointer-events-none"
-              style={{ left: `${sliderPosition}%` }}
+              style={{ left: `${sliderPos}%` }}
             >
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gold bg-abyss flex items-center justify-center shadow-lg">
                 <span className="text-[12px] text-gold font-sans font-medium select-none">↔</span>
@@ -640,184 +620,353 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. WHY HEELS & GLAM */}
-      <section id="why-choose" className="relative py-24 md:py-36 bg-editorial-grey/5 border-b border-gold/10">
-        <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      {/* PHASE 4: CONFIDENCE ASSESSMENT QUIZ */}
+      <section id="quiz-presence" className="relative py-28 md:py-40 bg-editorial-grey/10 border-b border-gold/10">
+        <div className="luxury-container max-w-3xl">
           
-          <div className="lg:col-span-5 flex flex-col space-y-6">
-            <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium">
-              Structured poise
+          <div className="text-center mb-12">
+            <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
+              Poise Assessment
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
-              Why Heels & Glam?
+            <h2 className="text-4xl md:text-6xl font-serif text-white">
+              Discover Your Presence Score
             </h2>
-            <div className="w-12 h-[1px] bg-gold/40" />
-            <p className="text-sm text-alabaster/60 font-sans leading-relaxed">
-              We focus on a highly tailored, scientific approach to posture. Our students don&apos;t just learn to walk; they undergo a total musculoskeletal adaptation to hold themselves with maximum impact.
+            <div className="w-12 h-[1px] bg-gold/40 mt-4 mx-auto mb-6" />
+            <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
+              Answer 5 core style and posture questions to evaluate your current structural alignment and communication resonance.
             </p>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 border border-gold/10 bg-editorial-grey/10 flex flex-col space-y-4 hover:border-gold/30 transition-all duration-350">
-              <Award className="w-6 h-6 text-gold" />
-              <h3 className="text-xl font-serif text-white">Structured Transformation</h3>
-              <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
-                Every curriculum module is carefully designed and scheduled to produce measurable posture, styling, and presence growth.
-              </p>
-            </div>
+          <div className="glass-panel p-8 md:p-12 border border-gold/15 shadow-2xl relative overflow-hidden min-h-[380px] flex flex-col justify-center">
+            <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-gold/3 rounded-full blur-[65px] pointer-events-none" />
 
-            <div className="p-8 border border-gold/10 bg-editorial-grey/10 flex flex-col space-y-4 hover:border-gold/30 transition-all duration-350">
-              <Users className="w-6 h-6 text-gold" />
-              <h3 className="text-xl font-serif text-white">Expert Guidance</h3>
-              <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
-                Receive direct personal mentorship, color assessment, styling blueprints, and camera profiling from Aakanksha Anand.
-              </p>
-            </div>
+            <AnimatePresence mode="wait">
+              {!quizStarted ? (
+                <motion.div 
+                  key="start"
+                  className="text-center space-y-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Compass className="w-12 h-12 text-gold mx-auto mb-4 animate-spin-slow" />
+                  <h3 className="text-2xl font-serif text-white uppercase tracking-wide">Presence Assessment Quiz</h3>
+                  <p className="text-xs text-alabaster/55 font-sans max-w-md mx-auto leading-relaxed">
+                    This test evaluates key parameters: tech-neck slumping, gait stability, speech speeds, and personal styling confidence.
+                  </p>
+                  <Button type="button" onClick={() => setQuizStarted(true)} variant="solid">
+                    Begin Assessment
+                  </Button>
+                </motion.div>
+              ) : !quizFinished ? (
+                <motion.div 
+                  key="question"
+                  className="space-y-6"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex justify-between items-center text-[9px] uppercase tracking-widest text-gold font-sans font-semibold border-b border-gold/10 pb-3">
+                    <span>{QUIZ_QUESTIONS[currentQuestion].category}</span>
+                    <span>Question {currentQuestion + 1} of {QUIZ_QUESTIONS.length}</span>
+                  </div>
 
-            <div className="p-8 border border-gold/10 bg-editorial-grey/10 flex flex-col space-y-4 hover:border-gold/30 transition-all duration-350">
-              <Compass className="w-6 h-6 text-gold" />
-              <h3 className="text-xl font-serif text-white">Practical Learning</h3>
-              <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
-                Learn poise, speech pacing, and camera styling through exercises, mock-runways, multi-course dining simulations, and shoots.
-              </p>
-            </div>
+                  <h3 className="text-xl md:text-2xl font-serif text-white leading-snug">
+                    {QUIZ_QUESTIONS[currentQuestion].question}
+                  </h3>
 
-            <div className="p-8 border border-gold/10 bg-editorial-grey/10 flex flex-col space-y-4 hover:border-gold/30 transition-all duration-350">
-              <Sparkles className="w-6 h-6 text-gold" />
-              <h3 className="text-xl font-serif text-white">Elite Community</h3>
-              <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
-                Gain entry into a supportive, exclusive network of ambitious corporate professionals, content creators, and pageant finalists.
-              </p>
-            </div>
+                  <div className="flex flex-col space-y-3">
+                    {QUIZ_QUESTIONS[currentQuestion].options.map((opt, oIdx) => (
+                      <button
+                        key={oIdx}
+                        onClick={() => handleQuizAnswer(opt.score)}
+                        className="w-full text-left p-4 border border-gold/15 bg-editorial-grey/5 text-xs md:text-sm text-alabaster/80 font-sans hover:border-gold hover:bg-editorial-grey/15 transition-all duration-300 focus:outline-none cursor-pointer"
+                      >
+                        {opt.text}
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              ) : !consultationBooked ? (
+                <motion.div 
+                  key="results-capture"
+                  className="space-y-6 animate-fade-in"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="text-center">
+                    <UserCheck className="w-12 h-12 text-gold mx-auto mb-4" />
+                    <h3 className="text-2xl font-serif text-white uppercase tracking-wide">Assessment Completed</h3>
+                    <p className="text-xs text-alabaster/55 font-sans max-w-md mx-auto leading-relaxed mt-2">
+                      Submit your profile details below to reveal your custom score, category grade, and unlock a free alignment consultation callback.
+                    </p>
+                  </div>
+
+                  <form 
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setConsultationBooked(true);
+                    }}
+                    className="space-y-4 max-w-md mx-auto"
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">NAME</label>
+                      <input 
+                        type="text" 
+                        required 
+                        value={leadForm.name}
+                        onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                        className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                      />
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="flex flex-col space-y-1">
+                        <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">PHONE</label>
+                        <input 
+                          type="tel" 
+                          required 
+                          value={leadForm.phone}
+                          onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+                          className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                        />
+                      </div>
+                      <div className="flex flex-col space-y-1">
+                        <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">EMAIL</label>
+                        <input 
+                          type="email" 
+                          required 
+                          value={leadForm.email}
+                          onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                          className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <Button type="submit" variant="solid" className="w-full py-4 text-xs font-semibold tracking-luxury mt-2">
+                      Secure Assessment Score
+                    </Button>
+                  </form>
+                </motion.div>
+              ) : (
+                <motion.div 
+                  key="score-results"
+                  className="space-y-6 text-center animate-fade-in"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                >
+                  <Award className="w-12 h-12 text-gold mx-auto mb-4" />
+                  <h3 className="text-2xl font-serif text-white">Your Presence Index: {quizResultInfo?.score}%</h3>
+                  
+                  <div className="p-6 border border-gold/20 bg-gold/5 max-w-lg mx-auto text-left font-sans space-y-2">
+                    <span className="block text-[10px] uppercase tracking-widest text-gold font-bold">Category: {quizResultInfo?.category} Presence</span>
+                    <p className="text-xs text-alabaster/80 leading-relaxed">{quizResultInfo?.description}</p>
+                    <p className="text-[10px] text-champagne/60 leading-normal pt-2 border-t border-gold/10">Registrar callback matches: A free 15-minute voice alignment check has been booked for {leadForm.name}.</p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center pt-4">
+                    <a 
+                      href={`https://wa.me/919880012345?text=${waConsultMessage}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
+                    >
+                      <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
+                      <span>Review Score on WhatsApp</span>
+                    </a>
+                    <button 
+                      onClick={resetQuiz}
+                      className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans py-2.5 px-6 border border-gold/25 hover:border-gold cursor-pointer"
+                    >
+                      Retake Assessment
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
         </div>
       </section>
 
-      {/* 7. ACADEMY MOMENTS / LUXURY GALLERY PREVIEW */}
-      <section id="gallery" className="relative py-24 md:py-36 border-b border-gold/10">
+      {/* PHASE 5: CINEMATIC TESTIMONIALS (STUDENT TRANSFORMATIONS) */}
+      <section id="testimonials" className="relative py-28 md:py-40 bg-abyss border-b border-gold/10 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="luxury-container max-w-5xl relative z-20">
+          <div className="text-center mb-16">
+            <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
+              Transformation Stories
+            </span>
+            <h2 className="text-4xl md:text-6xl font-serif text-white">
+              Cinematic Testimonials
+            </h2>
+            <div className="w-12 h-[1px] bg-gold/40 mt-4 mx-auto" />
+          </div>
+
+          {/* Before-During-After Storyboards */}
+          <div className="min-h-[420px] w-full flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              {CINEMATIC_STORIES.filter((_, idx) => idx === testimonialIdx).map((story, index) => (
+                <motion.div
+                  key={story.name}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.6 }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center animate-fade-in"
+                >
+                  {/* Photo panel */}
+                  <div className="lg:col-span-5 relative aspect-[3/4] border border-gold/15 overflow-hidden shadow-2xl">
+                    <Image 
+                      src={story.image}
+                      alt={story.name}
+                      fill
+                      className="object-cover grayscale"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <span className="text-[10px] text-gold uppercase tracking-widest font-sans font-semibold block">{story.role}</span>
+                      <h4 className="text-2xl font-serif text-white">{story.name}</h4>
+                    </div>
+                  </div>
+
+                  {/* Stories Details */}
+                  <div className="lg:col-span-7 flex flex-col space-y-6 font-sans">
+                    <div className="border-b border-gold/10 pb-4">
+                      <span className="text-[9px] uppercase tracking-widest text-red-400 font-bold block mb-1">Before: The Challenge</span>
+                      <p className="text-xs md:text-sm text-alabaster/60 leading-relaxed italic">&quot;{story.before}&quot;</p>
+                    </div>
+
+                    <div className="border-b border-gold/10 pb-4">
+                      <span className="text-[9px] uppercase tracking-widest text-gold font-bold block mb-1">During: The Transformation</span>
+                      <p className="text-xs md:text-sm text-alabaster/70 leading-relaxed italic">&quot;{story.during}&quot;</p>
+                    </div>
+
+                    <div>
+                      <span className="text-[9px] uppercase tracking-widest text-green-400 font-bold block mb-1">After: The Poise</span>
+                      <p className="text-xs md:text-sm text-white font-medium leading-relaxed italic">&quot;{story.after}&quot;</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Testimonial Nav */}
+          <div className="flex justify-center space-x-4 mt-10">
+            <button 
+              onClick={() => setTestimonialIdx((prev) => (prev - 1 + CINEMATIC_STORIES.length) % CINEMATIC_STORIES.length)}
+              className="p-3 border border-gold/20 text-gold hover:bg-gold hover:text-abyss transition-colors cursor-pointer"
+              aria-label="Previous Cinematic Story"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={() => setTestimonialIdx((prev) => (prev + 1) % CINEMATIC_STORIES.length)}
+              className="p-3 border border-gold/20 text-gold hover:bg-gold hover:text-abyss transition-colors cursor-pointer"
+              aria-label="Next Cinematic Story"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* PHASE 7: FASHION WEEK GALLERY (ACADEMY MOMENTS) */}
+      <section id="gallery" className="relative py-28 md:py-40 border-b border-gold/10">
         <div className="luxury-container flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div className="flex flex-col space-y-3">
             <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium">
               Vogue Lookbook
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white">
+            <h2 className="text-4xl md:text-7xl font-serif text-white">
               Academy Moments
             </h2>
             <div className="w-12 h-[1px] bg-gold/40" />
           </div>
           <Button href="/gallery" variant="outline" className="mt-6 md:mt-0 self-start md:self-auto">
-            Explore Lookbooks
+            View All Lookbooks
           </Button>
         </div>
 
-        {/* Masonry Layout Grid */}
+        {/* Masonry-style catalog */}
         <div className="luxury-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { title: "Personal Grooming", tag: "Haute Couture Styling", url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=600" },
-            { title: "Ramp Walk Basics", tag: "High-Heel Gait Correction", url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=600" },
-            { title: "Camera Posing Class", tag: "Studio Modeling Angles", url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600" },
-            { title: "Personal Branding Setup", tag: "On-Camera Speaking confidence", url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" }
-          ].map((item, index) => (
+          {GALLERY_MOCK.map((photo, index) => (
             <div 
               key={index}
-              className="group relative aspect-[3/4] overflow-hidden border border-gold/10 hover:border-gold/40 transition-all duration-500 shadow-xl"
+              onClick={() => setSelectedPhoto(photo)}
+              className="group relative aspect-[3/4] overflow-hidden border border-gold/10 hover:border-gold/40 transition-all duration-500 shadow-2xl cursor-pointer"
             >
               <Image 
-                src={item.url}
-                alt={item.title}
+                src={photo.url}
+                alt={photo.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 25vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-abyss via-abyss/20 to-transparent opacity-80 z-10 transition-opacity duration-350 group-hover:opacity-95" />
+              <div className="absolute inset-0 bg-gradient-to-t from-abyss via-abyss/20 to-transparent opacity-85 z-10 transition-opacity duration-350 group-hover:opacity-95" />
               
               <div className="absolute bottom-6 left-6 right-6 z-20 translate-y-3 group-hover:translate-y-0 transition-transform duration-350">
                 <span className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold block mb-1">
-                  {item.tag}
+                  {photo.desc}
                 </span>
                 <h4 className="text-lg font-serif text-white">
-                  {item.title}
+                  {photo.title}
                 </h4>
               </div>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* 8. TESTIMONIALS (SUCCESS STORIES) */}
-      <section id="testimonials" className="relative py-24 md:py-36 bg-editorial-grey/5 border-b border-gold/10 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="luxury-container flex flex-col items-center max-w-4xl text-center relative z-20">
-          <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-8">
-            Student Transformations
-          </span>
-
-          <MessageSquare className="w-8 h-8 text-gold/30 mb-8" />
-
-          <div className="h-[240px] md:h-[180px] w-full flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={testimonialIndex}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="flex flex-col items-center animate-fade-in"
+        {/* Dynamic Fullscreen Lookbook Viewer */}
+        <AnimatePresence>
+          {selectedPhoto && (
+            <motion.div 
+              className="fixed inset-0 z-50 flex items-center justify-center bg-abyss/95 backdrop-blur-sm p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedPhoto(null)}
+            >
+              <button 
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-6 right-6 text-gold hover:text-white p-2 z-55 cursor-pointer"
               >
-                <p className="text-base md:text-xl font-serif text-champagne/90 leading-relaxed italic max-w-2xl mb-8">
-                  &quot;{OFFICIAL_TESTIMONIALS[testimonialIndex].quote}&quot;
-                </p>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gold/30">
-                    <Image 
-                      src={OFFICIAL_TESTIMONIALS[testimonialIndex].avatarSrc}
-                      alt={OFFICIAL_TESTIMONIALS[testimonialIndex].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="text-left font-sans">
-                    <span className="block text-xs uppercase tracking-luxury font-semibold text-gold">
-                      {OFFICIAL_TESTIMONIALS[testimonialIndex].name}
-                    </span>
-                    <span className="text-[10px] text-alabaster/40 uppercase tracking-widest">
-                      {OFFICIAL_TESTIMONIALS[testimonialIndex].role}
-                    </span>
-                  </div>
+                <X className="w-6 h-6" />
+              </button>
+              
+              <motion.div 
+                className="relative max-w-3xl w-full aspect-[3/4] border border-gold/30 shadow-2xl overflow-hidden"
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Image 
+                  src={selectedPhoto.url}
+                  alt={selectedPhoto.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-abyss via-abyss/40 to-transparent p-8 text-center">
+                  <span className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold block mb-1">{selectedPhoto.desc}</span>
+                  <h3 className="text-3xl font-serif text-white">{selectedPhoto.title}</h3>
                 </div>
               </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Controls */}
-          <div className="flex space-x-4 mt-8">
-            <button 
-              onClick={() => setTestimonialIndex((prev) => (prev - 1 + OFFICIAL_TESTIMONIALS.length) % OFFICIAL_TESTIMONIALS.length)}
-              className="p-3 border border-gold/20 text-gold hover:bg-gold hover:text-abyss transition-colors"
-              aria-label="Previous Student Story"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button 
-              onClick={() => setTestimonialIndex((prev) => (prev + 1) % OFFICIAL_TESTIMONIALS.length)}
-              className="p-3 border border-gold/20 text-gold hover:bg-gold hover:text-abyss transition-colors"
-              aria-label="Next Student Story"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
-      {/* 9. INSTAGRAM SHOWCASE */}
-      <section id="instagram" className="relative py-24 md:py-36 border-b border-gold/10">
+      {/* INSTAGRAM LOOKBOOK FEED */}
+      <section className="relative py-24 border-b border-gold/10">
         <div className="luxury-container flex flex-col items-center text-center mb-16">
           <InstagramIcon className="w-6 h-6 text-gold mb-4" />
           <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-            Atelier Lookbooks
+            Digital Salon
           </span>
           <h2 className="text-4xl md:text-6xl font-serif text-white">
             @heelsandglam
@@ -836,13 +985,13 @@ export default function Home() {
             >
               <Image 
                 src={post.url}
-                alt={`Instagram Post ${idx + 1}`}
+                alt={`Instagram Feed ${idx + 1}`}
                 fill
                 sizes="(max-width: 768px) 50vw, 16vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-abyss/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center space-y-2">
-                <span className="text-[10px] text-gold font-sans font-medium uppercase tracking-widest">Inspect Feed</span>
+              <div className="absolute inset-0 bg-abyss/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center space-y-2">
+                <span className="text-[10px] text-gold font-sans font-medium uppercase tracking-widest">Open Instagram</span>
                 <div className="flex space-x-3 text-[10px] text-alabaster/80 font-sans">
                   <span className="flex items-center space-x-1">
                     <Heart className="w-3 h-3 text-gold fill-gold" />
@@ -859,40 +1008,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. FAQ SECTION */}
-      <section id="faq" className="relative py-24 md:py-36 bg-editorial-grey/5 border-b border-gold/10">
+      {/* ADMISSIONS FAQ ACCORDIONS */}
+      <section className="relative py-28 md:py-40 bg-editorial-grey/5 border-b border-gold/10">
         <div className="luxury-container max-w-4xl">
           
           <div className="text-center mb-16">
             <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
               Clarifications
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-white">
+            <h2 className="text-4xl md:text-6xl font-serif text-white">
               Admissions FAQ
             </h2>
             <div className="w-12 h-[1px] bg-gold/40 mt-4 mx-auto" />
           </div>
 
           <div className="space-y-4">
-            {OFFICIAL_FAQS.map((item, idx) => (
+            {[
+              { q: "Who can join?", a: "Any woman seeking confidence, grooming, communication or personal presence development. We coach candidates ranging from college students to corporate leaders." },
+              { q: "Do I need modelling experience?", a: "No. Beginners are welcome. We map your musculoskeletal posture, balance parameters, and heels gait basics from the ground up." },
+              { q: "Is this only for aspiring models?", a: "No. Our curriculums benefit professionals, entrepreneurs, creators, and public speakers who wish to command boardrooms and social assemblies tall." },
+              { q: "Are classes online or offline?", a: "Program formats vary by batch. We conduct physical runway bootcamps alongside online digital branding sessions." },
+              { q: "How do I apply?", a: "You can submit your bio-etiquette targets via our online application page, or initiate a consultation screening directly on WhatsApp." }
+            ].map((faq, idx) => (
               <div 
                 key={idx}
                 className="border border-gold/15 bg-editorial-grey/10"
               >
                 <button
-                  onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left font-serif text-lg text-white hover:text-gold transition-colors focus:outline-none"
+                  onClick={() => setFaqActive(faqActive === idx ? null : idx)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left font-serif text-lg text-white hover:text-gold transition-colors focus:outline-none cursor-pointer"
                 >
-                  <span>{item.q}</span>
+                  <span>{faq.q}</span>
                   <ChevronDown 
                     className={`w-4 h-4 text-gold transition-transform duration-350 shrink-0 ml-4 ${
-                      activeFaq === idx ? 'rotate-180' : ''
+                      faqActive === idx ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 <AnimatePresence initial={false}>
-                  {activeFaq === idx && (
+                  {faqActive === idx && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
@@ -901,7 +1056,7 @@ export default function Home() {
                       className="overflow-hidden"
                     >
                       <p className="px-6 pb-6 text-xs md:text-sm text-alabaster/60 font-sans leading-relaxed">
-                        {item.a}
+                        {faq.a}
                       </p>
                     </motion.div>
                   )}
@@ -913,8 +1068,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11. ADMISSION CTA & CONTACT */}
-      <section id="contact" className="relative py-24 md:py-36 border-b border-gold/10 scroll-mt-24">
+      {/* ADMISSION CONTACT CTA */}
+      <section id="contact" className="relative py-28 md:py-40 border-b border-gold/10 scroll-mt-24">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16">
           
           {/* Details Column */}
@@ -922,8 +1077,8 @@ export default function Home() {
             <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium">
               Start Transformation
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
-              Secure Your Consultation.
+            <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight">
+              Secure Your Invitation.
             </h2>
             <div className="w-12 h-[1px] bg-gold/40" />
             <p className="text-sm text-alabaster/60 font-sans leading-relaxed">
@@ -959,7 +1114,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="block text-alabaster/40 uppercase tracking-widest text-[9px] font-semibold">Admissions Email</span>
-                  <span className="text-alabaster/80">admissions@heelsandglam.com</span>
+                  <span className="text-alabaster/80 font-medium">admissions@heelsandglam.com</span>
                 </div>
               </div>
             </div>
@@ -992,8 +1147,8 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <h3 className="text-2xl font-serif text-white">Request Free Bio-Etiquette Check</h3>
-                    <p className="text-xs text-alabaster/60 font-sans -mt-4">Submit your profile summary for early batch invitation alerts.</p>
+                    <h3 className="text-2xl font-serif text-white uppercase tracking-wide">Request Consultation</h3>
+                    <p className="text-xs text-alabaster/60 font-sans -mt-4">Submit your details below to schedule your alignment screening.</p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col space-y-2">
@@ -1039,7 +1194,7 @@ export default function Home() {
                       <textarea 
                         rows={4} 
                         required
-                        placeholder="E.g., chronic slumping, public speaking anxiety, pageant title coaching target..."
+                        placeholder="Detail any posture slumps, confidence goals, or pageant targets..."
                         className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors placeholder:opacity-30"
                       />
                     </div>
@@ -1065,7 +1220,7 @@ export default function Home() {
                     </p>
                     <button 
                       onClick={() => setContactSubmitted(false)}
-                      className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans"
+                      className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans cursor-pointer"
                     >
                       File another consultation profile
                     </button>
@@ -1078,8 +1233,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 12. PREMIUM FOOTER CTA */}
-      <section className="relative py-24 md:py-36 bg-abyss border-t border-gold/10">
+      {/* FINAL BRAND STATEMENT FOOTER CTA */}
+      <section className="relative py-28 md:py-40 bg-abyss border-t border-gold/10">
         <div className="luxury-container">
           <div className="relative border border-gold/30 bg-editorial-grey/5 p-8 md:p-16 overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
@@ -1114,7 +1269,7 @@ export default function Home() {
   );
 }
 
-// 5. GALLERY MOCK POSTS
+// 6. INSTAGRAM LOOKBOOK POSTS
 const INSTAGRAM_POSTS = [
   { url: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=500", likes: "1.4k", comments: "98" },
   { url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=500", likes: "1.1k", comments: "54" },

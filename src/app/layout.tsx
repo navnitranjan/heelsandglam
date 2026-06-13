@@ -4,6 +4,7 @@ import './globals.css';
 import Preloader from '@/components/layout/Preloader';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CustomCursor from '@/components/ui/CustomCursor';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -100,6 +101,9 @@ export default function RootLayout({
             })
           }}
         />
+
+        {/* Custom Luxury Cursor Pointer */}
+        <CustomCursor />
 
         {/* Preloader animation screen */}
         <Preloader />

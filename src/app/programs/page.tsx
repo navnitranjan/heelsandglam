@@ -31,7 +31,7 @@ const OFFICIAL_PROGRAMS = [
     price: '₹55,000',
     tagline: 'Learn appearance management, styling fundamentals, grooming habits and self-presentation techniques.',
     description: 'A boutique module designed for working women, entrepreneurs, and students who want to structure their physical self-presentation, master color alignment, and create a sophisticated wardrobe.',
-    imageSrc: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800',
+    imageSrc: '/images/traditional-saree-styling.jpg',
     outcomes: [
       'Understand your body geometry & silhouettes',
       'Curate a custom capsule wardrobe for work and galas',
@@ -54,7 +54,7 @@ const OFFICIAL_PROGRAMS = [
     price: '₹75,000',
     tagline: 'Build self-belief, body language communication and executive presence.',
     description: 'An elite training course that focuses on the biomechanics of poise, active voice projection, and non-verbal posture corrections to help women command respect and sit/stand tall in any boardroom or assembly.',
-    imageSrc: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&q=80&w=800',
+    imageSrc: '/images/founder-portrait-red-full.jpg',
     outcomes: [
       'Release physical anxiety & posture tension',
       'Re-pattern body kinetics for executive presence',
@@ -79,7 +79,7 @@ const OFFICIAL_PROGRAMS = [
     price: '₹1,20,000',
     tagline: 'Learn posture, movement and presentation techniques.',
     description: 'India\'s premier runway catwalk blueprint. Focuses on heel balancing physics, pacing symmetry, facial control, and poses. Includes a professional portfolio shoot directed by Aakanksha Anand.',
-    imageSrc: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800',
+    imageSrc: '/images/runway-saree-lotus.jpg',
     outcomes: [
       'Gait correction, weight distribution, & heel balance',
       'Master dynamic ramp walk patterns (pacing, pivot, turn)',
@@ -106,7 +106,7 @@ const OFFICIAL_PROGRAMS = [
     price: '₹60,000',
     tagline: 'Build a strong personal identity both online and offline.',
     description: 'Tailored for content creators, independent professionals, and rising corporate leaders. Learn styling for camera, profile aesthetics, speaking to lenses, and digital position strategy.',
-    imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
+    imageSrc: '/images/fashion-week-runway-jeans.jpg',
     outcomes: [
       'Design a cohesive visual and stylistic brand identity',
       'Master confidence in front of lenses and video setups',

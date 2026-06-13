@@ -21,6 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://heelsandglam.com'),
   title: 'Heels & Glam | Grooming, Confidence & Modelling Academy in India',
   description:
     'Heels & Glam by Aakanksha Anand is India\'s premium academy for grooming, confidence-building, ramp walk training, modelling courses, and personal branding for women.',
@@ -46,10 +47,10 @@ export const metadata: Metadata = {
     siteName: 'Heels & Glam',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800',
+        url: '/images/runway-saree-lotus.jpg',
         width: 1200,
         height: 630,
-        alt: 'Heels & Glam Academy by Aakanksha Anand'
+        alt: 'Heels & Glam Academy by Aakanksha Anand - Runway Poise Showcase'
       }
     ],
     locale: 'en_US',
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Heels & Glam | Personal Grooming & Modelling Academy',
     description: 'Transform your confidence and own every room with India\'s elite poise and personal branding programs.',
-    images: ['https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800'],
+    images: ['/images/runway-saree-lotus.jpg'],
   }
 };
 

@@ -31,11 +31,11 @@ export default function AcademyPage() {
           <div className="absolute inset-4 border border-gold/15 -translate-x-4 translate-y-4 pointer-events-none z-10" />
           <div className="relative w-full h-full overflow-hidden">
             <Image 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-              alt="Aakanksha Anand - Heels & Glam Founder"
+              src="/images/founder-portrait-red-full.jpg"
+              alt="Aakanksha Anand - Founder & Head Coach of Heels & Glam posing in a red dress"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="object-cover transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-abyss/80 via-transparent to-transparent" />
           </div>

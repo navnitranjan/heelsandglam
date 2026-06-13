@@ -10,57 +10,57 @@ import Button from '@/components/ui/Button';
 const LOOKBOOK_GALLERY = [
   {
     id: 1,
-    title: "The Couture Silhouette",
+    title: "Heritage Couture Styling",
     tag: "Personal Styling",
-    url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800",
-    desc: "Aakanksha Anand directing a custom color harmony and capsule wardrobe shoot.",
+    url: "/images/traditional-saree-styling.jpg",
+    desc: "Aakanksha Anand directing heritage styling, drape aesthetics, and luxury color mapping at Zorains Studio.",
     photographer: "Rahul Bose (Celebrity Photographer)",
-    location: "Oberoi Atelier, Bangalore"
+    location: "Zorains Studio, Bangalore"
   },
   {
     id: 2,
-    title: "Runway Gait Balance",
+    title: "Global Fashion Week Runway",
     tag: "Catwalk Kinetics",
-    url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800",
-    desc: "Aspiring models training in structural heel strikes and arm pacing coordinates.",
+    url: "/images/fashion-week-runway-jeans.jpg",
+    desc: "Aakanksha Anand walks the runway at Global Fashion Week, demonstrating straight-knee strides and confidence.",
     photographer: "Amit Verma (Fashion Editor)",
-    location: "Runway Studio, Mumbai"
+    location: "Global Fashion Week Runway"
   },
   {
     id: 3,
     title: "The Somatic Stance",
     tag: "Posture Alignment",
-    url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800",
-    desc: "Musculoskeletal alignment and pelvic stabilization checks during high-heel walks.",
+    url: "/images/founder-portrait-red-full.jpg",
+    desc: "Full somatic posture assessment, alignment balance checks, and heel carriage mechanics coached by Aakanksha Anand.",
     photographer: "Karan Johar (Studio Director)",
     location: "Heels & Glam Atelier, Bangalore"
   },
   {
     id: 4,
-    title: "Pageant Crown Prep",
+    title: "Lotus Catwalk Mechanics",
     tag: "Pageant Masterclass",
-    url: "https://images.unsplash.com/photo-1496449903678-c8dd735012ba?auto=format&fit=crop&q=80&w=800",
-    desc: "Stage projection under spot lights and gown carriage choreography rehearsals.",
+    url: "/images/runway-saree-lotus.jpg",
+    desc: "Catwalk gown and saree carriage showcase, featuring delay gaze pivot techniques under studio spotlights.",
     photographer: "Rajiv Sethi (Pageant Choreographer)",
-    location: "Grand Ballroom, Bangalore"
+    location: "Grand Ballroom Runway, Bangalore"
   },
   {
     id: 5,
-    title: "Executive Presence Drills",
-    tag: "Corporate Grooming",
-    url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-    desc: "Professionals practicing non-verbal communication, seated poise, and boardroom entrance.",
+    title: "Editorial Presence Headshot",
+    tag: "Personal Presence",
+    url: "/images/founder-portrait-red-half.jpg",
+    desc: "Aakanksha Anand posing in a luxury red dress, representing high personal presence and executive branding parameters.",
     photographer: "Siddharth Sen (Editorial Lead)",
-    location: "Corporate Suite, Bangalore"
+    location: "Heels & Glam Studio, Bangalore"
   },
   {
     id: 6,
-    title: " cat walk Pivot Kinetics",
+    title: "Catwalk Pacing Mechanics",
     tag: "Ramp Walk Basic",
     url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800",
-    desc: "Model showing structural weight distribution, knee extension, and center of gravity pivot.",
+    desc: "Symmetric weight distribution, hip stabilization, and catwalk arm sweep training during mock trials.",
     photographer: "Rahul Bose (Celebrity Photographer)",
-    location: "Runway Studio, Bangalore"
+    location: "Atelier Runway Studio, Bangalore"
   }
 ];
 

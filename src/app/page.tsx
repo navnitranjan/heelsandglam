@@ -186,10 +186,10 @@ const FOUNDER_CHAPTERS = [
 
 // 5. GALLERY DATA (PHASE 7)
 const GALLERY_MOCK = [
-  { title: "Runway Walking Mechanics", desc: "Catwalk balance prep.", url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=600" },
-  { title: "Personal Styling Studio", desc: "Haute couture wardrobes.", url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=600" },
-  { title: "Somatic Posture Class", desc: "Spine verticality checks.", url: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600" },
-  { title: "Pageant Spotlight Rehearsal", desc: "Gown carriage training.", url: "https://images.unsplash.com/photo-1496449903678-c8dd735012ba?auto=format&fit=crop&q=80&w=600" }
+  { title: "Global Runway Walk", desc: "Catwalk balance and stride prep.", url: "/images/fashion-week-runway-jeans.jpg" },
+  { title: "Personal Styling Studio", desc: "Haute couture draping and wardrobes.", url: "/images/traditional-saree-styling.jpg" },
+  { title: "Somatic Posture Class", desc: "Spine alignment and balance mechanics.", url: "/images/founder-portrait-red-full.jpg" },
+  { title: "Lotus Catwalk Mechanics", desc: "Gown and saree carriage training.", url: "/images/runway-saree-lotus.jpg" }
 ];
 
 export default function Home() {
@@ -310,7 +310,7 @@ export default function Home() {
         <motion.div 
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920')`,
+            backgroundImage: `url('/images/runway-saree-lotus.jpg')`,
           }}
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
@@ -393,8 +393,8 @@ export default function Home() {
             <div className="absolute inset-4 border border-gold/25 -translate-x-4 translate-y-4 pointer-events-none" />
             <div className="relative w-full h-full overflow-hidden border border-gold/15 shadow-2xl">
               <Image 
-                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800"
-                alt="Elegance Masterclass"
+                src="/images/traditional-saree-styling.jpg"
+                alt="Aakanksha Anand conducting styling workshop in traditional red and gold saree"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -413,11 +413,11 @@ export default function Home() {
           {/* Portrait Image */}
           <div className="lg:col-span-5 relative aspect-[3/4] overflow-hidden border border-gold/20 shadow-2xl">
             <Image 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-              alt="Aakanksha Anand Portrait"
+              src="/images/founder-portrait-red-half.jpg"
+              alt="Aakanksha Anand - Heels & Glam Founder posing in red dress"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="object-cover transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-abyss/80 via-transparent to-transparent opacity-85" />
             <div className="absolute bottom-6 left-6 right-6 z-20">
@@ -578,7 +578,7 @@ export default function Home() {
             >
               <div 
                 className="absolute inset-0 bg-cover bg-center opacity-75"
-                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1200')` }}
+                style={{ backgroundImage: `url('/images/founder-portrait-red-full.jpg')` }}
               />
               <svg className="absolute inset-0 w-full h-full stroke-gold stroke-2" fill="none">
                 <line x1="47%" y1="15%" x2="47%" y2="85%" />
@@ -1271,10 +1271,10 @@ export default function Home() {
 
 // 6. INSTAGRAM LOOKBOOK POSTS
 const INSTAGRAM_POSTS = [
-  { url: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=500", likes: "1.4k", comments: "98" },
-  { url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=500", likes: "1.1k", comments: "54" },
-  { url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=500", likes: "2.3k", comments: "145" },
-  { url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=500", likes: "1.9k", comments: "82" },
-  { url: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=500", likes: "3.8k", comments: "212" },
+  { url: "/images/founder-portrait-red-half.jpg", likes: "2.4k", comments: "124" },
+  { url: "/images/founder-portrait-red-full.jpg", likes: "1.8k", comments: "89" },
+  { url: "/images/fashion-week-runway-jeans.jpg", likes: "3.2k", comments: "210" },
+  { url: "/images/traditional-saree-styling.jpg", likes: "2.7k", comments: "148" },
+  { url: "/images/runway-saree-lotus.jpg", likes: "4.1k", comments: "312" },
   { url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=500", likes: "2.1k", comments: "109" }
 ];

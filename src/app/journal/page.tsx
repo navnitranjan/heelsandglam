@@ -45,7 +45,7 @@ const COMPLETE_ARTICLES = [
     readTime: "6 min read",
     category: "catwalk-poise",
     excerpt: "Walking in high heels is not merely a styling choice; it is an active biomechanical equation. Discover how spine verticality and center of gravity check change your gait.",
-    imageSrc: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800",
+    imageSrc: "/images/runway-saree-lotus.jpg",
     content: `Walking in high heels is not merely a styling choice; it is an active biomechanical equation. When you elevate your heels, you shift your center of gravity forward. Without conscious posture correction, the body compensates by tilting the pelvis, bending the knees, and slumping the shoulders—leading to strain, instability, and a heavy gait.
 
 At Heels & Glam, we teach the Somatic Poise Method to correct this compensation. The first step is spine-crown verticality. You must imagine a plumb line pulling the crown of your head upward, allowing the cervical vertebrae to decompress. 
@@ -60,7 +60,7 @@ Secondly, stabilize the pelvis. Engaging the lower core prevents the lower back 
     readTime: "5 min read",
     category: "somatic-poise",
     excerpt: "Hours spent looking at laptops and phones compress the cervical vertebrae. Learn 5 essential posture routines to open your shoulders and lift your crown.",
-    imageSrc: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800",
+    imageSrc: "/images/founder-portrait-red-full.jpg",
     content: `Modern lifestyles dictate that we look down at screens for hours daily. This forward head posture—commonly called 'tech-neck'—adds up to 30 pounds of pressure on the cervical spine, leading to slouched shoulders, shallow breathing, and a projection of insecurity.
 
 To correct tech-neck slumping, practice these five daily skeletal exercises:
@@ -78,7 +78,7 @@ To correct tech-neck slumping, practice these five daily skeletal exercises:
     readTime: "7 min read",
     category: "modelling",
     excerpt: " Catwalk presentation is built on pacing, timing, and center of gravity pivots. Study the structural walk elements directed by Aakanksha Anand.",
-    imageSrc: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=800",
+    imageSrc: "/images/fashion-week-runway-jeans.jpg",
     content: `Catwalk presentation is a discipline of visual timing. A great model does not rush; she controls the music's tempo through her strides.
 
 Catwalk mechanics require walking in a straight linear path. One foot must step directly in front of the other. Keep your strides long and let your hips slide naturally—do not force an artificial sway.
@@ -93,7 +93,7 @@ When you reach the runway end, execute the pivot turn. Transfer your weight comp
     readTime: "6 min read",
     category: "communication",
     excerpt: "True authority is vocalized. Learn the diaphragmatic breathing and verbal pacing techniques that command boardrooms and keynotes.",
-    imageSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+    imageSrc: "/images/founder-portrait-red-half.jpg",
     content: `True authority is vocalized. Many women struggle with 'uptalk' (rising pitch at the end of sentences) or high speed of speech under pressure, which signals insecurity.
 
 To build vocal gravitas, start with diaphragmatic breathing. Inhale deeply so your stomach expands, and speak from your diaphragm rather than your throat. This deep resonance instantly lowers pitch and increases volume control.
@@ -108,7 +108,7 @@ Secondly, implement the 'pause strategy'. Never rush to fill silence. Pausing be
     readTime: "5 min read",
     category: "styling",
     excerpt: "Your wardrobe is a visual statement. Learn the body geometry profiling and color mapping rules to align your daily style with your branding targets.",
-    imageSrc: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&q=80&w=800",
+    imageSrc: "/images/traditional-saree-styling.jpg",
     content: `Your wardrobe is a visual statement. It is the first message you send before you speak. Curating a personal capsule wardrobe is a strategic branding exercise.
 
 First, determine your body geometry profile. Knowing your structural lines allows you to select silhouettes that fit you cleanly. 

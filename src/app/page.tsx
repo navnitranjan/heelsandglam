@@ -273,6 +273,68 @@ const EVOLUTION_WEEKS = [
   }
 ];
 
+// 5c. EDITORIAL INSTAGRAM LOOKBOOK WALL & REELS DATA (PHASE 2)
+const INSTAGRAM_WALL_ITEMS = [
+  {
+    id: 1,
+    category: "Reels",
+    title: "Catwalk Pacing & Stride Mechanics",
+    likes: "4.8k",
+    comments: "256",
+    image: "/images/runway-saree-lotus.jpg",
+    isVideo: true,
+    meta: "Latest Reels • 0:30"
+  },
+  {
+    id: 2,
+    category: "Founder Insights",
+    title: "Carriage Dynamics for Leaders",
+    likes: "3.2k",
+    comments: "144",
+    image: "/images/founder-portrait-red-full.jpg",
+    quote: "Presence is the posture of authority.",
+    meta: "Founder Moments"
+  },
+  {
+    id: 3,
+    category: "Behind the Scenes",
+    title: "Atelier Wardrobe & Saree Draping Class",
+    likes: "2.9k",
+    comments: "112",
+    image: "/images/traditional-saree-styling.jpg",
+    meta: "BTS • Academy Life"
+  },
+  {
+    id: 4,
+    category: "Reels",
+    title: "Catwalk Pivot Delay Calibration",
+    likes: "5.1k",
+    comments: "318",
+    image: "/images/fashion-week-runway-jeans.jpg",
+    isVideo: true,
+    meta: "Latest Reels • 0:45"
+  },
+  {
+    id: 5,
+    category: "Student Highlights",
+    title: "Aparna Sharma - Milan Runway Stage",
+    likes: "4.3k",
+    comments: "198",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800",
+    meta: "Transformation Stories"
+  },
+  {
+    id: 6,
+    category: "Founder Insights",
+    title: "Diaphragmatic Pitch Check Rules",
+    likes: "3.9k",
+    comments: "185",
+    image: "/images/founder-portrait-red-half.jpg",
+    quote: "True authority speaks with vocal resonance.",
+    meta: "Founder Moments"
+  }
+];
+
 export default function Home() {
   // Real-time Countdown Timer (Phase 9)
   const [timeLeft, setTimeLeft] = useState({ days: 12, hours: 8, minutes: 24, seconds: 50 });
@@ -371,6 +433,9 @@ export default function Home() {
 
   // Confidence Evolution Tracker State
   const [activeWeekIdx, setActiveWeekIdx] = useState(0);
+
+  // Instagram Wall Filter State
+  const [activeInstaTab, setActiveInstaTab] = useState("All");
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -1349,50 +1414,120 @@ export default function Home() {
         </AnimatePresence>
       </section>
 
-      {/* INSTAGRAM LOOKBOOK FEED */}
-      <section className="relative py-24 border-b border-gold/10">
+      {/* EDITORIAL INSTAGRAM LOOKBOOK WALL & REELS SHOWCASE (PHASE 2) */}
+      <section className="relative py-28 md:py-40 border-b border-gold/10 bg-obsidian">
         <div className="luxury-container flex flex-col items-center text-center mb-16">
-          <InstagramIcon className="w-6 h-6 text-gold mb-4" />
-          <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-            Digital Salon
+          <InstagramIcon className="w-6 h-6 text-rosegold mb-4" />
+          <span className="text-xs uppercase tracking-luxury text-rosegold font-sans font-medium mb-3">
+            Digital Luxury Salon
           </span>
-          <h2 className="text-4xl md:text-6xl font-serif text-white">
+          <h2 className="text-4xl md:text-7xl font-serif text-white uppercase tracking-wider">
             @heelsandglam
           </h2>
-          <div className="w-12 h-[1px] bg-gold/40 mt-4" />
+          <div className="w-16 h-[1px] bg-rosegold/30 mt-4 mb-8" />
+          
+          {/* Instagram Media Filters */}
+          <div className="flex flex-wrap justify-center gap-2 max-w-2xl">
+            {["All", "Reels", "Founder Insights", "Behind the Scenes", "Student Highlights"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveInstaTab(tab)}
+                className={`px-4 py-2 text-[9px] uppercase tracking-widest font-sans font-semibold transition-all border ${
+                  activeInstaTab === tab
+                    ? 'bg-rosegold text-abyss border-rosegold font-bold'
+                    : 'bg-burgundy/5 text-alabaster/40 border-rosegold/15 hover:border-rosegold/30 hover:text-white'
+                } cursor-pointer`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="luxury-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {INSTAGRAM_POSTS.map((post, idx) => (
+        {/* Asymmetrical Magazine Lookbook Grid */}
+        <div className="luxury-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {INSTAGRAM_WALL_ITEMS.filter(item => activeInstaTab === "All" || item.category === activeInstaTab).map((item) => (
             <a 
-              key={idx}
+              key={item.id}
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden border border-gold/10 hover:border-gold/40 transition-all duration-350 block"
+              className={`group relative overflow-hidden border border-rosegold/10 hover:border-rosegold/40 transition-all duration-500 block bg-burgundy/5 ${
+                item.isVideo ? 'aspect-[9/16] max-w-sm mx-auto w-full' : 'aspect-square'
+              }`}
             >
               <Image 
-                src={post.url}
-                alt={`Instagram Feed ${idx + 1}`}
+                src={item.image}
+                alt={item.title}
                 fill
-                sizes="(max-width: 768px) 50vw, 16vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-103 opacity-75 group-hover:opacity-95"
               />
-              <div className="absolute inset-0 bg-abyss/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-center space-y-2">
-                <span className="text-[10px] text-gold font-sans font-medium uppercase tracking-widest">Open Instagram</span>
-                <div className="flex space-x-3 text-[10px] text-alabaster/80 font-sans">
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent opacity-90 z-10" />
+
+              {/* Video Play Overlay */}
+              {item.isVideo && (
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-350">
+                  <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+                </div>
+              )}
+
+              {/* Text / Quote Overlay for static lookbook */}
+              {!item.isVideo && 'quote' in item && item.quote && (
+                <div className="absolute top-6 left-6 right-6 z-20 pr-4">
+                  <span className="text-[8px] uppercase tracking-widest text-rosegold font-sans font-bold block mb-1">Founder Note</span>
+                  <p className="text-sm font-serif italic text-white/90 leading-relaxed">&ldquo;{item.quote}&rdquo;</p>
+                </div>
+              )}
+
+              {/* Bottom metadata details */}
+              <div className="absolute bottom-6 left-6 right-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform duration-350">
+                <span className="text-[8px] uppercase tracking-widest text-rosegold font-sans font-semibold block mb-1" dangerouslySetInnerHTML={{ __html: item.meta }} />
+                <h4 className="text-base font-serif text-white leading-snug">{item.title}</h4>
+                
+                {/* Likes/Comments counters */}
+                <div className="flex items-center space-x-4 mt-3 pt-3 border-t border-white/10 text-[10px] font-sans text-alabaster/40">
                   <span className="flex items-center space-x-1">
-                    <Heart className="w-3 h-3 text-gold fill-gold" />
-                    <span>{post.likes}</span>
+                    <Heart className="w-3.5 h-3.5 text-rosegold fill-rosegold" />
+                    <span>{item.likes}</span>
                   </span>
                   <span className="flex items-center space-x-1">
-                    <MessageSquare className="w-3 h-3 text-gold fill-gold" />
-                    <span>{post.comments}</span>
+                    <MessageCircle className="w-3.5 h-3.5 text-rosegold fill-rosegold" />
+                    <span>{item.comments}</span>
                   </span>
                 </div>
               </div>
             </a>
           ))}
+        </div>
+
+        {/* SOCIAL-TO-WHATSAPP FUNNEL (PHASE 5) */}
+        <div className="luxury-container mt-16 max-w-4xl relative z-20">
+          <div className="p-8 md:p-12 border border-rosegold/25 bg-burgundy/5 text-center space-y-6">
+            <span className="text-[9px] uppercase tracking-[0.25em] text-rosegold font-sans font-bold block">
+              Seen Us On Instagram? Continue Your Transformation.
+            </span>
+            <h3 className="text-2xl md:text-4xl font-serif text-white uppercase tracking-wider max-w-2xl mx-auto leading-tight">
+              Book Your Private Somatic Alignment Check on WhatsApp
+            </h3>
+            <p className="text-xs text-pearl/60 font-sans max-w-lg mx-auto leading-relaxed">
+              Connect directly with our Head Registrar. Share your posture alignment targets or camera presentation challenges to coordinate your direct Admissions callback.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+              <a 
+                href="https://wa.me/919880012345" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="py-3.5 px-8 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
+              >
+                <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
+                <span>Message Admissions Desk</span>
+              </a>
+              <Button href="/apply" variant="outline">
+                Initiate Assessment Funnel
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 

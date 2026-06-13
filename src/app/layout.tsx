@@ -76,7 +76,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} h-full`}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body className="min-h-full flex flex-col bg-abyss text-alabaster antialiased">
+        {/* Skip to Content — Accessibility */}
+        <a href="#main-content" className="skip-to-content font-sans">
+          Skip to main content
+        </a>
+
         {/* GA4 Script Integration */}
         <Script
           strategy="afterInteractive"
@@ -249,7 +258,7 @@ export default function RootLayout({
         <Header />
 
         {/* Core page canvas */}
-        <main className="flex-grow pt-24">{children}</main>
+        <main id="main-content" className="flex-grow pt-24">{children}</main>
 
         {/* Global Footer */}
         <Footer />

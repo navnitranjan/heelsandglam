@@ -33,6 +33,9 @@ export default function Preloader() {
         <motion.div
           key="preloader"
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-abyss overflow-hidden"
+          role="status"
+          aria-live="polite"
+          aria-label="Loading Heels and Glam"
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
@@ -122,6 +125,7 @@ export default function Preloader() {
           <motion.button
             onClick={handleSkip}
             className="absolute bottom-8 text-[9px] uppercase tracking-widest text-alabaster/40 hover:text-gold transition-colors font-sans py-2 px-4 border border-gold/10 hover:border-gold/30 cursor-pointer"
+            aria-label="Skip introduction animation"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 1.5 } }}
           >

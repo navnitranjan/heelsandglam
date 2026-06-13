@@ -44,7 +44,7 @@ export default function ExitIntentModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-obsidian/90 backdrop-blur-md px-4 font-sans">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-obsidian/90 backdrop-blur-md px-4 font-sans" role="dialog" aria-modal="true" aria-labelledby="exit-intent-heading">
           {/* Modal box */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -75,7 +75,7 @@ export default function ExitIntentModal() {
                 AN EXCLUSIVE INVITATION
               </span>
 
-              <h2 className="text-2xl md:text-3xl font-serif text-white uppercase leading-snug">
+              <h2 id="exit-intent-heading" className="text-2xl md:text-3xl font-serif text-white uppercase leading-snug">
                 Before You<br />
                 <span className="text-champagne font-serif">Leave Atelier</span>
               </h2>

@@ -51,7 +51,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-10" aria-label="Main navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -69,6 +69,7 @@ export default function Header() {
               href="/apply"
               onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Desktop Request' })}
               className="px-6 py-2.5 text-xs uppercase tracking-luxury border border-gold text-gold hover:bg-gold hover:text-abyss transition-all duration-350 font-sans"
+              aria-label="Request invitation to apply for Heels and Glam programs"
             >
               Request Invitation
             </Link>
@@ -78,7 +79,9 @@ export default function Header() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-gold hover:text-white transition-colors"
-            aria-label="Toggle Menu"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav-menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -89,6 +92,10 @@ export default function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            id="mobile-nav-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
             className="fixed inset-0 z-35 flex flex-col bg-abyss pt-28 px-8"
             initial={{ opacity: 0, y: '-10%' }}
             animate={{ 
@@ -102,7 +109,7 @@ export default function Header() {
               transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
             }}
           >
-            <nav className="flex flex-col space-y-8 mb-12">
+            <nav className="flex flex-col space-y-8 mb-12" aria-label="Mobile navigation">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}

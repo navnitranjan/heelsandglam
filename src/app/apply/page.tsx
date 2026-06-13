@@ -226,10 +226,15 @@ export default function ApplyPage() {
                   </div>
                   <input 
                     type="range" 
+                    id={`rating-${item.key}`}
                     min="1" 
                     max="10" 
                     value={ratings[item.key]}
                     onChange={(e) => handleRatingChange(item.key, parseInt(e.target.value))}
+                    aria-label={item.name}
+                    aria-valuemin={1}
+                    aria-valuemax={10}
+                    aria-valuenow={ratings[item.key]}
                     className="w-full h-1 bg-white/10 accent-rosegold appearance-none rounded-full cursor-ew-resize"
                   />
                 </div>
@@ -271,9 +276,10 @@ export default function ApplyPage() {
                 </div>
                 
                 <div className="flex flex-col space-y-2">
-                  <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">FULL NAME</label>
+                  <label htmlFor="apply-fullname" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">FULL NAME</label>
                   <input 
                     type="text" 
+                    id="apply-fullname"
                     name="fullName" 
                     value={formData.fullName}
                     onChange={handleInputChange}
@@ -283,9 +289,10 @@ export default function ApplyPage() {
                 </div>
 
                 <div className="flex flex-col space-y-2">
-                  <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">EMAIL ADDRESS</label>
+                  <label htmlFor="apply-email" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">EMAIL ADDRESS</label>
                   <input 
                     type="email" 
+                    id="apply-email"
                     name="email" 
                     value={formData.email}
                     onChange={handleInputChange}
@@ -296,9 +303,10 @@ export default function ApplyPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="flex flex-col space-y-2">
-                    <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">PHONE NUMBER</label>
+                    <label htmlFor="apply-phone" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">PHONE NUMBER</label>
                     <input 
                       type="tel" 
+                      id="apply-phone"
                       name="phone" 
                       value={formData.phone}
                       onChange={handleInputChange}
@@ -307,9 +315,10 @@ export default function ApplyPage() {
                     />
                   </div>
                   <div className="flex flex-col space-y-2">
-                    <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">CITY / REGION</label>
+                    <label htmlFor="apply-city" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">CITY / REGION</label>
                     <input 
                       type="text" 
+                      id="apply-city"
                       name="city" 
                       value={formData.city}
                       onChange={handleInputChange}
@@ -321,8 +330,9 @@ export default function ApplyPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="flex flex-col space-y-2">
-                    <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">TARGET COHORT</label>
+                    <label htmlFor="apply-cohort" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">TARGET COHORT</label>
                     <select 
+                      id="apply-cohort"
                       name="cohort" 
                       value={formData.cohort}
                       onChange={handleInputChange}
@@ -335,8 +345,9 @@ export default function ApplyPage() {
                     </select>
                   </div>
                   <div className="flex flex-col space-y-2">
-                    <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">MODELLING LEVEL</label>
+                    <label htmlFor="apply-experience" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">MODELLING LEVEL</label>
                     <select 
+                      id="apply-experience"
                       name="experience" 
                       value={formData.experience}
                       onChange={handleInputChange}
@@ -350,8 +361,9 @@ export default function ApplyPage() {
                 </div>
 
                 <div className="flex flex-col space-y-2">
-                  <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">TRANSFORMATION OBJECTIVES</label>
+                  <label htmlFor="apply-targets" className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">TRANSFORMATION OBJECTIVES</label>
                   <textarea 
+                    id="apply-targets"
                     name="targets"
                     value={formData.targets}
                     onChange={handleInputChange}

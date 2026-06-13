@@ -2,25 +2,33 @@
 
 :root {
   --color-abyss: #0B0B0C;
+  --color-obsidian: #080809;
   --color-alabaster: #F7F5F0;
   --color-gold: #C5A059;
   --color-gold-dust: #D4AF37;
-  --color-champagne: #E8DCC4;
+  --color-champagne: #DFD3BC;
+  --color-rosegold: #C89E88;
+  --color-pearl: #FBFBFA;
+  --color-burgundy: #4A0D15;
   --color-editorial-grey: #2E2E30;
   
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Inter', sans-serif;
   
-  --background: var(--color-abyss);
-  --foreground: var(--color-alabaster);
+  --background: var(--color-obsidian);
+  --foreground: var(--color-pearl);
 }
 
 @theme {
   --color-abyss: var(--color-abyss);
+  --color-obsidian: var(--color-obsidian);
   --color-alabaster: var(--color-alabaster);
   --color-gold: var(--color-gold);
   --color-gold-dust: var(--color-gold-dust);
   --color-champagne: var(--color-champagne);
+  --color-rosegold: var(--color-rosegold);
+  --color-pearl: var(--color-pearl);
+  --color-burgundy: var(--color-burgundy);
   --color-editorial-grey: var(--color-editorial-grey);
   
   --font-serif: var(--font-serif);
@@ -28,6 +36,7 @@
   
   --animate-fade-up: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --animate-marquee: marquee 20s linear infinite;
 }
 
 @keyframes fadeUp {
@@ -47,6 +56,15 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 

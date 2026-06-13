@@ -241,6 +241,38 @@ const FILM_SCENES = [
   }
 ];
 
+// 5b. INTERACTIVE SOMATIC CONFIDENCE EVOLUTION DATA (PHASE 8)
+const EVOLUTION_WEEKS = [
+  {
+    week: "Week 01",
+    label: "Somatic Baseline Assessment",
+    metrics: { posture: 45, vocal: 35, stride: 30, carriage: 40 },
+    description: "Orientation baseline checks. Characterized by noticeable cervical neck slumping (tech-neck), shallow chest breathing, and knee bends while walking in high heels.",
+    accent: "text-red-400 border-red-500/20 bg-red-950/10"
+  },
+  {
+    week: "Week 04",
+    label: "Somatic Postural Decompression",
+    metrics: { posture: 68, vocal: 52, stride: 48, carriage: 58 },
+    description: "Somatic skeletal reset. Wall tests completed. Engagement of core stabilizers corrects excessive lower back curvature and stabilizes balance coordinates.",
+    accent: "text-rosegold border-rosegold/20 bg-rosegold/10"
+  },
+  {
+    week: "Week 08",
+    label: "Vocal Resonance & Catwalk Flow",
+    metrics: { posture: 85, vocal: 78, stride: 76, carriage: 80 },
+    description: "Catwalk kinetics training. Gaze delay turns implemented, pacing strides with runway music beats, and speaking from the diaphragm to command spaces.",
+    accent: "text-gold border-gold/20 bg-gold/10"
+  },
+  {
+    week: "Week 12",
+    label: "Absolute Presence & Graduation",
+    metrics: { posture: 98, vocal: 95, stride: 94, carriage: 96 },
+    description: "Full somatic transformation. 98% symmetry rating verified. Effortless stride carriage under spotlight focus before fashion scouts and executive councils.",
+    accent: "text-green-400 border-green-500/20 bg-green-950/10"
+  }
+];
+
 export default function Home() {
   // Real-time Countdown Timer (Phase 9)
   const [timeLeft, setTimeLeft] = useState({ days: 12, hours: 8, minutes: 24, seconds: 50 });
@@ -337,6 +369,9 @@ export default function Home() {
   const [isFilmPlaying, setIsFilmPlaying] = useState(false);
   const [filmMuted, setFilmMuted] = useState(true);
 
+  // Confidence Evolution Tracker State
+  const [activeWeekIdx, setActiveWeekIdx] = useState(0);
+
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isFilmPlaying) {
@@ -372,19 +407,59 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-abyss/85 via-abyss/45 to-abyss z-10" />
 
         <div className="luxury-container relative z-20 flex flex-col items-center text-center px-4 max-w-5xl">
-          <span className="text-[10px] tracking-[0.35em] text-gold uppercase font-sans font-bold mb-6">
-            The Digital Poise Atelier
+          <span className="text-[10px] tracking-[0.35em] text-rosegold uppercase font-sans font-bold mb-6 block overflow-hidden">
+            <motion.span
+              className="block"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              The Digital Poise Atelier
+            </motion.span>
           </span>
           
           <h1 className="text-6xl md:text-9xl font-serif tracking-luxury text-white uppercase leading-none mb-6">
-            Transform Your Confidence.<br />
-            <span className="text-gold font-serif">Own Every Room.</span>
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Transform Your
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block text-gold"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Confidence.
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden mt-1">
+              <motion.span
+                className="block text-rosegold font-serif"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Own Every Room.
+              </motion.span>
+            </span>
           </h1>
 
-          <p className="text-sm md:text-lg text-champagne/85 font-sans tracking-wide max-w-2xl leading-relaxed mb-10">
+          <motion.p 
+            className="text-sm md:text-lg text-champagne/85 font-sans tracking-wide max-w-2xl leading-relaxed mb-10"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
             India&apos;s premier boutique personal grooming, confidence-building, modelling, and personal branding academy. 
             We believe confidence is not inherited—it is cultivated.
-          </p>
+          </motion.p>
 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center z-30">
             <Button href="#quiz-presence" variant="solid" className="w-full sm:w-auto">
@@ -416,6 +491,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* EDITORIAL TEXT MARQUEE TICKER (PHASE 3) */}
+      <div className="w-full bg-burgundy/25 border-y border-gold/15 py-4 overflow-hidden relative z-20 select-none">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="text-xs tracking-[0.4em] uppercase font-sans text-champagne font-bold px-8">
+              Presence &bull; Poise &bull; Authority &bull; Somatic Calibration &bull; Elegance &bull; Self-Respect &bull; Alignment
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* CHAPTER 1 (PHASE 2): EDITORIAL MAGAZINE PHILOSOPHY */}
       <section id="about" className="relative py-28 md:py-40 border-t border-gold/10">
@@ -849,19 +935,74 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Stats metrics layout */}
-          <div className="w-full max-w-3xl grid grid-cols-3 gap-4 md:gap-8 mt-10 text-center">
-            <div className="p-6 border border-gold/10 bg-editorial-grey/5">
-              <span className="block text-2xl md:text-3xl font-serif text-gold font-light">+15%</span>
-              <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">Spine Decompression</span>
+          {/* Somatic Confidence Evolution Tracker (Phase 8) */}
+          <div className="w-full max-w-3xl mt-12 p-6 md:p-8 border border-gold/15 bg-editorial-grey/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-burgundy/10 rounded-full blur-[50px] pointer-events-none" />
+            
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-gold/10 gap-4">
+              <div>
+                <span className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-bold block mb-1">
+                  Interactive Evolution
+                </span>
+                <h4 className="text-xl font-serif text-white uppercase tracking-wider">
+                  Confidence Evolution Tracker
+                </h4>
+              </div>
+              <div className="flex space-x-1.5 overflow-x-auto pb-1 sm:pb-0">
+                {EVOLUTION_WEEKS.map((w, idx) => (
+                  <button
+                    key={w.week}
+                    onClick={() => setActiveWeekIdx(idx)}
+                    className={`px-3 py-1.5 text-[9px] font-sans uppercase tracking-widest transition-all border shrink-0 ${
+                      activeWeekIdx === idx
+                        ? 'bg-gold text-abyss border-gold font-semibold'
+                        : 'bg-editorial-grey/15 text-alabaster/40 border-gold/10 hover:text-white'
+                    } cursor-pointer`}
+                  >
+                    {w.week}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="p-6 border border-gold/10 bg-editorial-grey/5">
-              <span className="block text-2xl md:text-3xl font-serif text-gold font-light">98%</span>
-              <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">Symmetry Index</span>
-            </div>
-            <div className="p-6 border border-gold/10 bg-editorial-grey/5">
-              <span className="block text-2xl md:text-3xl font-serif text-gold font-light">100%</span>
-              <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">High-Heel Balance</span>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              {/* Description & state info */}
+              <div className="md:col-span-5 space-y-4">
+                <span className="text-xs uppercase tracking-luxury text-gold font-sans font-semibold">
+                  {EVOLUTION_WEEKS[activeWeekIdx].label}
+                </span>
+                <p className="text-xs text-alabaster/60 font-sans leading-relaxed min-h-[75px]">
+                  {EVOLUTION_WEEKS[activeWeekIdx].description}
+                </p>
+                <div className={`p-4 border ${EVOLUTION_WEEKS[activeWeekIdx].accent} text-[9px] font-sans tracking-wide uppercase`}>
+                  Status: {EVOLUTION_WEEKS[activeWeekIdx].label}
+                </div>
+              </div>
+
+              {/* Progress Gauges */}
+              <div className="md:col-span-7 space-y-4 font-sans text-xs">
+                {[
+                  { name: "Posture Symmetry Index", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.posture },
+                  { name: "Vocal Tone Resonance", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.vocal },
+                  { name: "Catwalk Gait Balance Kinetics", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.stride },
+                  { name: "Visual Presence & Stature", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.carriage }
+                ].map((m) => (
+                  <div key={m.name} className="space-y-1">
+                    <div className="flex justify-between text-[9px] uppercase text-alabaster/50 tracking-wider">
+                      <span>{m.name}</span>
+                      <span className="text-gold font-bold">{m.val}%</span>
+                    </div>
+                    <div className="h-1 bg-white/5 overflow-hidden">
+                      <motion.div 
+                        className="h-full bg-gradient-to-r from-rosegold via-gold to-white"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${m.val}%` }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

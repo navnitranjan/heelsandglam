@@ -192,6 +192,55 @@ const GALLERY_MOCK = [
   { title: "Lotus Catwalk Mechanics", desc: "Gown and saree carriage training.", url: "/images/runway-saree-lotus.jpg" }
 ];
 
+// 5a. CINEMATIC FILM SCENES DATA (PHASE 3)
+const FILM_SCENES = [
+  {
+    id: "scene-1",
+    sceneNum: "01",
+    title: "Arrival",
+    timecode: "00:02:14",
+    subtitle: "Stepping into the Lavelle Road flagship atelier. The scent of jasmine, warm gold lighting, and the quiet weight of transformation.",
+    image: "/images/founder-portrait-red-half.jpg",
+    action: "Somatic check-in initiates."
+  },
+  {
+    id: "scene-2",
+    sceneNum: "02",
+    title: "Discovery",
+    timecode: "00:15:42",
+    subtitle: "The posture and pelvic calibration screening. Mapping the vertical plumb line, identifying tech-neck curvatures, and defining personal skeletal grids.",
+    image: "/images/founder-portrait-red-full.jpg",
+    action: "Gait and pelvic alignment assessment."
+  },
+  {
+    id: "scene-3",
+    sceneNum: "03",
+    title: "Learning",
+    timecode: "01:34:10",
+    subtitle: "Musculoskeletal decompression drills. Calibrating catwalk stride lengths, shoulder plate stabilization, and speech pacing from the diaphragm.",
+    image: "/images/traditional-saree-styling.jpg",
+    action: "Vocal resonance and heel carriage exercises."
+  },
+  {
+    id: "scene-4",
+    sceneNum: "04",
+    title: "Transformation",
+    timecode: "02:45:18",
+    subtitle: "The styling mapping. Building capsule wardrobes, matching silhouette structures to body geometry, and conducting the lookbook campaign photoshoot.",
+    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800",
+    action: "Wardrobe styling & photo testing."
+  },
+  {
+    id: "scene-5",
+    sceneNum: "05",
+    title: "Graduation",
+    timecode: "03:12:05",
+    subtitle: "Showcasing under high-contrast spotlights. Walking with straight-knee precision before top scouts, model agencies, and corporate directors.",
+    image: "/images/runway-saree-lotus.jpg",
+    action: "Live runway presentation."
+  }
+];
+
 export default function Home() {
   // Real-time Countdown Timer (Phase 9)
   const [timeLeft, setTimeLeft] = useState({ days: 12, hours: 8, minutes: 24, seconds: 50 });
@@ -282,6 +331,21 @@ export default function Home() {
 
   // Accordion active FAQ
   const [faqActive, setFaqActive] = useState<number | null>(null);
+
+  // Cinematic Film Player States
+  const [activeFilmScene, setActiveFilmScene] = useState(0);
+  const [isFilmPlaying, setIsFilmPlaying] = useState(false);
+  const [filmMuted, setFilmMuted] = useState(true);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isFilmPlaying) {
+      interval = setInterval(() => {
+        setActiveFilmScene((prev) => (prev + 1) % FILM_SCENES.length);
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isFilmPlaying]);
 
   // Form Pre-filled WhatsApp link text
   const waConsultMessage = encodeURIComponent(
@@ -390,6 +454,200 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 via-transparent to-transparent" />
             </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ACADEMY EXPERIENCE FILM */}
+      <section id="experience-film" className="relative py-28 md:py-40 bg-black border-y border-gold/10 overflow-hidden scroll-mt-24">
+        {/* Ambient projection glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="luxury-container max-w-6xl relative z-10">
+          
+          {/* Header */}
+          <div className="flex flex-col items-center text-center mb-16">
+            <span className="text-[10px] uppercase tracking-[0.35em] text-gold font-sans font-bold mb-3">
+              Cinematic Storytelling
+            </span>
+            <h2 className="text-4xl md:text-7xl font-serif text-white uppercase tracking-wider">
+              The Academy Film
+            </h2>
+            <div className="w-16 h-[1px] bg-gold/30 mt-4 mb-6" />
+            <p className="text-xs md:text-sm text-champagne/70 max-w-xl leading-relaxed uppercase tracking-widest font-sans font-light">
+              Experience the stages of personal transformation in high definition. Scrub through the reel to witness the process.
+            </p>
+          </div>
+
+          {/* Film Widescreen Player Frame */}
+          <div className="relative border border-gold/20 bg-abyss shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden">
+            
+            {/* Top Widescreen Letterbox Overlay */}
+            <div className="absolute top-0 inset-x-0 h-10 bg-black/95 border-b border-gold/10 z-20 px-6 flex justify-between items-center text-[8px] md:text-[10px] font-sans uppercase tracking-[0.2em] text-alabaster/40">
+              <div className="flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping" />
+                <span className="text-white font-semibold">REC // LIVE FEED</span>
+              </div>
+              <div className="hidden sm:block">Aspect Ratio: 2.39:1 CinemaScope</div>
+              <div className="text-gold font-bold">SCENE: {FILM_SCENES[activeFilmScene].sceneNum} / 05</div>
+            </div>
+
+            {/* Main Screen (aspect-video) */}
+            <div className="relative aspect-[2.39/1] w-full min-h-[300px] overflow-hidden flex items-center justify-center">
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeFilmScene}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0"
+                >
+                  <Image 
+                    src={FILM_SCENES[activeFilmScene].image}
+                    alt={FILM_SCENES[activeFilmScene].title}
+                    fill
+                    priority
+                    className="object-cover opacity-65"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Grid calibration guides overlaid (simulating camera viewfinder) */}
+              <div className="absolute inset-0 border border-white/5 pointer-events-none z-10 m-6 flex items-center justify-center">
+                <div className="absolute top-0 bottom-0 w-[1px] bg-white/5 left-1/3" />
+                <div className="absolute top-0 bottom-0 w-[1px] bg-white/5 right-1/3" />
+                <div className="absolute left-0 right-0 h-[1px] bg-white/5 top-1/3" />
+                <div className="absolute left-0 right-0 h-[1px] bg-white/5 bottom-1/3" />
+                
+                {/* Viewfinder crosshairs */}
+                <div className="w-4 h-4 border-t border-l border-gold/30 absolute top-0 left-0" />
+                <div className="w-4 h-4 border-t border-r border-gold/30 absolute top-0 right-0" />
+                <div className="w-4 h-4 border-b border-l border-gold/30 absolute bottom-0 left-0" />
+                <div className="w-4 h-4 border-b border-r border-gold/30 absolute bottom-0 right-0" />
+              </div>
+
+              {/* Widescreen bottom letterbox overlay (holds subtitles) */}
+              <div className="absolute bottom-0 inset-x-0 bg-black/95 border-t border-gold/10 z-20 py-4 px-6 min-h-[80px] md:min-h-[100px] flex flex-col justify-center items-center">
+                <div className="text-[10px] md:text-xs text-gold uppercase tracking-[0.2em] font-sans font-bold mb-2">
+                  {FILM_SCENES[activeFilmScene].title} &bull; {FILM_SCENES[activeFilmScene].action}
+                </div>
+                <p className="text-xs md:text-sm text-center font-serif text-white max-w-3xl leading-relaxed italic">
+                  &ldquo;{FILM_SCENES[activeFilmScene].subtitle}&rdquo;
+                </p>
+              </div>
+
+            </div>
+
+            {/* Playback Controls & Progress Bar */}
+            <div className="bg-editorial-grey/25 border-t border-gold/15 p-4 flex flex-col md:flex-row items-center justify-between gap-4 select-none">
+              
+              {/* Play / Pause buttons */}
+              <div className="flex items-center space-x-4">
+                <button 
+                  onClick={() => setIsFilmPlaying(!isFilmPlaying)}
+                  className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all cursor-pointer"
+                  aria-label={isFilmPlaying ? "Pause film" : "Play film"}
+                >
+                  {isFilmPlaying ? (
+                    <span className="font-bold text-xs uppercase tracking-tighter">||</span>
+                  ) : (
+                    <Play className="w-4 h-4 fill-gold hover:fill-black" />
+                  )}
+                </button>
+
+                <div className="flex flex-col">
+                  <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">Timecode</span>
+                  <span className="text-xs text-white font-mono">{FILM_SCENES[activeFilmScene].timecode}</span>
+                </div>
+              </div>
+
+              {/* Progress Scrubbing Bar */}
+              <div className="flex-1 w-full flex items-center space-x-3">
+                <span className="text-[9px] font-mono text-alabaster/40">00:00:00</span>
+                <div className="flex-grow h-1.5 bg-white/10 rounded-full overflow-hidden relative cursor-pointer group">
+                  {FILM_SCENES.map((scene, idx) => {
+                    const widthPercent = 100 / FILM_SCENES.length;
+                    const isPassedOrActive = idx <= activeFilmScene;
+                    return (
+                      <div 
+                        key={scene.id}
+                        onClick={() => {
+                          setActiveFilmScene(idx);
+                          setIsFilmPlaying(false);
+                        }}
+                        className="absolute top-0 bottom-0 hover:bg-gold/40 transition-colors"
+                        style={{ 
+                          left: `${idx * widthPercent}%`, 
+                          width: `${widthPercent}%`,
+                          borderRight: idx < FILM_SCENES.length - 1 ? '1px solid rgba(0,0,0,0.5)' : 'none'
+                        }}
+                      >
+                        <div className={`h-full ${idx === activeFilmScene ? 'bg-gold' : isPassedOrActive ? 'bg-gold/60' : 'bg-transparent'}`} />
+                      </div>
+                    );
+                  })}
+                </div>
+                <span className="text-[9px] font-mono text-alabaster/40">03:45:00</span>
+              </div>
+
+              {/* Right indicators & Sound toggle */}
+              <div className="flex items-center space-x-6 text-[10px] font-sans">
+                {/* Audio waves simulating audio play */}
+                <div className="flex items-center space-x-2">
+                  <button 
+                    onClick={() => setFilmMuted(!filmMuted)}
+                    className="text-gold hover:text-white transition-colors cursor-pointer"
+                  >
+                    <Volume2 className={`w-4 h-4 ${filmMuted ? 'opacity-30' : 'opacity-100'}`} />
+                  </button>
+                  <div className="flex items-end space-x-0.5 h-3">
+                    <div className={`w-0.5 bg-gold transition-all duration-300 ${isFilmPlaying && !filmMuted ? 'h-3 animate-pulse' : 'h-1'}`} />
+                    <div className={`w-0.5 bg-gold transition-all duration-300 ${isFilmPlaying && !filmMuted ? 'h-2 animate-pulse' : 'h-1'}`} />
+                    <div className={`w-0.5 bg-gold transition-all duration-300 ${isFilmPlaying && !filmMuted ? 'h-4 animate-pulse' : 'h-1'}`} />
+                    <div className={`w-0.5 bg-gold transition-all duration-300 ${isFilmPlaying && !filmMuted ? 'h-1.5 animate-pulse' : 'h-1'}`} />
+                  </div>
+                </div>
+
+                <div className="hidden lg:flex items-center space-x-1 border border-gold/25 px-2.5 py-1 text-[9px] text-gold uppercase tracking-widest font-semibold bg-gold/5">
+                  <span>1080P Dolby Vision</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Film strip thumbnails list */}
+          <div className="grid grid-cols-5 gap-2 md:gap-4 mt-6">
+            {FILM_SCENES.map((scene, idx) => (
+              <button 
+                key={scene.id}
+                onClick={() => {
+                  setActiveFilmScene(idx);
+                  setIsFilmPlaying(false);
+                }}
+                className={`relative aspect-video border overflow-hidden transition-all duration-350 cursor-pointer ${
+                  idx === activeFilmScene 
+                    ? 'border-gold shadow-lg ring-1 ring-gold/45 scale-102' 
+                    : 'border-gold/15 grayscale opacity-50 hover:opacity-80 hover:grayscale-0'
+                }`}
+              >
+                <Image 
+                  src={scene.image}
+                  alt={scene.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/45 z-10 flex flex-col justify-between p-2 text-left">
+                  <span className="text-[7px] md:text-[8px] font-mono text-gold/80 block uppercase">Scene {scene.sceneNum}</span>
+                  <span className="text-[8px] md:text-[10px] text-white font-sans font-bold leading-none">{scene.title}</span>
+                </div>
+              </button>
+            ))}
           </div>
 
         </div>

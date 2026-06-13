@@ -126,7 +126,7 @@ export default function RampWalkTrainingPage() {
               <span>Lock Ramp Walk Seat</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

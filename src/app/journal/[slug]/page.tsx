@@ -302,7 +302,7 @@ export default async function ArticlePage({ params }: Props) {
               <span>Consult Founder About Topic</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

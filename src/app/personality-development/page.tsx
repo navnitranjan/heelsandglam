@@ -111,7 +111,7 @@ export default function PersonalityDevelopmentPage() {
               <span>Lock Personality Seat</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

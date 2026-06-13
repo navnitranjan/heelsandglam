@@ -53,7 +53,7 @@ const OFFICIAL_PROGRAMS = [
     nextCohort: 'September 15, 2026',
     price: '₹75,000',
     tagline: 'Build self-belief, body language communication and executive presence.',
-    description: 'An elite training course that focuses on the biomechanics of poise, active voice projection, and non-verbal posture corrections to help women command respect and sit/stand tall in any boardroom or assembly.',
+    description: 'An elite transformation program that focuses on the biomechanics of poise, active voice projection, and non-verbal posture corrections to help women command respect and sit/stand tall in any boardroom or assembly.',
     imageSrc: '/images/founder-portrait-red-full.jpg',
     outcomes: [
       'Release physical anxiety & posture tension',
@@ -225,7 +225,7 @@ export default function ProgramsPage() {
         </h1>
         <div className="w-16 h-[1px] bg-gold/30 mx-auto mb-8" />
         <p className="text-sm tracking-wide text-champagne max-w-2xl leading-relaxed font-sans">
-          Four structured transformation cohorts led by Aakanksha Anand. Pre-enrollment assessment applies to all candidates.
+          Four structured transformation programs led by Aakanksha Anand. Pre-screening assessment applies to all candidates.
         </p>
       </div>
 
@@ -279,7 +279,7 @@ export default function ProgramsPage() {
                 ))}
               </div>
 
-              {/* Course Meta Data panel */}
+              {/* Program Meta Data panel */}
               <div className="p-5 border border-gold/10 bg-editorial-grey/5 grid grid-cols-3 gap-4 text-center font-sans text-xs">
                 <div>
                   <Clock className="w-4 h-4 text-gold mx-auto mb-1.5" />
@@ -312,7 +312,7 @@ export default function ProgramsPage() {
               </div>
 
               <div className="pt-4 flex items-center space-x-4">
-                <Button href="/apply" variant="solid">Request Admission</Button>
+                <Button href="/apply" variant="solid">Begin Your Transformation</Button>
                 <Button href="https://wa.me/919880012345" variant="outline">Consult via WhatsApp</Button>
               </div>
             </div>

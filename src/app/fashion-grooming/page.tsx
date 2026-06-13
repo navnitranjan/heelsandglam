@@ -126,7 +126,7 @@ export default function FashionGroomingPage() {
               <span>Lock Fashion Grooming Seat</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

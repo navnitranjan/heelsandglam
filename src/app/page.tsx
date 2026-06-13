@@ -32,7 +32,10 @@ import {
   Volume2,
   X,
   FileText,
-  UserCheck
+  UserCheck,
+  Maximize2,
+  Mic,
+  Fingerprint
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { trackEvent } from '@/lib/gtag';
@@ -79,11 +82,11 @@ const TIMELINE_STAGES = [
   { stage: "Stage 07", title: "Transformation Showcase", desc: "Catwalk graduation runway. Secure your professional lookbook shoots directed by Aakanksha Anand." }
 ];
 
-// 1a. CINEMATIC JOURNEY CHAPTERS (PHASE 3)
+// 1a. CINEMATIC JOURNEY CHAPTERS (PHASE 3 - THE TRANSFORMATION METHOD™)
 const JOURNEY_CHAPTERS = [
   {
     id: 1,
-    chapter: "Chapter 01",
+    chapter: "Stage 01",
     title: "Awareness",
     subtitle: "Skeletal Self-Discovery & Diagnostics",
     desc: "The path of poise begins by mapping physical reality. Coached by Aakanksha Anand, we audit your musculoskeletal baseline. Through video posture mappings, we identify tech-neck slumping, pelvic alignment deviations, and joint compensations.",
@@ -92,30 +95,48 @@ const JOURNEY_CHAPTERS = [
   },
   {
     id: 2,
-    chapter: "Chapter 02",
-    title: "Confidence",
-    subtitle: "Musculoskeletal Decompression & Stature Reset",
-    desc: "Correcting habitual postural slumping. We release back tension, open the shoulder plates, and execute vertical spine wall resets. Coupled with diaphragmatic breathing and vocal exercises, we lower pitch and stabilize delivery.",
-    metrics: ["Shoulder Plate Expansion", "Spine Wall Calibration", "Diaphragmatic Breathing Checks", "Vocal Filler Elimination"],
+    chapter: "Stage 02",
+    title: "Growth",
+    subtitle: "Musculoskeletal Decompression & Carriage Reset",
+    desc: "Releasing muscle tension and correcting habitual slouching. We decompress back strain, activate pelvic stabilizers, open the shoulder plates, and execute vertical spine resets to unlock healthy stature.",
+    metrics: ["Shoulder Plate Expansion", "Spine Wall Calibration", "Pelvic Tilt Stabilizations", "Strides Gait Adjustments"],
     image: "/images/traditional-saree-styling.jpg"
   },
   {
     id: 3,
-    chapter: "Chapter 03",
-    title: "Presence",
-    subtitle: "Catwalk Kinetics & Stature Mastery",
-    desc: "Mastering the physics of motion in heels. Learn to step straight-kneed, balance weight systematically, and glide. We coordinate turns with the high-contrast gaze delay turn pivot.",
-    metrics: ["Straight-Knee Stride Balance", "Catwalk Pivot turns", "Evening Gown Carriage Flow", "Delayed Eye Gaze Mechanics"],
-    image: "/images/runway-saree-lotus.jpg"
+    chapter: "Stage 03",
+    title: "Confidence",
+    subtitle: "Vocal Resonance & Inner Composure",
+    desc: "Building diaphragmatic vocal projection and emotional composure. We train pitch modulation, eliminate verbal fillers, stabilize speech rates, and overcome impostor dynamics under spotlight stress.",
+    metrics: ["Diaphragmatic Speech Projecting", "Pitch Modulation Checks", "Filler Words Elimination", "Camera Anxiety Defeat"],
+    image: "/images/founder-portrait-red-full.jpg"
   },
   {
     id: 4,
-    chapter: "Chapter 04",
-    title: "Transformation",
-    subtitle: "Personal Branding & Spotlight Graduation",
-    desc: "Architecting your market positioning. We build custom skin undertone wardrobe palettes, map body silhouette profiles, record camera-facing speech tests, and design dynamic digital grids.",
-    metrics: ["Skin undertone styling maps", "Camera-Facing Speech Kinetic", "Digital Media Grid Curation", "Atelier Spotlight Graduation"],
+    chapter: "Stage 04",
+    title: "Presence",
+    subtitle: "Catwalk Kinetics & Heel Balance Calibration",
+    desc: "Mastering the physics of walking in heels. Learn to step straight-kneed, roll weight fluidly, execute elegant turns, and coordinate eye contact transitions using the signature delayed gaze turn.",
+    metrics: ["Straight-Knee Catwalk Strides", "Heel Balancing Alignment", "Cats Walk Pivot Turns", "Delayed Eye Gaze Pivot"],
+    image: "/images/runway-saree-lotus.jpg"
+  },
+  {
+    id: 5,
+    chapter: "Stage 05",
+    title: "Leadership",
+    subtitle: "Executive Styling & Identity Geometry",
+    desc: "Architecting your signature personal style. We map your skin undertone color palette, examine body geometry silhouettes, structure capsule profiles, and master high-society etiquette.",
+    metrics: ["Skin Undertone Colors Mapping", "Body Geometry Silhouette Cut", "Capsule Profile Strategy", "Social Dining Etiquettes"],
     image: "/images/fashion-week-runway-jeans.jpg"
+  },
+  {
+    id: 6,
+    chapter: "Stage 06",
+    title: "Impact",
+    subtitle: "Spotlight Graduation & Roster Launch",
+    desc: "The final showcase. Complete a professional lookbook photoshoot directed by Aakanksha Anand and execute a graduation runway presentation to casting directors and scouts.",
+    metrics: ["Lookbook Portfolio Shoot", "Catwalk Graduation Showcase", "Pageant & Agency Pipeline", "Alumnae Roster Integration"],
+    image: "/images/traditional-saree-styling.jpg"
   }
 ];
 
@@ -936,18 +957,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PROPRIETARY FRAMEWORK: THE CONFIDENCE CODE */}
+      <section className="relative py-28 md:py-40 border-b border-gold/10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-burgundy/3 rounded-full blur-[130px] pointer-events-none" />
+        <div className="luxury-container max-w-5xl relative z-10">
+          <div className="text-center mb-16 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold block">
+              THE SIGNATURE FRAMEWORK
+            </span>
+            <h2 className="text-4xl md:text-7xl font-serif text-white uppercase tracking-wider">
+              The Confidence Code
+            </h2>
+            <div className="w-12 h-[1px] bg-gold/30 mx-auto" />
+            <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-2xl mx-auto leading-relaxed font-sans font-light">
+              A trademarked multi-dimensional model designed by Aakanksha Anand, bridging physical mechanics, vocal gravitas, and identity positioning.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans">
+            {[
+              { icon: Compass, title: "Presence", desc: "Command spatial authority through open posture framing, scanning levelly, and holding gaze pivots." },
+              { icon: Maximize2, title: "Poise", desc: "Correct carriage biomechanics—spine verticality resets, shoulder decompression, and heels walk comfort." },
+              { icon: Mic, title: "Communication", desc: "Unlock vocal resonance, speak from the diaphragm, and command pacing using deliberate pauses." },
+              { icon: Fingerprint, title: "Style", desc: "Map body geometry silhouettes, identify skin color theories, and build a signature capsule profile." },
+              { icon: ShieldCheck, title: "Confidence", desc: "Re-pattern subconscious slumping, address impostor habits, and live stature unconditionally." },
+              { icon: Award, title: "Personal Brand", desc: "Align digital profile aesthetics, media assets, and offline presentation into a unified authority." }
+            ].map((pillar, idx) => (
+              <div 
+                key={idx}
+                className="p-8 border border-gold/15 bg-editorial-grey/5 flex flex-col space-y-4 relative group hover:border-gold/30 transition-all duration-300"
+              >
+                <div className="p-3 bg-gold/5 border border-gold/15 text-gold w-fit rounded-full group-hover:bg-gold group-hover:text-abyss transition-colors duration-300">
+                  <pillar.icon className="w-5 h-5" />
+                </div>
+                
+                <span className="text-[9px] text-gold tracking-widest uppercase font-bold">
+                  Pillar 0{idx + 1}
+                </span>
+                
+                <h3 className="text-lg font-serif text-white uppercase tracking-wider">
+                  {pillar.title}
+                </h3>
+                
+                <p className="text-xs text-pearl/60 leading-relaxed font-light">
+                  {pillar.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PHASE 3: INTERACTIVE TRANSFORMATION ROADMAP (CINEMATIC CHAPTERS) */}
       <section id="journey-presence" className="relative py-28 md:py-40 border-b border-gold/10 bg-editorial-grey/5">
         <div className="luxury-container flex flex-col items-center text-center mb-16">
           <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-            Milestones of Poise
+            THE TRADEMARK METHODOLOGY
           </span>
           <h2 className="text-4xl md:text-7xl font-serif text-white uppercase">
-            Your Journey To Presence
+            The Transformation Method™
           </h2>
           <div className="w-12 h-[1px] bg-gold/40 mt-4 mb-6" />
           <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl leading-relaxed">
-            Our step-by-step development roadmap designed to structure physical posture, style, and vocal self-possession.
+            Our proprietary 6-stage transformation methodology designed to structure physical posture, style, and vocal self-possession.
           </p>
         </div>
 
@@ -976,7 +1048,7 @@ export default function Home() {
           <AnimatePresence mode="wait">
             {JOURNEY_CHAPTERS.filter(ch => ch.id === activeJourneyChapter).map((ch) => {
               const chMessage = encodeURIComponent(
-                `Hi Aakanksha! I am reviewing the ${ch.chapter} (${ch.title}) on your transformation roadmap and want to enroll.`
+                `Hi Aakanksha! I am reviewing the ${ch.chapter} (${ch.title}) on your transformation roadmap and want to request my invitation.`
               );
               return (
                 <motion.div
@@ -1023,7 +1095,7 @@ export default function Home() {
                         <span>Lock Chapter Spot</span>
                       </a>
                       <Button href="/apply" variant="outline" onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: `Apply from ${ch.chapter}` })}>
-                        Submit Admissions Profile
+                        Begin Your Transformation
                       </Button>
                     </div>
                   </div>
@@ -1659,9 +1731,9 @@ export default function Home() {
               <Button 
                 href="/apply" 
                 variant="outline"
-                onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Social Funnel Apply' })}
+                onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Social Funnel Request' })}
               >
-                Initiate Assessment Funnel
+                Request Your Invitation
               </Button>
             </div>
           </div>
@@ -1725,6 +1797,85 @@ export default function Home() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* PHASE 7: COMMUNITY EXPERIENCE - THE HEELS & GLAM CIRCLE */}
+      <section id="academy-circle" className="relative py-28 md:py-40 bg-editorial-grey/5 border-b border-gold/10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold/2 rounded-full blur-[130px] pointer-events-none" />
+        <div className="luxury-container max-w-5xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            {/* Copy side */}
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold block">
+                THE SOVEREIGN ROSTER
+              </span>
+              <h2 className="text-4xl md:text-6xl font-serif text-white uppercase leading-none">
+                The Heels & Glam<br />
+                <span className="text-champagne">Circle</span>
+              </h2>
+              <div className="w-12 h-[1px] bg-gold/30" />
+              <p className="text-xs md:text-sm text-pearl/70 leading-relaxed font-sans font-light">
+                Admissions to Heels & Glam grants lifetime membership to our sovereign alumnae guild. More than a network, it is a private society of female leaders, startup founders, doctors, pageant titleholders, and corporate executives who support each other's spatial positioning.
+              </p>
+              
+              <div className="space-y-4 pt-2">
+                {[
+                  { title: "Elite Networking Assemblies", desc: "Private physical cohort connection assemblies at our Lavelle Road Flagship." },
+                  { title: "Catwalk Mastery Workshops", desc: "Alumnae refresher clinics checking muscle decompression and straight-knee strikes." },
+                  { title: "Sovereign Mentorship", desc: "Direct dialogue boards and portfolio reviews coached by Aakanksha Anand." }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start space-x-3 text-xs font-sans">
+                    <Check className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="text-white font-medium uppercase tracking-wider">{item.title}</h4>
+                      <p className="text-pearl/50 font-light mt-0.5">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Visual cards grid */}
+            <div className="lg:col-span-6 grid grid-cols-2 gap-4 relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 via-transparent to-transparent pointer-events-none z-10" />
+              
+              <div className="space-y-4">
+                <div className="relative aspect-[3/4] border border-gold/15 overflow-hidden shadow-xl">
+                  <Image 
+                    src="/images/traditional-saree-styling.jpg" 
+                    alt="Cohort styling circle workshop"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 20vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4 border border-gold/10 bg-editorial-grey/25 text-center font-sans">
+                  <span className="block text-[10px] text-gold font-bold">500+</span>
+                  <span className="text-[8px] uppercase tracking-widest text-pearl/40">Alumnae Roster</span>
+                </div>
+              </div>
+
+              <div className="space-y-4 pt-8">
+                <div className="p-4 border border-gold/10 bg-editorial-grey/25 text-center font-sans">
+                  <span className="block text-[10px] text-gold font-bold">12 Max</span>
+                  <span className="text-[8px] uppercase tracking-widest text-pearl/40">Cohort Seat Limit</span>
+                </div>
+                <div className="relative aspect-[3/4] border border-gold/15 overflow-hidden shadow-xl">
+                  <Image 
+                    src="/images/founder-portrait-red-half.jpg" 
+                    alt="Aakanksha Anand mentoring delegates"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 20vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -1835,7 +1986,7 @@ export default function Home() {
                 className="flex items-center space-x-2"
                 onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Contact Panel Start Application' })}
               >
-                <span>Start Application Funnel</span>
+                <span>Begin Your Transformation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
               <Button 
@@ -1920,7 +2071,7 @@ export default function Home() {
                     </div>
 
                     <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury">
-                      Submit Consultation Request
+                      Request Your Invitation
                     </Button>
                   </motion.form>
                 ) : (
@@ -1978,7 +2129,7 @@ export default function Home() {
                 <p>Limited seats remaining to guarantee personal coach attention. Pre-screenings apply.</p>
               </div>
               <Button href="/apply" variant="solid" className="w-full text-center">
-                Begin Admissions Process
+                Begin Your Transformation
               </Button>
             </div>
           </div>

@@ -132,8 +132,8 @@ export default function AcademyPage() {
       {/* Transformation Framework (The 3 Stages) */}
       <section className="luxury-container mb-28 md:mb-40 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-gold font-sans font-semibold mb-4 block">THE ROADMAP</span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white uppercase">The Transformation Framework</h2>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-gold font-sans font-semibold mb-4 block">THE TRADEMARK METHODOLOGY</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-white uppercase">The Transformation Method™</h2>
           <div className="w-12 h-[1px] bg-gold/40 mx-auto mt-4" />
         </div>
 
@@ -261,13 +261,16 @@ export default function AcademyPage() {
 
       {/* CTA Row */}
       <div className="luxury-container text-center relative z-10 pt-8">
-        <h3 className="text-2xl md:text-3xl font-serif text-white mb-6 uppercase">Are You Ready to Transform Your Presence?</h3>
+        <h3 className="text-2xl md:text-3xl font-serif text-white mb-4 uppercase">Begin Your Transformation</h3>
+        <p className="text-xs uppercase tracking-[0.2em] text-gold font-serif italic font-medium mb-6">
+          The Art of Presence. The Science of Elegance.
+        </p>
         <p className="text-xs md:text-sm text-alabaster/50 font-sans max-w-lg mx-auto mb-8 leading-relaxed">
           Limited slots are available for our upcoming cohort. Individual screenings and skeletal posture checks are part of the admissions process.
         </p>
         <div className="flex justify-center gap-4">
-          <Button href="/apply" variant="solid">Apply for Admission</Button>
-          <Button href="/programs" variant="outline">View Programs</Button>
+          <Button href="/apply" variant="solid">Request Your Invitation</Button>
+          <Button href="/programs" variant="outline">Browse Transformation Programs</Button>
         </div>
       </div>
     </div>

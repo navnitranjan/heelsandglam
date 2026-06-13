@@ -126,7 +126,7 @@ export default function PageantTrainingPage() {
               <span>Lock Pageant Prep Seat</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

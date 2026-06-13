@@ -67,10 +67,10 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/apply"
-              onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Desktop Apply' })}
+              onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Desktop Request' })}
               className="px-6 py-2.5 text-xs uppercase tracking-luxury border border-gold text-gold hover:bg-gold hover:text-abyss transition-all duration-350 font-sans"
             >
-              Apply Now
+              Request Invitation
             </Link>
           </div>
 
@@ -119,11 +119,11 @@ export default function Header() {
               href="/apply"
               onClick={() => {
                 setIsMenuOpen(false);
-                trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Mobile Apply' });
+                trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Header Mobile Request' });
               }}
               className="w-full py-4 text-center text-xs uppercase tracking-luxury bg-gold text-abyss hover:bg-white hover:text-abyss transition-all font-sans"
             >
-              Apply Now
+              Request Invitation
             </Link>
           </motion.div>
         )}

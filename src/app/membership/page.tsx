@@ -92,7 +92,7 @@ export default function MembershipPage() {
             The Private Circle is open to graduates of our core signature programs (Grooming Mastery, Confidence & Presence, or Catwalk Fundamentals). Individual candidate admissions are approved directly by the founder desk.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-            <Button href="/apply" variant="solid">Request Admissions Screening</Button>
+            <Button href="/apply" variant="solid">Request Your Invitation</Button>
             <Button href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20am%20interested%20in%20The%20Private%20Circle%20membership." variant="outline">Consult via WhatsApp</Button>
           </div>
         </div>

@@ -126,7 +126,7 @@ export default function PersonalBrandingPage() {
               <span>Lock Personal Branding Seat</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

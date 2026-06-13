@@ -126,7 +126,7 @@ export default function StudentStoriesPage() {
               </div>
 
               <div className="pt-4 flex items-center space-x-4">
-                <Button href="/apply" variant="solid">Request Admissions Poise Check</Button>
+                <Button href="/apply" variant="solid">Begin Your Transformation</Button>
                 <Button href="/programs" variant="outline">Browse Cohort Schedules</Button>
               </div>
             </div>

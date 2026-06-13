@@ -61,7 +61,7 @@ export default function ModellingClassesPage() {
       {/* Main Header */}
       <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 relative z-10">
         <span className="text-[10px] uppercase tracking-[0.35em] text-rosegold font-sans font-bold mb-4">
-          Professional Modelling Classes • Course Overview
+          Professional Modelling Classes • Program Overview
         </span>
         <h1 className="text-4xl md:text-8xl font-serif tracking-luxury text-white uppercase mb-6 leading-none">
           Modelling<br />
@@ -126,7 +126,7 @@ export default function ModellingClassesPage() {
               <span>Lock Modelling Class Seat</span>
             </a>
             <Button href="/apply" variant="outline">
-              Initiate Admissions Profile
+              Begin Your Transformation
             </Button>
           </div>
         </div>

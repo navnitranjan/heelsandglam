@@ -31,10 +31,13 @@ export default function Footer() {
                 By Aakanksha Anand
               </span>
             </Link>
-            <p className="text-sm text-alabaster/60 font-sans leading-relaxed max-w-sm">
+            <p className="text-sm text-alabaster/60 font-sans leading-relaxed max-w-sm mb-4">
               An elite transformation guild bridging modeling pedigree and executive grooming. 
               We elevate personal poise, confidence, and visual styling for women worldwide.
             </p>
+            <span className="block text-xs uppercase tracking-[0.25em] text-gold font-serif italic font-medium">
+              The Art of Presence. The Science of Elegance.
+            </span>
           </div>
 
           {/* Quick Links */}

@@ -10,6 +10,7 @@ import CustomCursor from '@/components/ui/CustomCursor';
 import ExitIntentModal from '@/components/features/ExitIntentModal';
 import FloatingWhatsAppButton from '@/components/layout/FloatingWhatsAppButton';
 
+// Version: 1.1.0 - Final Production Release
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],

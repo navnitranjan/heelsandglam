@@ -30,7 +30,7 @@ const OFFICIAL_PROGRAMS = [
     nextCohort: 'September 12, 2026',
     price: '₹55,000',
     tagline: 'Learn appearance management, styling fundamentals, grooming habits and self-presentation techniques.',
-    description: 'A boutique module designed for working women, entrepreneurs, and students who want to structure their physical self-presentation, master color alignment, and create a sophisticated wardrobe.',
+    description: 'A boutique module designed for working women, entrepreneurs, and ambitious members of the Heels & Glam Circle who want to structure their physical self-presentation, master color alignment, and create a sophisticated wardrobe.',
     imageSrc: '/images/traditional-saree-styling.jpg',
     outcomes: [
       'Understand your body geometry & silhouettes',
@@ -205,7 +205,7 @@ export default function ProgramsClient() {
       return {
         profile: "Elite Mastery & Spotlight Ready",
         description: "You have excellent posture, clean vocal pacing, and curated styling habits. Your alignment is symmetrical and poised.",
-        recommendation: "You are an ideal candidate for Runway & Modelling Fundamentals or advanced Pageant masterclass preparations to launch into lookbook campaigns."
+        recommendation: "You are an ideal prospective Circle Member for Runway & Modelling Fundamentals or advanced Pageant masterclass preparations to launch into lookbook campaigns."
       };
     }
   };
@@ -225,7 +225,7 @@ export default function ProgramsClient() {
         </h1>
         <div className="w-16 h-[1px] bg-gold/30 mx-auto mb-8" />
         <p className="text-sm tracking-wide text-champagne max-w-2xl leading-relaxed font-sans">
-          Four structured transformation programs led by Aakanksha Anand. Pre-screening assessment applies to all candidates.
+          Four structured transformation programs led by Aakanksha Anand. Private pre-screening assessment applies to all prospective Members of the Heels & Glam Circle.
         </p>
       </div>
 
@@ -313,7 +313,7 @@ export default function ProgramsClient() {
 
               <div className="pt-4 flex items-center space-x-4">
                 <Button href="/apply" variant="solid">Begin Your Transformation</Button>
-                <Button href="https://wa.me/919742232322" variant="outline">Consult via WhatsApp</Button>
+                <Button href="https://wa.me/919742232322" variant="outline">Request Your Invitation via WhatsApp</Button>
               </div>
             </div>
           </div>

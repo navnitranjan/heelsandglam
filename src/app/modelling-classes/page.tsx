@@ -47,11 +47,11 @@ export default function ModellingClassesPage() {
     },
     {
       q: "Do you assist with modelling agency castings?",
-      a: "Yes. We prepare students for international and national agency castings, teaching posture tricks, jury communication, and styling guidelines."
+      a: "Yes. We prepare Members of the Heels & Glam Circle for international and national agency castings, teaching posture tricks, jury communication, and styling guidelines."
     },
     {
-      q: "I am a complete beginner. Can I enroll?",
-      a: "Yes. Our modelling classes start with foundational posture walks, weight balances, and eye level focus drills, designed for beginners."
+      q: "I am a complete beginner. Can I request an invitation to join?",
+      a: "Yes. Our modelling transformation programs start with foundational posture walks, weight balances, and eye level focus drills, designed for beginners."
     }
   ];
 

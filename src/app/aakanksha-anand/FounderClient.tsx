@@ -23,7 +23,7 @@ export default function FounderClient() {
           className="space-y-4"
         >
           <span className="text-[10px] uppercase tracking-[0.35em] text-gold font-sans font-bold block">
-            Founder Biography
+            Founder Heritage & Vision
           </span>
           <h1 className="text-5xl md:text-8xl font-serif tracking-luxury text-white uppercase leading-none">
             Aakanksha Anand
@@ -33,6 +33,53 @@ export default function FounderClient() {
             A Vogue-Inspired Story of Poise, Somatic Alignment, and Personal Presence
           </p>
         </motion.div>
+      </section>
+
+      {/* PERSONAL FOUNDER LETTER SECTION */}
+      <section className="luxury-container max-w-4xl py-12 mb-28 border border-gold/15 bg-editorial-grey/5 p-8 md:p-16 relative overflow-hidden rounded-sm shadow-2xl">
+        <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-gold/5 rounded-full blur-[60px] pointer-events-none" />
+        <div className="space-y-8 relative z-10 font-sans leading-relaxed">
+          <div className="text-center mb-10">
+            <span className="text-[10px] uppercase tracking-[0.35em] text-gold font-bold block mb-2">
+              A Personal Note
+            </span>
+            <h2 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-wider">
+              The Architecture of Presence
+            </h2>
+            <div className="w-16 h-[1px] bg-gold/30 mx-auto mt-4" />
+          </div>
+
+          <div className="space-y-6 text-sm text-alabaster/80 font-light leading-loose max-w-3xl mx-auto text-justify">
+            <p>
+              <span className="text-4xl md:text-6xl font-serif text-gold float-left mr-3 mt-1 leading-none font-bold">D</span>
+              ear Aspiring Leader,
+            </p>
+            <p>
+              Presence is not an accidental birthright. For years, I walked runways and stood under bright spotlights, observing that true poise did not come from the clothes a woman wore, nor from the speed at which she walked. It came from a deep, internal geometry—an alignment of the spine, a decompression of the shoulders, and the courage to occupy space without apology.
+            </p>
+            <p>
+              I founded Heels & Glam because I grew tired of seeing highly capable women collapse their physical frames in moments of pressure. In boardrooms, at social events, or under camera lights, many of us default to secondary slouching habits or vocal self-consciousness. We shrink.
+            </p>
+            <p>
+              True elegance is not passive; it is kinetic. The Somatic Poise Method is my answer to this silent compromise. It is a roadmap designed to re-pattern how you stand, walk, and speak, translating core strength into absolute authority. 
+            </p>
+            <p>
+              This is not a brief instruction; it is a profound transformation. I invite you to join our Circle, step into your verticality, and own every space you enter.
+            </p>
+            
+            <div className="pt-8 flex flex-col items-end space-y-2 text-right">
+              <span className="text-xs uppercase tracking-widest text-gold font-semibold font-sans block">
+                With gratitude and poise,
+              </span>
+              <span className="font-serif text-2xl text-white italic tracking-wider">
+                Aakanksha Anand
+              </span>
+              <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">
+                Founder, Heels & Glam Academy
+              </span>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* CHAPTER 1: THE BEGINNING */}
@@ -61,7 +108,7 @@ export default function FounderClient() {
               alt="Aakanksha Anand - Elegant headshot"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_20%]"
             />
           </div>
         </div>
@@ -76,7 +123,7 @@ export default function FounderClient() {
               alt="Aakanksha Anand conducting styling workshop"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_25%]"
             />
           </div>
           <div className="lg:col-span-7 flex flex-col space-y-6 order-1 lg:order-2">
@@ -89,7 +136,7 @@ export default function FounderClient() {
             <div className="w-12 h-[1px] bg-gold/30" />
             <div className="space-y-4 text-sm text-alabaster/70 font-sans leading-relaxed">
               <p>
-                Her journey took her through modeling campaigns, styling ateliers, and fashion runways. Experiencing the transformational power of styling and postural corrections firsthand, she began coaching aspiring pageant contestants and corporate leaders.
+                Her journey took her through modeling campaigns, styling ateliers, and fashion runways. Experiencing the transformational power of styling and postural corrections firsthand, she began mentoring select pageant candidates and corporate leaders.
               </p>
               <p>
                 She developed the Somatic Poise Method, combining joint decompression, heel balance, vocal projection, and wardrobe strategy into a structured roadmap. The goal was to build a comprehensive platform where women could learn to present their authentic selves with confidence.
@@ -142,7 +189,7 @@ export default function FounderClient() {
               alt="Aakanksha Anand - Pose showcase"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_15%]"
             />
           </div>
         </div>
@@ -157,7 +204,7 @@ export default function FounderClient() {
               alt="Aakanksha Anand catwalk pose"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_25%]"
             />
           </div>
           <div className="lg:col-span-7 flex flex-col space-y-6 order-1 lg:order-2">
@@ -206,7 +253,7 @@ export default function FounderClient() {
               alt="Aakanksha Anand walking the Global Fashion Week runway"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_20%]"
             />
           </div>
         </div>
@@ -237,7 +284,7 @@ export default function FounderClient() {
               variant="solid"
               onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Founder Page Apply CTA' })}
             >
-              Apply for Next Cohort
+              Begin Your Transformation
             </Button>
             <Button 
               href="https://wa.me/919742232322" 
@@ -245,7 +292,7 @@ export default function FounderClient() {
               className="border-green-500/50 hover:bg-green-600"
               onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Founder Page WhatsApp Consult' })}
             >
-              Consult with Aakanksha via WhatsApp
+              Request Your Invitation via WhatsApp
             </Button>
           </div>
         </div>

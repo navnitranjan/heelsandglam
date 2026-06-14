@@ -43,7 +43,7 @@ export default function PersonalityDevelopmentForWomenPage() {
   const faqs = [
     {
       q: "Who is this program designed for?",
-      a: "This program is specifically curated for women—including corporate executives, startup founders, lawyers, content creators, and students—seeking to establish a high-stature presence and project self-possession."
+      a: "This program is specifically curated for women—including corporate executives, startup founders, lawyers, content creators, and ambitious members of the Circle—seeking to establish a high-stature presence and project self-possession."
     },
     {
       q: "What kinetic metrics are covered in the training?",
@@ -85,7 +85,7 @@ export default function PersonalityDevelopmentForWomenPage() {
             alt="Founder Aakanksha Anand presenting executive stature"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="object-cover"
+            className="object-cover object-[50%_20%]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent z-10" />

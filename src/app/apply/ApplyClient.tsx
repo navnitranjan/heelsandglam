@@ -137,28 +137,28 @@ export default function ApplyClient() {
       {/* Welcome Title */}
       <div className="luxury-container flex flex-col items-center text-center mb-16 md:mb-24 animate-fade-in relative z-10">
         <span className="text-[10px] uppercase tracking-[0.35em] text-rosegold font-sans font-bold mb-4">
-          The Admissions Office • Cohort Selection
+          The Admissions Office • Selection Committee
         </span>
         <h1 className="text-4xl md:text-8xl font-serif tracking-luxury text-white uppercase mb-6 leading-none">
-          The Invitation<br />
-          <span className="text-champagne font-serif">To Poise</span>
+          Request Your<br />
+          <span className="text-champagne font-serif">Invitation</span>
         </h1>
         <div className="w-16 h-[1px] bg-rosegold/30 mx-auto mb-8" />
         <p className="text-sm tracking-wide text-champagne max-w-2xl leading-relaxed font-sans font-light">
-          We maintain strict cohort limits of 12 candidates to ensure personalized musculoskeletal checks, custom styling palettes, and individual voice modulation sessions. We select candidates—we do not sell to them.
+          We maintain strict cohort limits of 12 Members of the Heels & Glam Circle to ensure personalized musculoskeletal checks, custom styling palettes, and individual voice modulation sessions. We select candidates—we do not sell to them.
         </p>
       </div>
 
       {/* Scarcity Dashboard (Phase 2) */}
-      <section className="luxury-container max-w-4xl mb-24 relative z-10">
+      <section className="luxury-container max-w-4xl mb-16 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 border border-rosegold/15 bg-burgundy/5 text-center font-sans text-xs">
           <div>
             <span className="block text-[8px] uppercase tracking-widest text-rosegold font-semibold mb-1">Upcoming cohort</span>
-            <span className="text-sm text-white font-medium">Autumn Batch 2026</span>
+            <span className="text-sm text-white font-medium">Autumn Cohort</span>
           </div>
           <div>
             <span className="block text-[8px] uppercase tracking-widest text-rosegold font-semibold mb-1">Seats Capacity</span>
-            <span className="text-sm text-white font-medium">12 Candidates Max</span>
+            <span className="text-sm text-white font-medium">12 Circle Members Max</span>
           </div>
           <div>
             <span className="block text-[8px] uppercase tracking-widest text-rosegold font-semibold mb-1">Validated Seats</span>
@@ -167,6 +167,42 @@ export default function ApplyClient() {
           <div>
             <span className="block text-[8px] uppercase tracking-widest text-rosegold font-semibold mb-1">Atelier Callback Status</span>
             <span className="text-sm text-white font-medium">Pre-screenings active</span>
+          </div>
+        </div>
+      </section>
+
+      {/* SELECTIVE ADMISSIONS PROCESS */}
+      <section className="luxury-container max-w-4xl mb-24 relative z-10">
+        <div className="text-center mb-12">
+          <span className="text-[9px] uppercase tracking-[0.35em] text-rosegold font-bold block mb-1">
+            PRESTIGE PROTOCOL
+          </span>
+          <h3 className="text-2xl font-serif text-white uppercase tracking-wider">
+            Selective Admissions Board Process
+          </h3>
+          <div className="w-12 h-[1px] bg-rosegold/30 mx-auto mt-4" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-sans">
+          <div className="p-6 border border-rosegold/10 bg-editorial-grey/5 relative">
+            <span className="text-rosegold font-serif text-3xl block mb-4">01</span>
+            <span className="text-white font-medium uppercase tracking-wider block mb-2">Phase I: Somatic Evaluation</span>
+            <p className="text-pearl/60 leading-relaxed font-light">
+              Submit your Candidate Invitation Profile. Our review board conducts a preliminary review of your somatic baseline targets and style objectives.
+            </p>
+          </div>
+          <div className="p-6 border border-rosegold/10 bg-editorial-grey/5 relative">
+            <span className="text-rosegold font-serif text-3xl block mb-4">02</span>
+            <span className="text-white font-medium uppercase tracking-wider block mb-2">Phase II: Private Consultation</span>
+            <p className="text-pearl/60 leading-relaxed font-light">
+              Participate in an exclusive 1-on-1 pre-screening session to map joint verticality metrics, vocal resonance, and custom silhouette shapes.
+            </p>
+          </div>
+          <div className="p-6 border border-rosegold/10 bg-editorial-grey/5 relative">
+            <span className="text-rosegold font-serif text-3xl block mb-4">03</span>
+            <span className="text-white font-medium uppercase tracking-wider block mb-2">Phase III: Roster Selection</span>
+            <p className="text-pearl/60 leading-relaxed font-light">
+              Selected candidates are issued a formal invitation to join the elite Heels & Glam Circle (strictly capped at 12 members per cohort).
+            </p>
           </div>
         </div>
       </section>
@@ -210,7 +246,7 @@ export default function ApplyClient() {
             </li>
             <li className="flex items-start space-x-2">
               <X className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-              <span>Anyone expecting standard mass lecture sessions rather than intimate private atelier coaching.</span>
+              <span>Anyone expecting standard mass lecture sessions rather than intimate private atelier guiding.</span>
             </li>
             <li className="flex items-start space-x-2">
               <X className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
@@ -294,7 +330,7 @@ export default function ApplyClient() {
                 exit={{ opacity: 0 }}
               >
                 <div className="text-center mb-8 border-b border-rosegold/10 pb-4">
-                  <h3 className="text-2xl font-serif text-white uppercase tracking-wider">Candidate Invitation Profile</h3>
+                  <h3 className="text-2xl font-serif text-white uppercase tracking-wider">Request Your Invitation</h3>
                   <p className="text-xs text-pearl/50 font-sans -mt-2">Provide your transformation credentials to verify selection eligibility.</p>
                 </div>
                 
@@ -398,7 +434,7 @@ export default function ApplyClient() {
                 </div>
 
                 <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury mt-2" disabled={isSubmitting}>
-                  {isSubmitting ? 'Filing Profile...' : 'File Admissions Profile'}
+                  {isSubmitting ? 'Submitting Request...' : 'Submit Request for Invitation'}
                 </Button>
               </motion.form>
             ) : (
@@ -412,10 +448,9 @@ export default function ApplyClient() {
                 <div className="w-16 h-16 rounded-full border border-rosegold bg-burgundy/15 flex items-center justify-center mb-6">
                   <CheckCircle2 className="w-8 h-8 text-rosegold" />
                 </div>
-                
-                <h3 className="text-3xl font-serif text-white mb-2">Profile Filed</h3>
+                              <h3 className="text-3xl font-serif text-white mb-2">Request Submitted</h3>
                 <p className="text-xs text-pearl/60 font-sans max-w-sm leading-relaxed mb-8">
-                  Your biometrics targets and presence rating of {potentialScore}% have been registered at the Admissions Office.
+                  Your somatic potential index and presence parameters have been queued for the review board.
                 </p>
 
                 {/* WhatsApp call button */}
@@ -428,7 +463,7 @@ export default function ApplyClient() {
                     onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Admissions Success WhatsApp Callback' })}
                   >
                     <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
-                    <span>Secure Admissions Callback on WhatsApp</span>
+                    <span>Secure Priority Pre-screening on WhatsApp</span>
                   </a>
 
                   <Button 
@@ -437,7 +472,7 @@ export default function ApplyClient() {
                     className="w-full text-center"
                     onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Admissions Success Voice Screening' })}
                   >
-                    Initiate Direct Voice Screening
+                    Initiate Priority Voice Pre-screening
                   </Button>
                 </div>
 
@@ -456,7 +491,7 @@ export default function ApplyClient() {
                   }}
                   className="text-xs uppercase tracking-luxury text-rosegold hover:text-white transition-colors font-sans mt-8 cursor-pointer"
                 >
-                  File another admissions profile
+                  File another request
                 </button>
               </motion.div>
             )}

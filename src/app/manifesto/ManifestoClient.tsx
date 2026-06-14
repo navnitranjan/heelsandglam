@@ -56,7 +56,7 @@ export default function ManifestoClient() {
       num: "V",
       title: "Growth",
       subtitle: "The Refinement Protocol",
-      desc: "Transformation is not an accident; it is a discipline. Through deliberate practice of walk kinetics, vocal modulation, styling palettes, and social protocols, we shape our presence step-by-step.",
+      desc: "Transformation is not an accident; it is a discipline. Through deliberate practice of walk kinetics, vocal modulation, styling palettes, and social protocols, we shape our presence step-by-step as Members of the Heels & Glam Circle.",
       phrase: "Refinement is the ultimate form of self-mastery.",
       image: "/images/fashion-week-runway-jeans.jpg"
     },
@@ -139,15 +139,15 @@ export default function ManifestoClient() {
           <div className="w-12 h-[1px] bg-rosegold/20 mx-auto" />
         </div>
 
-        <div className="space-y-36">
+        <div className="space-y-56">
           {pillars.map((pillar, idx) => (
             <div 
               key={pillar.num}
-              className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
+              className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-20 items-center"
             >
-              {/* Image side */}
+              {/* Image side - Asymmetrical col-span-5 layout */}
               <motion.div 
-                className={`lg:col-span-6 relative aspect-[4/5] border border-rosegold/15 overflow-hidden group shadow-2xl ${
+                className={`lg:col-span-5 relative aspect-[4/5] border border-rosegold/15 overflow-hidden group shadow-2xl ${
                   idx % 2 === 1 ? 'lg:order-last' : ''
                 }`}
                 initial={{ opacity: 0, scale: 0.98, y: 30 }}
@@ -161,36 +161,36 @@ export default function ManifestoClient() {
                   alt={`${pillar.title} - ${pillar.subtitle}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover object-[50%_25%] transition-transform duration-1000 group-hover:scale-105"
                 />
                 <div className="absolute left-6 top-6 z-20 text-white/10 font-serif text-8xl md:text-9xl leading-none font-bold">
                   {pillar.num}
                 </div>
               </motion.div>
 
-              {/* Copy side */}
+              {/* Copy side - Asymmetrical col-span-7 layout */}
               <motion.div 
-                className="lg:col-span-6 space-y-6"
+                className="lg:col-span-7 space-y-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <span className="text-[10px] uppercase tracking-[0.25em] text-rosegold font-bold block">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-rosegold font-bold block">
                   Principle {pillar.num} • {pillar.subtitle}
                 </span>
                 
-                <h3 className="text-4xl md:text-6xl font-serif text-white uppercase leading-none">
+                <h3 className="text-5xl md:text-8xl font-serif text-white uppercase leading-none tracking-luxury">
                   {pillar.title}
                 </h3>
                 
-                <div className="w-16 h-[1px] bg-rosegold/30" />
+                <div className="w-24 h-[1px] bg-rosegold/30" />
                 
-                <p className="text-sm md:text-base text-pearl/75 leading-relaxed font-light font-sans">
+                <p className="text-base text-pearl/75 leading-relaxed font-light font-sans">
                   {pillar.desc}
                 </p>
 
-                <div className="p-4 border-l border-rosegold/30 bg-burgundy/5 text-xs text-champagne leading-relaxed italic uppercase tracking-wider font-sans">
+                <div className="p-6 border-l border-rosegold/30 bg-burgundy/5 text-xs text-champagne leading-relaxed italic uppercase tracking-wider font-sans">
                   &ldquo;{pillar.phrase}&rdquo;
                 </div>
               </motion.div>
@@ -260,7 +260,7 @@ export default function ManifestoClient() {
           <div className="w-16 h-[1px] bg-rosegold/30 mx-auto" />
           
           <p className="text-xs md:text-sm text-pearl/50 font-sans max-w-lg mx-auto leading-relaxed">
-            Admissions to Heels & Glam programs are restricted to batch cohorts of 12. We audit candidates for skeletal biomechanics and commitment. Direct pre-screenings apply.
+            Admissions to Heels & Glam transformation programs are restricted to exclusive cohorts of 12. We audit candidates for skeletal biomechanics and commitment. Direct pre-screenings apply.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">

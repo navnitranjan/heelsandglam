@@ -47,11 +47,11 @@ export default function RampWalkTrainingPage() {
     },
     {
       q: "Do you teach walking in different heel heights?",
-      a: "Yes. We train students to stabilize their weight in 3-inch, 4-inch, and 5-inch heels, focusing on foot strikes and knee straightening mechanics."
+      a: "Yes. We train Members of the Heels & Glam Circle to stabilize their weight in 3-inch, 4-inch, and 5-inch heels, focusing on foot strikes and knee straightening mechanics."
     },
     {
       q: "Can I take this class for posture correction only?",
-      a: "Yes. Many corporate professionals and creators enroll specifically to correct slouching, forward neck tilt, and to build spatial confidence."
+      a: "Yes. Many corporate professionals and creators begin their transformation specifically to correct slouching, forward neck tilt, and to build spatial confidence."
     }
   ];
 

@@ -47,11 +47,11 @@ export default function FashionGroomingPage() {
     },
     {
       q: "Is color theory analysis individualized?",
-      a: "Yes. Every student receives a custom skin undertone check to map their ideal wardrobe color palettes, ensuring choices align with their personal branding."
+      a: "Yes. Every Circle Member receives a custom skin undertone check to map their ideal wardrobe color palettes, ensuring choices align with their personal branding."
     },
     {
       q: "Do I get a portfolio photoshoot?",
-      a: "Our advanced cohorts include studio lookbook shoots where students practice camera angles, posture coordinates, and fabric carriage under expert direction."
+      a: "Our advanced cohorts include studio lookbook shoots where Members of the Circle practice camera angles, posture coordinates, and fabric carriage under expert direction."
     }
   ];
 

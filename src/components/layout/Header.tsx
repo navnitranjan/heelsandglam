@@ -71,7 +71,7 @@ export default function Header() {
               className="px-6 py-2.5 text-xs uppercase tracking-luxury border border-gold text-gold hover:bg-gold hover:text-abyss transition-all duration-350 font-sans"
               aria-label="Request invitation to apply for Heels and Glam programs"
             >
-              Request Invitation
+              Request Your Invitation
             </Link>
           </div>
 

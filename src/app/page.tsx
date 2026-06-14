@@ -384,7 +384,7 @@ const INSTAGRAM_WALL_ITEMS = [
   },
   {
     id: 5,
-    category: "Student Highlights",
+    category: "Circle Transformations",
     title: "Aparna Sharma - Milan Runway Stage",
     likes: "4.3k",
     comments: "198",
@@ -706,7 +706,7 @@ export default function Home() {
           <div className="flex items-center space-x-3 mb-4 md:mb-0">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
             <span className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">
-              Admissions Status: Autumn Batch September 2026. Only 3 Seats Remaining!
+              Admissions Status: Exclusive Autumn Cohort (Limited to 12 Members). Private Review Board In Session.
             </span>
           </div>
 
@@ -764,39 +764,59 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column: Large Typography Reveal */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-10">
-            <div className="space-y-4">
-              <span className="text-[10px] tracking-[0.4em] text-rosegold uppercase font-sans font-bold block">
-                [ ESTABLISHED PEDIGREE ]
+          {/* Right Column: Large Typography Reveal with Cinematic Pacing */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
+            <div className="space-y-6">
+              <span className="text-[10px] tracking-[0.5em] text-rosegold uppercase font-sans font-bold block">
+                [ ESTABLISHED BRAND CODES ]
               </span>
-              <h2 className="text-5xl md:text-8xl font-serif text-white uppercase tracking-luxury leading-[0.95] font-light">
-                THE ART OF <br />
-                <span className="text-gold font-serif italic font-medium">PRESENCE.</span>
+              <h2 className="text-5xl md:text-8xl font-serif text-white uppercase tracking-luxury leading-[0.9] font-light">
+                <span className="block overflow-hidden pb-2">
+                  <motion.span 
+                    className="block"
+                    initial={{ y: "100%" }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    THE ART OF
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden">
+                  <motion.span 
+                    className="block text-gold font-serif italic font-medium"
+                    initial={{ y: "100%" }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    PRESENCE.
+                  </motion.span>
+                </span>
               </h2>
             </div>
 
-            <div className="w-16 h-[1px] bg-gold/30" />
+            <div className="w-24 h-[1px] bg-gold/30" />
 
             <div className="space-y-8 font-sans text-sm md:text-base text-alabaster/70 leading-relaxed max-w-2xl">
-              <p className="border-l border-gold/30 pl-6 text-gold/90 font-serif italic text-lg leading-relaxed">
-                &ldquo;Presence is not something you are born with. It is an intentional configuration of your skeletal alignment, your center of gravity, and the pitch of your voice.&rdquo;
+              <p className="border-l border-gold/45 pl-6 text-gold/90 font-serif italic text-lg md:text-xl leading-relaxed">
+                &ldquo;Presence is not an accidental trait; it is a structural configuration of skeletal alignment, centered gravity, and diaphragmatic projection.&rdquo;
               </p>
-              <p className="text-alabaster/60">
-                Coached by Aakanksha Anand, Heels & Glam strips away positional sub-consciousness. 
-                Through precise musculoskeletal recalibration, diaphragmatic voice modulation, and custom body silhouette styling, we help you assert your signature digital and physical authority. 
-                Whether entering a corporate summit or navigating a national pageant catwalk, you will command your space unconditionally.
+              <p className="text-alabaster/60 font-light leading-loose">
+                Under the direct guidance of Aakanksha Anand, Heels & Glam strips away positional sub-consciousness. 
+                Through precise joint decompression, balancing calibration, and bespoke styling, we prepare members of the Heels & Glam Circle to claim spatial authority. 
+                Whether commanding a board meeting or walking high-fashion runway panels, you will project executive presence.
               </p>
             </div>
 
-            <div className="pt-6">
+            <div className="pt-4">
               <Link 
                 href="/apply" 
                 className="inline-flex items-center space-x-4 group text-xs uppercase tracking-luxury text-gold hover:text-white transition-all font-semibold"
               >
-                <span>Initiate Your Calibration</span>
-                <span className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:bg-gold group-hover:text-abyss transition-all">
-                  <ArrowRight className="w-3.5 h-3.5" />
+                <span>Request Your Private Invitation</span>
+                <span className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:bg-gold group-hover:text-abyss transition-all duration-300">
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
             </div>
@@ -823,7 +843,7 @@ export default function Home() {
               </p>
               <p>
                 At Heels & Glam, we help women develop these qualities through structured training, expert mentorship, and practical, real-world transformation. 
-                Our programs are designed not only for aspiring runway models but also for college students, corporate professionals, entrepreneurs, content creators, and ambitious women who wish to stand tall and project authority.
+                Our programs are designed not only for aspiring runway models but also for ambitious college members of our Circle, corporate professionals, entrepreneurs, content creators, and leading women who wish to stand tall and project authority.
               </p>
             </div>
           </div>
@@ -1532,27 +1552,27 @@ export default function Home() {
           </div>
 
           {/* Somatic Confidence Evolution Tracker (Phase 8) */}
-          <div className="w-full max-w-3xl mt-12 p-6 md:p-8 border border-gold/15 bg-editorial-grey/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-burgundy/10 rounded-full blur-[50px] pointer-events-none" />
+          <div className="w-full max-w-4xl mt-16 p-8 md:p-12 border border-gold/15 bg-editorial-grey/5 relative overflow-hidden rounded-sm shadow-2xl">
+            <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-burgundy/10 rounded-full blur-[70px] pointer-events-none" />
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-gold/10 gap-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 pb-6 border-b border-gold/10 gap-6">
               <div>
-                <span className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-bold block mb-1">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-rosegold font-sans font-bold block mb-2">
                   Interactive Evolution
                 </span>
-                <h4 className="text-xl font-serif text-white uppercase tracking-wider">
-                  Confidence Evolution Tracker
+                <h4 className="text-2xl font-serif text-white uppercase tracking-wider">
+                  Confidence Evolution metrics
                 </h4>
               </div>
-              <div className="flex space-x-1.5 overflow-x-auto pb-1 sm:pb-0">
+              <div className="flex space-x-2 overflow-x-auto pb-2 md:pb-0 scrollbar-thin scrollbar-thumb-gold/20">
                 {EVOLUTION_WEEKS.map((w, idx) => (
                   <button
                     key={w.week}
                     onClick={() => setActiveWeekIdx(idx)}
-                    className={`px-3 py-1.5 text-[9px] font-sans uppercase tracking-widest transition-all border shrink-0 ${
+                    className={`px-4 py-2 text-[10px] font-sans uppercase tracking-widest transition-all border duration-300 ${
                       activeWeekIdx === idx
-                        ? 'bg-gold text-abyss border-gold font-semibold'
-                        : 'bg-editorial-grey/15 text-alabaster/40 border-gold/10 hover:text-white'
+                        ? 'bg-gold text-abyss border-gold font-bold shadow-md'
+                        : 'bg-editorial-grey/15 text-alabaster/40 border-gold/10 hover:text-white hover:border-gold/30'
                     } cursor-pointer`}
                   >
                     {w.week}
@@ -1561,39 +1581,39 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Description & state info */}
-              <div className="md:col-span-5 space-y-4">
-                <span className="text-xs uppercase tracking-luxury text-gold font-sans font-semibold">
+              <div className="lg:col-span-5 space-y-6">
+                <span className="text-sm uppercase tracking-luxury text-gold font-sans font-semibold block border-l-2 border-gold pl-4">
                   {EVOLUTION_WEEKS[activeWeekIdx].label}
                 </span>
-                <p className="text-xs text-alabaster/60 font-sans leading-relaxed min-h-[75px]">
+                <p className="text-sm text-alabaster/60 font-sans leading-relaxed min-h-[90px] font-light">
                   {EVOLUTION_WEEKS[activeWeekIdx].description}
                 </p>
-                <div className={`p-4 border ${EVOLUTION_WEEKS[activeWeekIdx].accent} text-[9px] font-sans tracking-wide uppercase`}>
+                <div className={`p-4 border ${EVOLUTION_WEEKS[activeWeekIdx].accent} text-[10px] font-sans tracking-[0.2em] uppercase font-semibold text-center`}>
                   Status: {EVOLUTION_WEEKS[activeWeekIdx].label}
                 </div>
               </div>
 
               {/* Progress Gauges */}
-              <div className="md:col-span-7 space-y-4 font-sans text-xs">
+              <div className="lg:col-span-7 space-y-6 font-sans text-xs">
                 {[
                   { name: "Posture Symmetry Index", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.posture },
                   { name: "Vocal Tone Resonance", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.vocal },
                   { name: "Catwalk Gait Balance Kinetics", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.stride },
                   { name: "Visual Presence & Stature", val: EVOLUTION_WEEKS[activeWeekIdx].metrics.carriage }
                 ].map((m) => (
-                  <div key={m.name} className="space-y-1">
-                    <div className="flex justify-between text-[9px] uppercase text-alabaster/50 tracking-wider">
+                  <div key={m.name} className="space-y-2">
+                    <div className="flex justify-between text-[10px] uppercase text-alabaster/50 tracking-widest">
                       <span>{m.name}</span>
                       <span className="text-gold font-bold">{m.val}%</span>
                     </div>
-                    <div className="h-1 bg-white/5 overflow-hidden">
+                    <div className="h-1.5 bg-white/5 overflow-hidden rounded-full">
                       <motion.div 
                         className="h-full bg-gradient-to-r from-rosegold via-gold to-white"
                         initial={{ width: 0 }}
                         animate={{ width: `${m.val}%` }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
                       />
                     </div>
                   </div>
@@ -2009,7 +2029,7 @@ export default function Home() {
           
           {/* Instagram Media Filters */}
           <div className="flex flex-wrap justify-center gap-2 max-w-2xl">
-            {["All", "Reels", "Founder Insights", "Behind the Scenes", "Student Highlights"].map((tab) => (
+            {["All", "Reels", "Founder Insights", "Behind the Scenes", "Circle Transformations"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveInstaTab(tab)}
@@ -2133,7 +2153,7 @@ export default function Home() {
 
           <div className="space-y-4">
             {[
-              { q: "Who can join?", a: "Any woman seeking confidence, grooming, communication or personal presence development. We coach candidates ranging from college students to corporate leaders." },
+              { q: "Who can join?", a: "Any woman seeking confidence, grooming, communication or personal presence development. We coach candidates ranging from college members of the Circle to corporate leaders." },
               { q: "Do I need modelling experience?", a: "No. Beginners are welcome. We map your musculoskeletal posture, balance parameters, and heels gait basics from the ground up." },
               { q: "Is this only for aspiring models?", a: "No. Our curriculums benefit professionals, entrepreneurs, creators, and public speakers who wish to command boardrooms and social assemblies tall." },
               { q: "Are classes online or offline?", a: "Program formats vary by batch. We conduct physical runway bootcamps alongside online digital branding sessions." },

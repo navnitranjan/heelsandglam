@@ -118,7 +118,7 @@ export default function AcademyPage() {
               <span className="text-gold font-serif font-semibold text-lg">02. Gait Biomechanics</span>
               <h4 className="text-base text-white uppercase tracking-wider">Heel Strike Stability</h4>
               <p className="text-xs text-alabaster/60 leading-relaxed">
-                Learn to control your center of gravity when stepping in heels. We train students to walk with straight knees, roll weight, and pace walks systematically.
+                Learn to control your center of gravity when stepping in heels. We train Members of the Heels & Glam Circle to walk with straight knees, roll weight, and pace walks systematically.
               </p>
             </div>
             <div className="p-8 border border-gold/15 bg-abyss flex flex-col space-y-4">
@@ -192,12 +192,12 @@ export default function AcademyPage() {
               </tr>
               <tr className="border-b border-gold/10">
                 <td className="p-4 md:p-6 font-semibold text-white">Individual Focus</td>
-                <td className="p-4 md:p-6 bg-gold/5 border-x border-gold/15 text-pearl/90">Maximum 12-candidate cohorts with skeletal checks</td>
+                <td className="p-4 md:p-6 bg-gold/5 border-x border-gold/15 text-pearl/90">Maximum 12-member cohorts with skeletal checks</td>
                 <td className="p-4 md:p-6 text-pearl/50">Mass classes with no individual body geometry checks</td>
               </tr>
               <tr className="border-b border-gold/10">
                 <td className="p-4 md:p-6 font-semibold text-white">Mentorship Access</td>
-                <td className="p-4 md:p-6 bg-gold/5 border-x border-gold/15 text-pearl/90">Direct coaching, lookbook feedback from Aakanksha Anand</td>
+                <td className="p-4 md:p-6 bg-gold/5 border-x border-gold/15 text-pearl/90">Direct mentorship, lookbook feedback from Aakanksha Anand</td>
                 <td className="p-4 md:p-6 text-pearl/50">Outsourced tutors with no personal founder contact</td>
               </tr>
               <tr>

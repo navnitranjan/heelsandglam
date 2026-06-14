@@ -194,7 +194,7 @@ const CINEMATIC_STORIES = [
   {
     name: "Aparna Sharma",
     role: "Pageant Finalist & Alumna",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800",
+    image: "/images/founder-red-half-circle.jpg",
     before: "Skeletal slumping (tech-neck) and dropped chin.",
     challenge: "Muscular fatigue after 15 minutes of wearing 4-inch stilettos; bent knees walk gait pattern.",
     journey: "Custom skeletal wall alignment checkups, pelvic stabilizer corrections, and straight-knee step kinetics coached by Aakanksha.",
@@ -204,7 +204,7 @@ const CINEMATIC_STORIES = [
   {
     name: "Dr. Nikita Lal",
     role: "VP, Corporate Operations",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
+    image: "/images/founder-red-leaning.jpg",
     before: "Rapid, nervous speaking speed and shoulders collapsed forward.",
     challenge: "Shaky pitch resonance under high presentation pressure; filler word traps (ums, likes).",
     journey: "Diaphragmatic pitch checkups, modular pacing exercises, and high-society social dining protocols.",
@@ -214,7 +214,7 @@ const CINEMATIC_STORIES = [
   {
     name: "Rhea Sen",
     role: "Founder, Creators Atelier",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
+    image: "/images/founder-red-wind.jpg",
     before: "Camera lens anxiety, flat posing profiles.",
     challenge: "Fragmented style identity; nervous fidgeting in front of studio cameras.",
     journey: "Personal skin undertone color mapping, body silhouette geometry, and media turn checks.",
@@ -295,7 +295,7 @@ const FILM_SCENES = [
     title: "Transformation",
     timecode: "02:45:18",
     subtitle: "The styling mapping. Building capsule wardrobes, matching silhouette structures to body geometry, and conducting the lookbook campaign photoshoot.",
-    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800",
+    image: "/images/founder-red-full-circle.jpg",
     action: "Wardrobe styling & photo testing."
   },
   {
@@ -388,7 +388,7 @@ const INSTAGRAM_WALL_ITEMS = [
     title: "Aparna Sharma - Milan Runway Stage",
     likes: "4.3k",
     comments: "198",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800",
+    image: "/images/founder-turquoise-oval.png",
     meta: "Transformation Stories"
   },
   {
@@ -649,6 +649,77 @@ export default function Home() {
         </div>
       </div>
 
+      {/* PHASE 1: THE ART OF PRESENCE CINEMATIC STORYTELLING */}
+      <section className="relative min-h-screen bg-black flex flex-col justify-center items-center py-32 border-b border-gold/10 overflow-hidden">
+        {/* Glow Effects */}
+        <div className="absolute top-10 left-10 w-96 h-96 bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-burgundy/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+          {/* Left Column: Parallax Image Reveal */}
+          <div className="lg:col-span-5 relative w-full aspect-[3/4.5] overflow-hidden border border-gold/20 shadow-2xl group">
+            <div className="absolute inset-0 bg-gold/5 z-10 transition-colors group-hover:bg-transparent duration-500" />
+            <div className="absolute inset-3 border border-gold/15 z-20 pointer-events-none" />
+            <motion.div 
+              className="relative w-full h-full"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Image 
+                src="/images/founder-red-wind.jpg"
+                alt="Aakanksha Anand - High Couture Art of Presence Portrait"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0"
+              />
+            </motion.div>
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-black/40 to-transparent z-25" />
+            <div className="absolute bottom-6 left-6 z-30">
+              <span className="text-[9px] uppercase tracking-[0.3em] text-gold font-bold block mb-1">FOUNDER VISION</span>
+              <span className="text-xl font-serif text-white uppercase tracking-widest">THE DIRECT GAZE</span>
+            </div>
+          </div>
+
+          {/* Right Column: Large Typography Reveal */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-10">
+            <div className="space-y-4">
+              <span className="text-[10px] tracking-[0.4em] text-rosegold uppercase font-sans font-bold block">
+                [ ESTABLISHED PEDIGREE ]
+              </span>
+              <h2 className="text-5xl md:text-8xl font-serif text-white uppercase tracking-luxury leading-[0.95] font-light">
+                THE ART OF <br />
+                <span className="text-gold font-serif italic font-medium">PRESENCE.</span>
+              </h2>
+            </div>
+
+            <div className="w-16 h-[1px] bg-gold/30" />
+
+            <div className="space-y-8 font-sans text-sm md:text-base text-alabaster/70 leading-relaxed max-w-2xl">
+              <p className="border-l border-gold/30 pl-6 text-gold/90 font-serif italic text-lg leading-relaxed">
+                &ldquo;Presence is not something you are born with. It is an intentional configuration of your skeletal alignment, your center of gravity, and the pitch of your voice.&rdquo;
+              </p>
+              <p className="text-alabaster/60">
+                Coached by Aakanksha Anand, Heels & Glam strips away positional sub-consciousness. 
+                Through precise musculoskeletal recalibration, diaphragmatic voice modulation, and custom body silhouette styling, we help you assert your signature digital and physical authority. 
+                Whether entering a corporate summit or navigating a national pageant catwalk, you will command your space unconditionally.
+              </p>
+            </div>
+
+            <div className="pt-6">
+              <Link 
+                href="/apply" 
+                className="inline-flex items-center space-x-4 group text-xs uppercase tracking-luxury text-gold hover:text-white transition-all font-semibold"
+              >
+                <span>Initiate Your Calibration</span>
+                <span className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:bg-gold group-hover:text-abyss transition-all">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CHAPTER 1 (PHASE 2): EDITORIAL MAGAZINE PHILOSOPHY */}
       <section id="about" className="relative py-28 md:py-40 border-t border-gold/10">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -688,6 +759,67 @@ export default function Home() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* PHASE 2: CONFIDENCE MANIFESTO EXPERIENCE */}
+      <section className="relative min-h-screen bg-abyss flex items-center justify-center py-32 border-b border-gold/10 overflow-hidden">
+        {/* Full-screen background elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.02),transparent)] z-0 pointer-events-none" />
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-burgundy/3 rounded-full blur-[150px] pointer-events-none" />
+
+        <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10 w-full">
+          {/* Left Column: Large Editorial Manifesto Text */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-12 order-2 lg:order-1">
+            <span className="text-[10px] tracking-[0.4em] text-gold uppercase font-sans font-bold block">
+              THE MANIFESTO
+            </span>
+
+            <div className="space-y-6">
+              <h3 className="text-3xl md:text-6xl font-serif text-white uppercase tracking-wide leading-tight">
+                Confidence is not a trait you wait for. <br />
+                <span className="text-rosegold italic font-serif font-light">It is a posture you assume.</span>
+              </h3>
+              <div className="w-12 h-[1px] bg-gold/30" />
+            </div>
+
+            {/* Overlapping text design (magazine-style layout) */}
+            <div className="relative font-sans text-xs md:text-sm text-alabaster/60 leading-relaxed max-w-xl space-y-6">
+              <span className="absolute -top-12 -left-8 text-9xl font-serif text-gold/5 font-bold pointer-events-none select-none">
+                GLAM
+              </span>
+              <p>
+                We do not fit in. We own the room. Heels & Glam was founded on a simple truth: that every woman has a signature, uncompromised presence waiting to be unlocked. 
+              </p>
+              <p>
+                True elegance is silent authority. When you stand tall, align your spine wall, stabilise your pelvic balance, and speak with vocal resonance, the entire room shifts. It is the physics of respect, and it can be trained.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Button href="/apply" variant="solid">Join the Guild</Button>
+              <Button href="/manifesto" variant="outline">Read Full Manifesto</Button>
+            </div>
+          </div>
+
+          {/* Right Column: Magazine Portrait with Circular frame */}
+          <div className="lg:col-span-5 relative w-full aspect-[3/4.5] flex justify-center items-center order-1 lg:order-2">
+            <div className="absolute inset-0 border border-gold/15 -translate-x-3 translate-y-3 pointer-events-none" />
+            <div className="relative w-full h-full overflow-hidden border border-gold/20 shadow-2xl bg-black">
+              {/* Circular framing design overlay */}
+              <div className="absolute inset-8 rounded-full border border-white/10 z-10 flex items-center justify-center pointer-events-none">
+                <div className="absolute inset-4 rounded-full border border-gold/10" />
+              </div>
+              <Image 
+                src="/images/founder-red-half-circle.jpg"
+                alt="Aakanksha Anand - Confidence Manifesto Portrait"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover opacity-85 hover:opacity-100 transition-opacity duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-abyss/90 via-transparent to-transparent z-15" />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -885,72 +1017,198 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PHASE 8: FOUNDER STORYTELLING EXPERIENCE */}
-      <section id="founder" className="relative py-28 md:py-40 bg-editorial-grey/10 border-y border-gold/10">
+      {/* PHASE 3: CONFIDENCE EVOLUTION METER */}
+      <section className="relative py-28 md:py-40 border-b border-gold/10 bg-editorial-grey/5">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/3 rounded-full blur-[130px] pointer-events-none" />
+        
+        <div className="luxury-container max-w-6xl relative z-10">
+          <div className="text-center mb-20 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold block">
+              PHASE 03 // SOMATIC METER
+            </span>
+            <h2 className="text-4xl md:text-7xl font-serif text-white uppercase tracking-wider">
+              Confidence Evolution Meter
+            </h2>
+            <div className="w-12 h-[1px] bg-gold/30 mx-auto" />
+            <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+              Track the kinetic evolution of personal authority. Explore the 5 critical stages of physical presence calibration.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Left side: Full body portrait with hotspots */}
+            <div className="lg:col-span-5 relative w-full aspect-[3/4.5] flex justify-center items-center">
+              <div className="absolute inset-4 border border-gold/20 -translate-x-3 translate-y-3 pointer-events-none z-10" />
+              <div className="relative w-full h-full overflow-hidden border border-gold/15 shadow-2xl bg-black">
+                <Image 
+                  src="/images/founder-red-full-circle.jpg"
+                  alt="Aakanksha Anand - Poise and Stature Calibration"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover opacity-85"
+                />
+                
+                {/* Hotspot Markers */}
+                {[
+                  { id: 0, top: "25%", left: "48%", name: "Awareness" },
+                  { id: 1, top: "42%", left: "52%", name: "Confidence" },
+                  { id: 2, top: "55%", left: "45%", name: "Presence" },
+                  { id: 3, top: "72%", left: "54%", name: "Elegance" },
+                  { id: 4, top: "88%", left: "48%", name: "Impact" }
+                ].map((spot) => (
+                  <button
+                    key={spot.id}
+                    onClick={() => setActiveWeekIdx(spot.id)}
+                    className="absolute w-8 h-8 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center cursor-pointer group z-20 focus:outline-none"
+                    style={{ top: spot.top, left: spot.left }}
+                    aria-label={`View stage ${spot.name}`}
+                  >
+                    <span className="absolute inset-0 rounded-full bg-gold/20 animate-ping group-hover:bg-gold/40" />
+                    <span className={`w-3.5 h-3.5 rounded-full border border-gold transition-all duration-300 ${
+                      activeWeekIdx === spot.id ? 'bg-gold scale-120' : 'bg-abyss/80 group-hover:bg-gold'
+                    }`} />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Right side: Interactive Evolution Stats */}
+            <div className="lg:col-span-7 flex flex-col justify-center space-y-8 font-sans">
+              <div className="flex space-x-1.5 overflow-x-auto pb-4 border-b border-gold/10">
+                {[
+                  { name: "Awareness", label: "01. Self-Diagnosis" },
+                  { name: "Confidence", label: "02. Spine Reset" },
+                  { name: "Presence", label: "03. Vocal Gravitas" },
+                  { name: "Elegance", label: "04. Catwalk Poise" },
+                  { name: "Impact", label: "05. Roster Launch" }
+                ].map((w, idx) => (
+                  <button
+                    key={w.name}
+                    onClick={() => setActiveWeekIdx(idx)}
+                    className={`px-4 py-2.5 text-[9px] uppercase tracking-widest transition-all border shrink-0 ${
+                      activeWeekIdx === idx
+                        ? 'bg-gold text-abyss border-gold font-bold'
+                        : 'bg-editorial-grey/15 text-alabaster/40 border-gold/10 hover:text-white'
+                    } cursor-pointer`}
+                  >
+                    {w.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Dynamic Stats Panel */}
+              <div className="space-y-6">
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-rosegold font-bold block mb-1">
+                    CURRENT STATE CALIBRATION
+                  </span>
+                  <h3 className="text-3xl font-serif text-white uppercase tracking-wider">
+                    {["Awareness Check", "Confidence Decompression", "Presence Spotlight", "Elegance Kinetics", "Impact Authority"][activeWeekIdx]}
+                  </h3>
+                </div>
+
+                <p className="text-xs md:text-sm text-pearl/70 leading-relaxed min-h-[75px] max-w-xl">
+                  {[
+                    "Somatic diagnostic baseline. Video assessments map pelvic deviations, tech-neck curvatures, and center of gravity displacements.",
+                    "Spine verticality reset. Decompressing musculoskeletal tension and releasing shoulder plates forward slouching.",
+                    "Vocal resonance activation. Speak from the diaphragm, eliminate verbal fillers, and control speech rates under pressure.",
+                    "Catwalk stride mechanics. Calibration of straight-knee heel walking gait and delayed eye gaze turns.",
+                    "Absolute presence graduation. Catwalk roster presentation and elite digital personal branding launch."
+                  ][activeWeekIdx]}
+                </p>
+
+                {/* Progress Gauges */}
+                <div className="space-y-4 max-w-xl">
+                  {[
+                    { label: "Posture Plumb Line Alignment", val: [40, 65, 82, 92, 98][activeWeekIdx] },
+                    { label: "Vocal Modulation & Diaphragm Control", val: [30, 50, 75, 85, 95][activeWeekIdx] },
+                    { label: "Catwalk Kinetics & Heel Balance", val: [20, 45, 68, 88, 96][activeWeekIdx] },
+                    { label: "Executive Presence Index", val: [35, 58, 80, 90, 99][activeWeekIdx] }
+                  ].map((gauge) => (
+                    <div key={gauge.label} className="space-y-1">
+                      <div className="flex justify-between text-[9px] uppercase text-pearl/50 tracking-wider">
+                        <span>{gauge.label}</span>
+                        <span className="text-gold font-bold">{gauge.val}%</span>
+                      </div>
+                      <div className="h-1 bg-white/5 overflow-hidden">
+                        <motion.div 
+                          className="h-full bg-gradient-to-r from-rosegold via-gold to-white"
+                          initial={{ width: 0 }}
+                          animate={{ width: `${gauge.val}%` }}
+                          transition={{ duration: 0.6, ease: "easeOut" }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PHASE 4: FOUNDER LETTER SECTION */}
+      <section id="founder" className="relative py-28 md:py-40 bg-editorial-grey/10 border-y border-gold/10 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
+
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          {/* Portrait Image */}
-          <div className="lg:col-span-5 relative aspect-[3/4] overflow-hidden border border-gold/20 shadow-2xl">
-            <Image 
-              src="/images/founder-portrait-red-half.jpg"
-              alt="Aakanksha Anand - Heels & Glam Founder posing in red dress"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-abyss/80 via-transparent to-transparent opacity-85" />
-            <div className="absolute bottom-6 left-6 right-6 z-20">
-              <span className="text-[9px] uppercase tracking-widest text-gold font-sans font-bold block mb-1">Founder & Head Coach</span>
-              <h3 className="text-3xl font-serif text-white">Aakanksha Anand</h3>
+          {/* Left Column: Portrait with elegant oval frame */}
+          <div className="lg:col-span-5 flex justify-center items-center relative">
+            <div className="absolute inset-4 border border-gold/15 -translate-x-4 translate-y-4 pointer-events-none" />
+            <div className="relative w-full aspect-[3/4.5] overflow-hidden border border-gold/20 shadow-2xl">
+              <Image 
+                src="/images/founder-turquoise-oval.png"
+                alt="Aakanksha Anand - Founder & Head Coach Portrait"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover transition-transform duration-700 hover:scale-103"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-abyss/80 to-transparent" />
             </div>
           </div>
 
-          {/* Chapters Storytelling */}
+          {/* Right Column: Editorial Letter */}
           <div className="lg:col-span-7 flex flex-col space-y-8">
-            <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium">
-              Vogue Profile • Chapters
+            <span className="text-[10px] uppercase tracking-[0.25em] text-gold font-sans font-bold block">
+              AN INVITATION FROM THE FOUNDER
             </span>
             
-            <div className="flex space-x-2 overflow-x-auto py-1 border-b border-gold/10 pb-4">
-              {FOUNDER_CHAPTERS.map((chap) => (
-                <button
-                  key={chap.id}
-                  onClick={() => setActiveChapter(chap.id)}
-                  className={`px-4 py-2 text-[10px] uppercase tracking-luxury font-sans font-semibold transition-all shrink-0 border border-transparent ${
-                    activeChapter === chap.id 
-                      ? 'text-gold border-gold/30 bg-editorial-grey/25' 
-                      : 'text-alabaster/40 hover:text-white'
-                  }`}
-                >
-                  {chap.title.split(':')[0]}
-                </button>
-              ))}
+            <h3 className="text-4xl md:text-6xl font-serif text-white leading-tight">
+              Elegance is Silent Authority.
+            </h3>
+            
+            <div className="w-12 h-[1px] bg-gold/40" />
+
+            <div className="space-y-6 text-sm text-alabaster/70 font-sans leading-relaxed">
+              <p className="first-letter:text-5xl first-letter:font-serif first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:line-height-1">
+                Dear Aspiring Leader,
+              </p>
+              <p>
+                Growing up, I realized that posture is not just an aesthetic parameter—it is where confidence starts. Watching women lose their presence due to musculoskeletal sub-consciousness drove me to study body mechanics.
+              </p>
+              <p>
+                Heels & Glam is not a standard modelling school. It is an elite transformation guild where corporate leaders, creators, and pageant contenders acquire the physical kinetics of authority.
+              </p>
+              <p>
+                When a woman stands tall, opens her chest, and modulates her voice, the room shifts. I invite you to join us on this journey to decompress your carriage and claim your space unconditionally.
+              </p>
             </div>
 
-            <AnimatePresence mode="wait">
-              {FOUNDER_CHAPTERS.filter(c => c.id === activeChapter).map((chap) => (
-                <motion.div
-                  key={chap.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-4 font-sans text-xs md:text-sm text-alabaster/70 leading-relaxed min-h-[160px] animate-fade-in"
-                >
-                  <h3 className="text-xl md:text-2xl font-serif text-white font-medium">{chap.title}</h3>
-                  <div className="w-8 h-[1px] bg-gold/30 mt-2 mb-4" />
-                  <p>{chap.content}</p>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-
-            <blockquote className="text-lg font-serif italic text-champagne/90 pl-6 border-l border-gold/25 mt-6">
-              &quot;Confidence changes the way the world sees you. More importantly, it changes the way you see yourself.&quot;
-            </blockquote>
+            {/* Signature Block */}
+            <div className="pt-4 border-t border-gold/15">
+              <span className="font-serif italic text-gold text-2xl tracking-widest block mb-1">
+                Aakanksha Anand
+              </span>
+              <span className="text-[9px] uppercase tracking-widest text-pearl/40 font-sans font-semibold">
+                Founder & Head Coach, Heels & Glam
+              </span>
+            </div>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <Button href="/academy" variant="solid">Read Complete Pedigree</Button>
-              <Button href="https://wa.me/919880012345" variant="outline">WhatsApp Dialogue Desk</Button>
+              <Button href="/academy" variant="solid">Explore the Academy</Button>
+              <Button href="https://wa.me/919880012345" variant="outline">Consult via WhatsApp</Button>
             </div>
           </div>
 
@@ -1434,23 +1692,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PHASE 5: CINEMATIC TESTIMONIALS (STUDENT TRANSFORMATIONS) */}
+      {/* PHASE 5: MAGAZINE TRANSFORMATION STORIES */}
       <section id="testimonials" className="relative py-28 md:py-40 bg-abyss border-b border-gold/10 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="luxury-container max-w-5xl relative z-20">
-          <div className="text-center mb-16">
-            <span className="text-xs uppercase tracking-luxury text-gold font-sans font-medium mb-3">
-              Transformation Stories
+        <div className="luxury-container max-w-6xl relative z-20">
+          <div className="text-center mb-20 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold block">
+              PHASE 05 // THE TRANSFORMATION REGISTRY
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white">
-              Cinematic Testimonials
+            <h2 className="text-4xl md:text-7xl font-serif text-white uppercase tracking-wider">
+              Magazine Stories
             </h2>
-            <div className="w-12 h-[1px] bg-gold/40 mt-4 mx-auto" />
+            <div className="w-12 h-[1px] bg-gold/30 mx-auto" />
+            <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
+              Witness the kinetic shift from skeletal self-consciousness to absolute spatial presence.
+            </p>
           </div>
 
           {/* Before-During-After Storyboards */}
-          <div className="min-h-[460px] w-full flex items-center justify-center">
+          <div className="min-h-[500px] w-full flex items-center justify-center">
             <AnimatePresence mode="wait">
               {CINEMATIC_STORIES.filter((_, idx) => idx === testimonialIdx).map((story) => (
                 <motion.div
@@ -1459,73 +1720,107 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.6 }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full"
                 >
-                  {/* Photo panel */}
-                  <div className="lg:col-span-5 relative aspect-[3/4] border border-gold/15 overflow-hidden shadow-2xl">
+                  {/* Photo panel: Elegant vertical block with a gold frame border */}
+                  <div className="lg:col-span-5 relative w-full aspect-[3/4.2] overflow-hidden border border-gold/20 shadow-2xl bg-black">
+                    <div className="absolute inset-3 border border-gold/10 pointer-events-none z-10" />
                     <Image 
                       src={story.image}
                       alt={story.name}
                       fill
-                      className="object-cover grayscale"
+                      className="object-cover transition-transform duration-700 hover:scale-103"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <span className="text-[10px] text-gold uppercase tracking-widest font-sans font-semibold block">{story.role}</span>
-                      <h4 className="text-2xl font-serif text-white">{story.name}</h4>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-15" />
+                    <div className="absolute bottom-6 left-6 right-6 z-20">
+                      <span className="text-[9px] text-gold uppercase tracking-[0.25em] font-sans font-bold block mb-1">
+                        {story.role}
+                      </span>
+                      <h4 className="text-3xl font-serif text-white font-medium uppercase tracking-wider">
+                        {story.name}
+                      </h4>
                     </div>
                   </div>
 
-                  {/* 5-Stage Editorial Stories Details */}
-                  <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-xs">
-                    <div className="p-4 border border-red-500/10 bg-red-950/5 rounded-xs flex flex-col space-y-1">
-                      <span className="text-[8px] uppercase tracking-widest text-red-400 font-bold">01. Before</span>
-                      <p className="text-pearl/60 italic leading-relaxed">&ldquo;{story.before}&rdquo;</p>
-                    </div>
-
-                    <div className="p-4 border border-rosegold/15 bg-editorial-grey/5 rounded-xs flex flex-col space-y-1">
-                      <span className="text-[8px] uppercase tracking-widest text-rosegold font-bold">02. The Challenge</span>
-                      <p className="text-pearl/70 leading-relaxed">&ldquo;{story.challenge}&rdquo;</p>
-                    </div>
-
-                    <div className="p-4 border border-gold/10 bg-editorial-grey/5 rounded-xs flex flex-col space-y-1">
-                      <span className="text-[8px] uppercase tracking-widest text-gold font-bold">03. The Journey</span>
-                      <p className="text-pearl/75 leading-relaxed">&ldquo;{story.journey}&rdquo;</p>
-                    </div>
-
-                    <div className="p-4 border border-gold/15 bg-editorial-grey/5 rounded-xs flex flex-col space-y-1">
-                      <span className="text-[8px] uppercase tracking-widest text-gold font-bold">04. The Transformation</span>
-                      <p className="text-pearl/85 leading-relaxed">&ldquo;{story.transformation}&rdquo;</p>
-                    </div>
-
-                    <div className="sm:col-span-2 p-5 border border-gold/25 bg-gold/5 rounded-xs flex flex-col space-y-1.5">
-                      <span className="text-[9px] uppercase tracking-widest text-gold font-bold flex items-center space-x-1">
-                        <span>05. The Result</span>
-                        <Sparkles className="w-3 h-3 animate-pulse text-gold" />
+                  {/* Magazine Columns Details */}
+                  <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 font-sans text-xs">
+                    
+                    {/* Before Column */}
+                    <div className="p-6 border border-red-500/10 bg-red-950/5 relative">
+                      <span className="text-[8px] uppercase tracking-widest text-red-400 font-bold block mb-2">
+                        01 / SKELETAL BASELINE (BEFORE)
                       </span>
-                      <p className="text-white text-xs leading-relaxed font-medium">&ldquo;{story.result}&rdquo;</p>
+                      <p className="text-pearl/60 italic leading-relaxed">
+                        &ldquo;{story.before}&rdquo;
+                      </p>
                     </div>
+
+                    {/* Challenge Column */}
+                    <div className="p-6 border border-rosegold/15 bg-editorial-grey/5 relative">
+                      <span className="text-[8px] uppercase tracking-widest text-rosegold font-bold block mb-2">
+                        02 / STRUCTURAL OBSTACLE
+                      </span>
+                      <p className="text-pearl/70 leading-relaxed">
+                        &ldquo;{story.challenge}&rdquo;
+                      </p>
+                    </div>
+
+                    {/* Journey Column */}
+                    <div className="p-6 border border-gold/10 bg-editorial-grey/5 relative">
+                      <span className="text-[8px] uppercase tracking-widest text-gold font-bold block mb-2">
+                        03 / METHODOLOGY JOURNEY
+                      </span>
+                      <p className="text-pearl/75 leading-relaxed">
+                        &ldquo;{story.journey}&rdquo;
+                      </p>
+                    </div>
+
+                    {/* Transformation Column */}
+                    <div className="p-6 border border-gold/15 bg-editorial-grey/5 relative">
+                      <span className="text-[8px] uppercase tracking-widest text-gold font-bold block mb-2">
+                        04 / KINETIC RESET
+                      </span>
+                      <p className="text-pearl/85 leading-relaxed">
+                        &ldquo;{story.transformation}&rdquo;
+                      </p>
+                    </div>
+
+                    {/* Result Column (Full Width) */}
+                    <div className="md:col-span-2 p-6 border border-gold/25 bg-gold/5 relative overflow-hidden flex flex-col justify-center">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gold/3 rounded-full blur-xl pointer-events-none" />
+                      <span className="text-[9px] uppercase tracking-widest text-gold font-bold flex items-center space-x-2 mb-3">
+                        <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
+                        <span>05 / GRADUATION OUTCOME</span>
+                      </span>
+                      <p className="text-white text-sm leading-relaxed font-serif italic font-medium">
+                        &ldquo;{story.result}&rdquo;
+                      </p>
+                    </div>
+
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
           </div>
 
-          {/* Testimonial Nav */}
-          <div className="flex justify-center space-x-4 mt-10">
+          {/* Testimonial Navigation Controls */}
+          <div className="flex justify-center items-center space-x-6 mt-12">
             <button 
               onClick={() => setTestimonialIdx((prev) => (prev - 1 + CINEMATIC_STORIES.length) % CINEMATIC_STORIES.length)}
-              className="p-3 border border-gold/20 text-gold hover:bg-gold hover:text-abyss transition-colors cursor-pointer"
-              aria-label="Previous Cinematic Story"
+              className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center text-gold hover:bg-gold hover:text-abyss transition-all cursor-pointer"
+              aria-label="Previous Magazine Story"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
+            <span className="text-[10px] uppercase tracking-widest text-gold font-sans font-bold">
+              PAGE 0{testimonialIdx + 1} OF 0{CINEMATIC_STORIES.length}
+            </span>
             <button 
               onClick={() => setTestimonialIdx((prev) => (prev + 1) % CINEMATIC_STORIES.length)}
-              className="p-3 border border-gold/20 text-gold hover:bg-gold hover:text-abyss transition-colors cursor-pointer"
-              aria-label="Next Cinematic Story"
+              className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center text-gold hover:bg-gold hover:text-abyss transition-all cursor-pointer"
+              aria-label="Next Magazine Story"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
 

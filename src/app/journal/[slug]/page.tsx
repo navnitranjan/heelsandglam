@@ -294,7 +294,7 @@ export default async function ArticlePage({ params }: Props) {
           <span className="text-[10px] uppercase text-gold font-sans font-semibold">Written by Aakanksha Anand</span>
           <div className="flex flex-wrap gap-4">
             <a 
-              href={`https://wa.me/919880012345?text=${waInquiry}`}
+              href={`https://wa.me/919742232322?text=${waInquiry}`}
               target="_blank"
               rel="noopener noreferrer"
               className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"

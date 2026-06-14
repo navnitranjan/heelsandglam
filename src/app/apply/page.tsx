@@ -35,6 +35,7 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function ApplyPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Form local state
   const [formData, setFormData] = useState({
@@ -85,12 +86,34 @@ export default function ApplyPage() {
     return "DEVELOPING POISE BASELINE. Recommended cohort: Personal Grooming Mastery. Somatic framework focus: tech-neck posture realignments and heels walk comfort drills.";
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    trackEvent({ action: 'form_submit_admissions', category: 'Lead Generation', label: 'Admissions Profile Form' });
-    if (calculatorStarted) {
-      trackEvent({ action: 'assessment_completion', category: 'Engagement', label: 'Admissions Presence Calculator' });
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'admissions',
+          data: {
+            ...formData,
+            score: potentialScore
+          }
+        })
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        trackEvent({ action: 'form_submit_admissions', category: 'Lead Generation', label: 'Admissions Profile Form' });
+        if (calculatorStarted) {
+          trackEvent({ action: 'assessment_completion', category: 'Engagement', label: 'Admissions Presence Calculator' });
+        }
+        // Open WhatsApp pre-filled window
+        window.open(`https://wa.me/919742232322?text=${waMessage}`, '_blank');
+      }
+    } catch (err) {
+      console.error('[Admissions Submit Error]', err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -374,8 +397,8 @@ export default function ApplyPage() {
                   />
                 </div>
 
-                <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury mt-2">
-                  File Admissions Profile
+                <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury mt-2" disabled={isSubmitting}>
+                  {isSubmitting ? 'Filing Profile...' : 'File Admissions Profile'}
                 </Button>
               </motion.form>
             ) : (
@@ -398,7 +421,7 @@ export default function ApplyPage() {
                 {/* WhatsApp call button */}
                 <div className="flex flex-col space-y-3 w-full">
                   <a 
-                    href={`https://wa.me/919880012345?text=${waMessage}`}
+                    href={`https://wa.me/919742232322?text=${waMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-4 bg-green-600 text-white hover:bg-green-700 text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg"
@@ -409,7 +432,7 @@ export default function ApplyPage() {
                   </a>
 
                   <Button 
-                    href="https://wa.me/919880012345" 
+                    href="https://wa.me/919742232322" 
                     variant="outline" 
                     className="w-full text-center"
                     onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Admissions Success Voice Screening' })}

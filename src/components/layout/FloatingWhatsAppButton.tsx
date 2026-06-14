@@ -6,7 +6,7 @@ import { trackEvent } from '@/lib/gtag';
 export default function FloatingWhatsAppButton() {
   return (
     <a 
-      href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20am%20visiting%20the%20Heels%20%26%20Glam%20website%20and%20would%20like%20to%20consult%20about%20your%20grooming%20%26%20confidence%20programs." 
+      href="https://wa.me/919742232322?text=Hi%20Aakanksha!%20I%20am%20visiting%20the%20Heels%20%26%20Glam%20website%20and%20would%20like%20to%20consult%20about%20your%20grooming%20%26%20confidence%20programs." 
       target="_blank" 
       rel="noopener noreferrer" 
       className="fixed bottom-6 right-6 z-40 p-4 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110 border border-white/10"

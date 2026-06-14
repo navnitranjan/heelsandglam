@@ -113,7 +113,7 @@ export default function PressPage() {
                 <h3 className="text-base font-serif text-white uppercase tracking-wide">{art.title}</h3>
                 <p className="text-xs text-pearl/60 leading-relaxed font-light">{art.excerpt}</p>
                 <a 
-                  href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20want%20to%20request%20access%20to%20your%20press%20releases."
+                  href="https://wa.me/919742232322?text=Hi%20Aakanksha!%20I%20want%20to%20request%20access%20to%20your%20press%20releases."
                   className="text-[9px] uppercase tracking-luxury text-rosegold hover:text-white transition-colors self-start flex items-center space-x-1"
                 >
                   <span>Request Full Press Clipping</span>
@@ -136,11 +136,11 @@ export default function PressPage() {
               Download official brand assets, founder biography profiles, lookbook high-resolution photography, and press release bundles.
             </p>
             <div className="space-y-3">
-              <Button href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20would%20like%20to%20request%20your%20Official%20Press%20Kit%20PDF." variant="solid" className="w-full justify-center flex items-center space-x-2 py-3 text-[10px]">
+              <Button href="https://wa.me/919742232322?text=Hi%20Aakanksha!%20I%20would%20like%20to%20request%20your%20Official%20Press%20Kit%20PDF." variant="solid" className="w-full justify-center flex items-center space-x-2 py-3 text-[10px]">
                 <FileText className="w-4 h-4" />
                 <span>Request Brand Kit (PDF)</span>
               </Button>
-              <Button href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20would%20like%20to%20request%20your%20Media%20Photo%20Asset%20Bundle." variant="outline" className="w-full justify-center flex items-center space-x-2 py-3 text-[10px]">
+              <Button href="https://wa.me/919742232322?text=Hi%20Aakanksha!%20I%20would%20like%20to%20request%20your%20Media%20Photo%20Asset%20Bundle." variant="outline" className="w-full justify-center flex items-center space-x-2 py-3 text-[10px]">
                 <Video className="w-4 h-4" />
                 <span>Request Asset Bundle (ZIP)</span>
               </Button>
@@ -173,7 +173,7 @@ export default function PressPage() {
           For speaking keynotes, media panel bookings, brand sponsorships, and press commentary from Aakanksha Anand, connect directly with our admissions desk.
         </p>
         <a 
-          href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20am%20a%20member%20of%20the%20press%20and%20would%20like%20to%20coordinate%20an%20interview."
+          href="https://wa.me/919742232322?text=Hi%20Aakanksha!%20I%20am%20a%20member%20of%20the%20press%20and%20would%20like%20to%20coordinate%20an%20interview."
           target="_blank"
           rel="noopener noreferrer"
           className="py-3 px-8 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all inline-flex items-center space-x-2"

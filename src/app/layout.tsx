@@ -27,27 +27,27 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://heelsandglam.com'),
-  title: 'Heels & Glam | Grooming, Confidence & Modelling Academy in India',
+  title: 'Heels & Glam | Grooming, Confidence & Modelling Academy in Bangalore',
   description:
-    'Heels & Glam by Aakanksha Anand is India\'s premium academy for grooming, confidence-building, ramp walk training, modelling courses, and personal branding for women.',
+    'Heels & Glam by Aakanksha Anand is India\'s premium academy for grooming, confidence-building, ramp walk training, modelling courses, and personal branding. Located in Electronic City, Bangalore, Karnataka.',
   keywords: [
-    'modelling classes',
-    'modelling academy',
-    'ramp walk training',
-    'grooming classes',
-    'personality development for women',
-    'fashion academy',
-    'pageant training',
+    'modelling classes bangalore',
+    'modelling academy electronic city',
+    'ramp walk training bangalore',
+    'grooming classes bangalore',
+    'personality development for women karnataka',
+    'fashion academy bangalore',
+    'pageant training bangalore',
     'confidence coaching for women',
     'modelling course in India',
-    'personal branding academy',
-    'grooming and etiquette classes',
+    'personal branding academy bangalore',
+    'grooming and etiquette classes karnataka',
     'Aakanksha Anand'
   ],
   openGraph: {
-    title: 'Heels & Glam | Luxury Grooming, Modelling & Personal Branding Academy',
+    title: 'Heels & Glam | Luxury Grooming, Modelling & Personal Branding Academy Bangalore',
     description:
-      'Unlock your absolute presence. Learn ramp walk mechanics, poise, executive styling, and confidence mentored by Aakanksha Anand.',
+      'Unlock your absolute presence. Learn ramp walk mechanics, poise, executive styling, and confidence mentored by Aakanksha Anand in Electronic City, Bangalore.',
     url: 'https://heelsandglam.com',
     siteName: 'Heels & Glam',
     images: [
@@ -55,16 +55,16 @@ export const metadata: Metadata = {
         url: '/images/runway-saree-lotus.jpg',
         width: 1200,
         height: 630,
-        alt: 'Heels & Glam Academy by Aakanksha Anand - Runway Poise Showcase'
+        alt: 'Heels & Glam Academy by Aakanksha Anand - Runway Poise Showcase in Bangalore'
       }
     ],
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Heels & Glam | Personal Grooming & Modelling Academy',
-    description: 'Transform your confidence and own every room with India\'s elite poise and personal branding programs.',
+    title: 'Heels & Glam | Personal Grooming & Modelling Academy Bangalore',
+    description: 'Transform your confidence and own every room with India\'s elite poise and personal branding programs in Electronic City, Bangalore.',
     images: ['/images/runway-saree-lotus.jpg'],
   }
 };
@@ -117,18 +117,27 @@ export default function RootLayout({
                 "name": "Heels & Glam Academy by Aakanksha Anand",
                 "url": "https://heelsandglam.com",
                 "logo": "https://heelsandglam.com/logo.png",
-                "description": "Premium personal grooming, confidence-building, modelling, and personal branding academy in India.",
+                "description": "Premium personal grooming, confidence-building, modelling, and personal branding academy in Electronic City, Bangalore, India.",
                 "founder": {
                   "@type": "Person",
                   "name": "Aakanksha Anand",
-                  "jobTitle": "Founder & Head Coach"
+                  "jobTitle": "Founder & Head Coach",
+                  "sameAs": "https://www.instagram.com/that_tall_babez/"
                 },
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "Lavelle Road",
+                  "streetAddress": "SNN RAJ GREENBAY, Phase II, Electronic City, Doddanagamangala Village",
                   "addressLocality": "Bangalore",
                   "addressRegion": "Karnataka",
+                  "postalCode": "560100",
                   "addressCountry": "IN"
+                },
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-97422-32322",
+                  "contactType": "admissions desk",
+                  "areaServed": "IN",
+                  "availableLanguage": ["en", "hi", "kn"]
                 },
                 "offers": {
                   "@type": "Offer",
@@ -140,20 +149,30 @@ export default function RootLayout({
                 "@type": "LocalBusiness",
                 "name": "Heels & Glam Academy",
                 "image": "https://heelsandglam.com/images/runway-saree-lotus.jpg",
-                "telephone": "+919880012345",
+                "telephone": "+919742232322",
+                "email": "heelsandglam@gmail.com",
                 "url": "https://heelsandglam.com",
+                "sameAs": [
+                  "https://www.instagram.com/_heelsandglam/",
+                  "https://www.instagram.com/that_tall_babez/"
+                ],
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "Lavelle Road",
+                  "streetAddress": "SNN RAJ GREENBAY, Phase II, Electronic City, Doddanagamangala Village",
                   "addressLocality": "Bangalore",
                   "addressRegion": "Karnataka",
-                  "postalCode": "560001",
+                  "postalCode": "560100",
                   "addressCountry": "IN"
                 },
                 "geo": {
                   "@type": "GeoCoordinates",
-                  "latitude": 12.9716,
-                  "longitude": 77.5946
+                  "latitude": 12.8639,
+                  "longitude": 77.6745
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "reviewCount": "84"
                 },
                 "openingHoursSpecification": {
                   "@type": "OpeningHoursSpecification",

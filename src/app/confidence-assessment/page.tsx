@@ -122,11 +122,40 @@ export default function ConfidenceAssessmentPage() {
     }
   };
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLeadCaptured(false);
-    trackEvent({ action: 'form_submit_assessment_lead', category: 'Lead Generation', label: 'Assessment Lead Form' });
-    trackEvent({ action: 'assessment_completion', category: 'Engagement', label: 'Confidence Assessment Complete' });
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'assessment',
+          data: {
+            name: leadForm.name,
+            phone: leadForm.phone,
+            email: leadForm.email,
+            score: results?.score,
+            category: results?.category,
+            description: results?.desc
+          }
+        })
+      });
+      if (res.ok) {
+        setLeadCaptured(false);
+        trackEvent({ action: 'form_submit_assessment_lead', category: 'Lead Generation', label: 'Assessment Lead Form' });
+        trackEvent({ action: 'assessment_completion', category: 'Engagement', label: 'Confidence Assessment Complete' });
+        
+        // Open WhatsApp pre-filled window
+        window.open(`https://wa.me/919742232322?text=${waMessage}`, '_blank');
+      }
+    } catch (err) {
+      console.error('[Assessment Lead Submit Error]', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // WhatsApp Pre-filled message
@@ -205,44 +234,47 @@ export default function ConfidenceAssessmentPage() {
                   </p>
                 </div>
 
-                <form onSubmit={handleLeadSubmit} className="space-y-4 max-w-md mx-auto">
-                  <div className="flex flex-col space-y-1">
-                    <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">NAME</label>
-                    <input 
-                      type="text" 
-                      required 
-                      value={leadForm.name}
-                      onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
-                      className="w-full bg-editorial-grey/30 border border-rosegold/20 px-4 py-3 text-xs text-pearl font-sans focus:outline-none focus:border-rosegold transition-colors"
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex flex-col space-y-1">
-                      <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">PHONE</label>
-                      <input 
-                        type="tel" 
-                        required 
-                        value={leadForm.phone}
-                        onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
-                        className="w-full bg-editorial-grey/30 border border-rosegold/20 px-4 py-3 text-xs text-pearl font-sans focus:outline-none focus:border-rosegold transition-colors"
-                      />
-                    </div>
-                    <div className="flex flex-col space-y-1">
-                      <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">EMAIL</label>
-                      <input 
-                        type="email" 
-                        required 
-                        value={leadForm.email}
-                        onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
-                        className="w-full bg-editorial-grey/30 border border-rosegold/20 px-4 py-3 text-xs text-pearl font-sans focus:outline-none focus:border-rosegold transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <Button type="submit" variant="solid" className="w-full py-4 text-xs font-semibold tracking-luxury mt-2">
-                    Reveal Somatic Score
-                  </Button>
-                </form>
+                 <form onSubmit={handleLeadSubmit} className="space-y-4 max-w-md mx-auto">
+                   <div className="flex flex-col space-y-1">
+                     <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">NAME</label>
+                     <input 
+                       type="text" 
+                       required 
+                       value={leadForm.name}
+                       onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                       className="w-full bg-editorial-grey/30 border border-rosegold/20 px-4 py-3 text-xs text-pearl font-sans focus:outline-none focus:border-rosegold transition-colors"
+                       disabled={isSubmitting}
+                     />
+                   </div>
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                     <div className="flex flex-col space-y-1">
+                       <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">PHONE</label>
+                       <input 
+                         type="tel" 
+                         required 
+                         value={leadForm.phone}
+                         onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+                         className="w-full bg-editorial-grey/30 border border-rosegold/20 px-4 py-3 text-xs text-pearl font-sans focus:outline-none focus:border-rosegold transition-colors"
+                         disabled={isSubmitting}
+                       />
+                     </div>
+                     <div className="flex flex-col space-y-1">
+                       <label className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-semibold">EMAIL</label>
+                       <input 
+                         type="email" 
+                         required 
+                         value={leadForm.email}
+                         onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                         className="w-full bg-editorial-grey/30 border border-rosegold/20 px-4 py-3 text-xs text-pearl font-sans focus:outline-none focus:border-rosegold transition-colors"
+                         disabled={isSubmitting}
+                       />
+                     </div>
+                   </div>
+ 
+                   <Button type="submit" variant="solid" className="w-full py-4 text-xs font-semibold tracking-luxury mt-2" disabled={isSubmitting}>
+                     {isSubmitting ? 'Revealing...' : 'Reveal Somatic Score'}
+                   </Button>
+                 </form>
               </motion.div>
             ) : results ? (
               <motion.div 
@@ -261,7 +293,7 @@ export default function ConfidenceAssessmentPage() {
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
                   <a 
-                    href={`https://wa.me/919880012345?text=${waMessage}`}
+                    href={`https://wa.me/919742232322?text=${waMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"

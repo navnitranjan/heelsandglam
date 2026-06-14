@@ -165,7 +165,7 @@ export default function TransformationStoriesPage() {
 
                 <div className="pt-6 flex flex-wrap gap-4 items-center">
                   <a 
-                    href={`https://wa.me/919880012345?text=${waStoryMessage}`}
+                    href={`https://wa.me/919742232322?text=${waStoryMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg"

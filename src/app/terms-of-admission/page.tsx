@@ -86,7 +86,7 @@ export default function TermsOfAdmissionPage() {
         '• **Partial Refund (50%)**: Cancellation requests received between 7 and 14 calendar days before the program start date are eligible for a 50% refund.',
         '• **No Refund**: Cancellation requests received less than 7 calendar days before the program start date, or after the program has commenced, are not eligible for any refund.',
         '• No refunds will be issued for non-attendance or partial attendance of program sessions.',
-        'All refund requests must be submitted in writing via email to hello@heelsandglam.com. Approved refunds are processed within 15 business days.',
+        'All refund requests must be submitted in writing via email to heelsandglam@gmail.com. Approved refunds are processed within 15 business days.',
       ],
     },
     {
@@ -148,8 +148,8 @@ export default function TermsOfAdmissionPage() {
         '**Heels & Glam Academy**',
         'Founder: Aakanksha Anand',
         'Location: Lavelle Road, Bangalore, Karnataka 560001, India',
-        'WhatsApp: +91 9880012345',
-        'Email: hello@heelsandglam.com',
+        'WhatsApp: +91 9742232322',
+        'Email: heelsandglam@gmail.com',
       ],
     },
   ];

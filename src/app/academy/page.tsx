@@ -82,7 +82,7 @@ export default function AcademyPage() {
           <div className="pt-4 flex flex-wrap gap-4">
             <Button href="/apply" variant="solid">Schedule Private Consultation</Button>
             <a 
-              href="https://wa.me/919880012345?text=Hi%20Aakanksha!%20I%20read%20your%20Founder%20Message%20and%20want%20to%20consult%20about%20your%20programs."
+              href="https://wa.me/919742232322?text=Hi%20Aakanksha!%20I%20read%20your%20Founder%20Message%20and%20want%20to%20consult%20about%20your%20programs."
               target="_blank"
               rel="noopener noreferrer"
               className="py-3.5 px-8 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"

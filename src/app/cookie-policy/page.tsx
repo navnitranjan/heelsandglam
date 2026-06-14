@@ -113,8 +113,8 @@ export default function CookiePolicyPage() {
         '**Heels & Glam Academy**',
         'Founder: Aakanksha Anand',
         'Location: Lavelle Road, Bangalore, Karnataka 560001, India',
-        'WhatsApp: +91 9880012345',
-        'Email: hello@heelsandglam.com',
+        'WhatsApp: +91 9742232322',
+        'Email: heelsandglam@gmail.com',
       ],
     },
   ];

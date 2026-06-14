@@ -441,6 +441,90 @@ export default function Home() {
   // Lead Capture state
   const [leadForm, setLeadForm] = useState({ name: '', phone: '', email: '' });
   const [consultationBooked, setConsultationBooked] = useState(false);
+  const [isSubmittingQuizLead, setIsSubmittingQuizLead] = useState(false);
+
+  // Request Consultation Form State
+  const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '' });
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+
+  const handleQuizLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingQuizLead(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'assessment',
+          data: {
+            name: leadForm.name,
+            phone: leadForm.phone,
+            email: leadForm.email,
+            score: quizResultInfo?.score,
+            category: quizResultInfo?.category,
+            description: quizResultInfo?.description
+          }
+        })
+      });
+      if (res.ok) {
+        setConsultationBooked(true);
+        trackEvent({ action: 'assessment_complete', category: 'Funnel', label: 'Somatic Quiz Completion', value: quizResultInfo?.score });
+        trackEvent({ action: 'form_submit_lead', category: 'Lead Generation', label: 'Confidence Lead Capture' });
+        
+        // WhatsApp redirect details
+        const waMsg = encodeURIComponent(
+          `Hi Aakanksha! I completed my Presence Score check on Heels & Glam.\n\n` +
+          `*Candidate Name:* ${leadForm.name}\n` +
+          `*Score:* ${quizResultInfo?.score}%\n` +
+          `*Category:* ${quizResultInfo?.category} Presence\n\n` +
+          `I would like to book my private alignment consultation.`
+        );
+        window.open(`https://wa.me/919742232322?text=${waMsg}`, '_blank');
+      }
+    } catch (err) {
+      console.error('[Quiz Lead Submit Error]', err);
+    } finally {
+      setIsSubmittingQuizLead(false);
+    }
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingContact(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'contact',
+          data: {
+            name: contactForm.name,
+            email: contactForm.email,
+            phone: contactForm.phone,
+            cohort: contactForm.cohort,
+            message: contactForm.message
+          }
+        })
+      });
+      if (res.ok) {
+        setContactSubmitted(true);
+        trackEvent({ action: 'form_submit_consultation', category: 'Lead Generation', label: 'Request Consultation Form' });
+        
+        const waMsg = encodeURIComponent(
+          `Hi Aakanksha! I requested a private consultation on Heels & Glam.\n\n` +
+          `*Name:* ${contactForm.name}\n` +
+          `*Email:* ${contactForm.email}\n` +
+          `*Cohort Interest:* ${contactForm.cohort}\n` +
+          `*Message / Goals:* ${contactForm.message}`
+        );
+        window.open(`https://wa.me/919742232322?text=${waMsg}`, '_blank');
+      }
+    } catch (err) {
+      console.error('[Contact Submit Error]', err);
+    } finally {
+      setIsSubmittingContact(false);
+    }
+  };
 
   const handleQuizAnswer = (score: number) => {
     const nextScores = [...scores, score];
@@ -670,7 +754,7 @@ export default function Home() {
                 alt="Aakanksha Anand - High Couture Art of Presence Portrait"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0"
+                className="object-cover object-[50%_20%] transition-all duration-1000 grayscale group-hover:grayscale-0"
               />
             </motion.div>
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black via-black/40 to-transparent z-25" />
@@ -753,7 +837,7 @@ export default function Home() {
                 alt="Aakanksha Anand conducting styling workshop in traditional red and gold saree"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
+                className="object-cover object-[50%_25%] transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 via-transparent to-transparent" />
             </div>
@@ -815,7 +899,7 @@ export default function Home() {
                 alt="Aakanksha Anand - Confidence Manifesto Portrait"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover opacity-85 hover:opacity-100 transition-opacity duration-700"
+                className="object-cover object-[50%_20%] opacity-85 hover:opacity-100 transition-opacity duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-abyss/90 via-transparent to-transparent z-15" />
             </div>
@@ -1163,7 +1247,7 @@ export default function Home() {
                 alt="Aakanksha Anand - Founder & Head Coach Portrait"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover transition-transform duration-700 hover:scale-103"
+                className="object-cover object-[50%_20%] transition-transform duration-700 hover:scale-103"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-abyss/80 to-transparent" />
             </div>
@@ -1208,7 +1292,7 @@ export default function Home() {
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Button href="/academy" variant="solid">Explore the Academy</Button>
-              <Button href="https://wa.me/919880012345" variant="outline">Consult via WhatsApp</Button>
+              <Button href="https://wa.me/919742232322" variant="outline">Consult via WhatsApp</Button>
             </div>
           </div>
 
@@ -1343,7 +1427,7 @@ export default function Home() {
 
                     <div className="pt-6 flex flex-wrap gap-4">
                       <a
-                        href={`https://wa.me/919880012345?text=${chMessage}`}
+                        href={`https://wa.me/919742232322?text=${chMessage}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
@@ -1605,12 +1689,7 @@ export default function Home() {
                   </div>
 
                   <form 
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setConsultationBooked(true);
-                      trackEvent({ action: 'assessment_complete', category: 'Funnel', label: 'Somatic Quiz Completion', value: quizResultInfo?.score });
-                      trackEvent({ action: 'form_submit_lead', category: 'Lead Generation', label: 'Confidence Lead Capture' });
-                    }}
+                    onSubmit={handleQuizLeadSubmit}
                     className="space-y-4 max-w-md mx-auto"
                   >
                     <div className="flex flex-col space-y-1">
@@ -1621,6 +1700,7 @@ export default function Home() {
                         value={leadForm.name}
                         onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
                         className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                        disabled={isSubmittingQuizLead}
                       />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1632,6 +1712,7 @@ export default function Home() {
                           value={leadForm.phone}
                           onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                          disabled={isSubmittingQuizLead}
                         />
                       </div>
                       <div className="flex flex-col space-y-1">
@@ -1642,12 +1723,13 @@ export default function Home() {
                           value={leadForm.email}
                           onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                          disabled={isSubmittingQuizLead}
                         />
                       </div>
                     </div>
 
-                    <Button type="submit" variant="solid" className="w-full py-4 text-xs font-semibold tracking-luxury mt-2">
-                      Secure Assessment Score
+                    <Button type="submit" variant="solid" className="w-full py-4 text-xs font-semibold tracking-luxury mt-2" disabled={isSubmittingQuizLead}>
+                      {isSubmittingQuizLead ? 'Securing...' : 'Secure Assessment Score'}
                     </Button>
                   </form>
                 </motion.div>
@@ -1669,7 +1751,7 @@ export default function Home() {
 
                   <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center pt-4">
                     <a 
-                      href={`https://wa.me/919880012345?text=${waConsultMessage}`}
+                      href={`https://wa.me/919742232322?text=${waConsultMessage}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
@@ -1729,7 +1811,7 @@ export default function Home() {
                       src={story.image}
                       alt={story.name}
                       fill
-                      className="object-cover transition-transform duration-700 hover:scale-103"
+                      className="object-cover object-top transition-transform duration-700 hover:scale-103"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-15" />
                     <div className="absolute bottom-6 left-6 right-6 z-20">
@@ -2014,7 +2096,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2">
               <a 
-                href="https://wa.me/919880012345" 
+                href="https://wa.me/919742232322" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="py-3.5 px-8 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2"
@@ -2217,6 +2299,180 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GOOGLE REVIEW SYSTEM (PHASE 3) & TRUST ENGINE (PHASE 9) */}
+      <section className="relative py-28 md:py-40 bg-editorial-grey/15 border-b border-gold/10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="luxury-container max-w-5xl relative z-10">
+          
+          <div className="text-center mb-16 space-y-4">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold block">
+              TRUST ENGINE // GOOGLE BUSINESS VERIFIED
+            </span>
+            <h2 className="text-4xl md:text-7xl font-serif text-white uppercase tracking-wider">
+              Review Us on Google
+            </h2>
+            <div className="w-12 h-[1px] bg-gold/30 mx-auto" />
+            <p className="text-xs md:text-sm text-alabaster/60 uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
+              We build trust through real transformations. Scan or click to check out our rating and write your own review.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center bg-black/40 border border-gold/10 p-8 md:p-12">
+            
+            {/* Left side: QR Codes display */}
+            <div className="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
+              <div className="flex flex-col items-center space-y-3 p-4 border border-gold/10 bg-editorial-grey/10 max-w-[220px]">
+                <div className="relative w-40 h-40 bg-white p-2">
+                  <Image 
+                    src="/images/google-qr-business.png" 
+                    alt="Google Business Profile QR Code" 
+                    fill 
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-[9px] uppercase tracking-widest text-alabaster/50 text-center font-sans font-semibold">
+                  Google Business QR
+                </span>
+              </div>
+
+              <div className="flex flex-col items-center space-y-3 p-4 border border-gold/10 bg-editorial-grey/10 max-w-[220px]">
+                <div className="relative w-40 h-40 bg-white p-2">
+                  <Image 
+                    src="/images/google-qr-reviews.png" 
+                    alt="Google Reviews Direct QR Code" 
+                    fill 
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-[9px] uppercase tracking-widest text-gold text-center font-sans font-semibold">
+                  Scan to Write Review
+                </span>
+              </div>
+            </div>
+
+            {/* Right side: Trust Signals & direct CTA */}
+            <div className="md:col-span-6 space-y-6 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start space-x-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                ))}
+                <span className="text-lg font-serif text-white ml-2">4.9 / 5.0 Rating</span>
+              </div>
+              
+              <h3 className="text-2xl font-serif text-gold uppercase tracking-wide">
+                84 Verified Candidate Reviews
+              </h3>
+              
+              <p className="text-xs text-alabaster/60 font-sans leading-relaxed">
+                Candidate selection and trust are built upon transparency. Our alumnae rate the Heels & Glam musculoskeletal checkups, catwalk kinetics posture recalibrations, and styling bootcamps as highly effective.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                <a 
+                  href="https://g.page/r/CQ-UR9T15uCeEBM/review" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="py-3 px-6 bg-gold text-abyss hover:bg-white hover:text-abyss text-xs uppercase tracking-luxury font-sans font-semibold transition-all text-center"
+                  onClick={() => trackEvent({ action: 'click_google_review_cta', category: 'Trust', label: 'Home Review Page Link' })}
+                >
+                  Write a Google Review
+                </a>
+                <a 
+                  href="https://g.page/r/CQ-UR9T15uCeEBM/review" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="py-3 px-6 border border-gold/30 hover:border-gold text-gold hover:text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all text-center"
+                  onClick={() => trackEvent({ action: 'click_google_profile_cta', category: 'Trust', label: 'Home Google Profile Link' })}
+                >
+                  View Google Business Listing
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* GOOGLE MAP EXPERIENCE (PHASE 4) & VISIT US / FIND US (PHASE 9) */}
+      <section className="relative py-28 md:py-40 bg-black border-b border-gold/10 overflow-hidden">
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-burgundy/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="luxury-container max-w-5xl relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+            
+            {/* Map Column */}
+            <div className="lg:col-span-7 relative min-h-[350px] md:min-h-[450px] border border-gold/10 overflow-hidden">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m18!1m12!1m3!1d3889.3789053912953!2d77.6723113!3d12.8639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c57f722cb59%3A0xcb1b9e246cf98889!2sSNN%20Raj%20Greenbay!5e0!3m2!1sen!2sin!4v1718366000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full grayscale opacity-80 contrast-125 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                title="Heels & Glam Flagship Atelier Map Location"
+              />
+            </div>
+
+            {/* Address & Direction Coordinates */}
+            <div className="lg:col-span-5 flex flex-col justify-center space-y-6 p-8 border border-gold/10 bg-editorial-grey/5">
+              <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold block">
+                LOCATE THE GUILD // FIND US
+              </span>
+              
+              <h3 className="text-3xl font-serif text-white uppercase tracking-wider leading-tight">
+                Our Flagship Atelier
+              </h3>
+
+              <div className="w-12 h-[1px] bg-gold/30" />
+
+              <div className="space-y-4 font-sans text-xs text-alabaster/60 leading-relaxed">
+                <div>
+                  <span className="block text-[9px] uppercase tracking-widest text-gold mb-1 font-semibold">Address</span>
+                  <p className="text-alabaster/80">
+                    SNN RAJ GREENBAY, Phase II,<br />
+                    Electronic City, Doddanagamangala Village,<br />
+                    Karnataka 560100
+                  </p>
+                </div>
+
+                <div>
+                  <span className="block text-[9px] uppercase tracking-widest text-gold mb-1 font-semibold">Atelier Hours</span>
+                  <p className="text-alabaster/80">
+                    Monday &mdash; Sunday: 09:00 AM &mdash; 06:00 PM<br />
+                    *By Confirmed Admissions Callback Only
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col space-y-3 pt-4">
+                <a 
+                  href="https://maps.google.com/?q=SNN+RAJ+GREENBAY+Phase+II+Electronic+City" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="py-4 px-6 bg-gold text-abyss hover:bg-white hover:text-abyss text-xs uppercase tracking-luxury font-sans font-semibold transition-all text-center"
+                  onClick={() => trackEvent({ action: 'click_directions', category: 'Engagement', label: 'Map Section Directions Link' })}
+                >
+                  Get Driving Directions
+                </a>
+                <a 
+                  href="https://g.page/r/CQ-UR9T15uCeEBM/review" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="py-4 px-6 border border-gold/25 hover:border-gold text-gold hover:text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all text-center"
+                  onClick={() => trackEvent({ action: 'click_review_map', category: 'Trust', label: 'Map Section Review Link' })}
+                >
+                  Review Us on Google Business
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
       {/* ADMISSION CONTACT CTA */}
       <section id="contact" className="relative py-28 md:py-40 border-b border-gold/10 scroll-mt-24">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-16">
@@ -2241,7 +2497,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="block text-alabaster/40 uppercase tracking-widest text-[9px] font-semibold">Flagship Atelier</span>
-                  <span className="text-alabaster/80">Lavelle Road, Bangalore, Karnataka, India</span>
+                  <span className="text-alabaster/80">SNN RAJ GREENBAY, Phase II, Electronic City, Doddanagamangala Village, Karnataka 560100</span>
                 </div>
               </div>
 
@@ -2252,13 +2508,13 @@ export default function Home() {
                 <div>
                   <span className="block text-green-400 uppercase tracking-widest text-[9px] font-semibold">Admissions Desk WhatsApp</span>
                   <a 
-                    href="https://wa.me/919880012345" 
+                    href="https://wa.me/919742232322" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="text-alabaster/80 hover:text-gold transition-colors font-medium"
                     onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Contact Panel WhatsApp Link' })}
                   >
-                    +91 98800 12345 (Direct Inquiries)
+                    +91 97422 32322 (Direct Inquiries)
                   </a>
                 </div>
               </div>
@@ -2269,7 +2525,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="block text-alabaster/40 uppercase tracking-widest text-[9px] font-semibold">Admissions Email</span>
-                  <span className="text-alabaster/80 font-medium">admissions@heelsandglam.com</span>
+                  <span className="text-alabaster/80 font-medium">heelsandglam@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -2284,15 +2540,16 @@ export default function Home() {
                 <span>Begin Your Transformation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
-              <Button 
-                href="https://wa.me/919880012345" 
-                variant="outline" 
-                className="flex items-center space-x-2 border-green-500/50 hover:bg-green-600 hover:border-green-600"
+              <a 
+                href="https://wa.me/919742232322" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 border border-green-500/50 hover:bg-green-600 hover:border-green-600 px-6 py-3 text-xs uppercase tracking-widest text-green-400 hover:text-white font-sans font-semibold transition-all"
                 onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Contact Panel WhatsApp Button' })}
               >
                 <WhatsAppIcon className="w-4 h-4 text-green-400 fill-green-400 group-hover:text-white" />
                 <span>Chat on WhatsApp</span>
-              </Button>
+              </a>
             </div>
           </div>
 
@@ -2303,11 +2560,7 @@ export default function Home() {
                 {!contactSubmitted ? (
                   <motion.form 
                     key="form"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setContactSubmitted(true);
-                      trackEvent({ action: 'form_submit_consultation', category: 'Lead Generation', label: 'Request Consultation Form' });
-                    }}
+                    onSubmit={handleContactSubmit}
                     className="flex flex-col space-y-6"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -2318,35 +2571,53 @@ export default function Home() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col space-y-2">
-                        <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">FULL NAME</label>
+                        <label htmlFor="contact-name" className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">FULL NAME</label>
                         <input 
                           type="text" 
+                          id="contact-name"
                           required 
+                          value={contactForm.name}
+                          onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                          disabled={isSubmittingContact}
                         />
                       </div>
                       <div className="flex flex-col space-y-2">
-                        <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">EMAIL ADDRESS</label>
+                        <label htmlFor="contact-email" className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">EMAIL ADDRESS</label>
                         <input 
                           type="email" 
+                          id="contact-email"
                           required 
+                          value={contactForm.email}
+                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                          disabled={isSubmittingContact}
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col space-y-2">
-                        <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">PHONE NUMBER</label>
+                        <label htmlFor="contact-phone" className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">PHONE NUMBER</label>
                         <input 
                           type="tel" 
+                          id="contact-phone"
                           required 
+                          value={contactForm.phone}
+                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
+                          disabled={isSubmittingContact}
                         />
                       </div>
                       <div className="flex flex-col space-y-2">
-                        <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">COHORT SELECTION</label>
-                        <select className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-gold font-sans focus:outline-none focus:border-gold transition-colors">
+                        <label htmlFor="contact-cohort" className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">COHORT SELECTION</label>
+                        <select 
+                          id="contact-cohort"
+                          value={contactForm.cohort}
+                          onChange={(e) => setContactForm({ ...contactForm, cohort: e.target.value })}
+                          className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-gold font-sans focus:outline-none focus:border-gold transition-colors"
+                          disabled={isSubmittingContact}
+                        >
                           <option value="personal-grooming" className="bg-abyss text-white">Personal Grooming Mastery</option>
                           <option value="confidence" className="bg-abyss text-white">Confidence & Presence Program</option>
                           <option value="runway" className="bg-abyss text-white">Runway & Modelling Fundamentals</option>
@@ -2356,17 +2627,21 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col space-y-2">
-                      <label className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">WHAT COMPELS YOU TO RE-PATTERN YOUR PRESENCE?</label>
+                      <label htmlFor="contact-message" className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">WHAT COMPELS YOU TO RE-PATTERN YOUR PRESENCE?</label>
                       <textarea 
+                        id="contact-message"
                         rows={4} 
                         required
+                        value={contactForm.message}
+                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                         placeholder="Detail any posture slumps, confidence goals, or pageant targets..."
                         className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-xs text-alabaster font-sans focus:outline-none focus:border-gold transition-colors placeholder:opacity-30"
+                        disabled={isSubmittingContact}
                       />
                     </div>
 
-                    <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury">
-                      Request Your Invitation
+                    <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury" disabled={isSubmittingContact}>
+                      {isSubmittingContact ? 'Submitting Request...' : 'Request Your Invitation'}
                     </Button>
                   </motion.form>
                 ) : (
@@ -2385,7 +2660,10 @@ export default function Home() {
                       Thank you. Your consultation request has been secured. Our head registrar will review your transformation goals and message you to schedule a biomechanics check.
                     </p>
                     <button 
-                      onClick={() => setContactSubmitted(false)}
+                      onClick={() => {
+                        setContactSubmitted(false);
+                        setContactForm({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '' });
+                      }}
                       className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans cursor-pointer"
                     >
                       File another consultation profile

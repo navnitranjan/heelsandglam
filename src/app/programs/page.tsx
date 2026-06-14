@@ -313,7 +313,7 @@ export default function ProgramsPage() {
 
               <div className="pt-4 flex items-center space-x-4">
                 <Button href="/apply" variant="solid">Begin Your Transformation</Button>
-                <Button href="https://wa.me/919880012345" variant="outline">Consult via WhatsApp</Button>
+                <Button href="https://wa.me/919742232322" variant="outline">Consult via WhatsApp</Button>
               </div>
             </div>
           </div>
@@ -406,7 +406,7 @@ export default function ProgramsPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center pt-4">
-                    <Button href={`https://wa.me/919880012345?text=Hi%20Aakanksha,%20I%20completed%20the%20Presence%20Assessment.%20My%20Index%20is%20${averageScore}%.%20I%20would%20like%20to%20review%20my%20somatic%20profile.`} variant="solid" className="flex items-center space-x-2 border-green-500 hover:bg-green-600">
+                    <Button href={`https://wa.me/919742232322?text=Hi%20Aakanksha,%20I%20completed%20the%20Presence%20Assessment.%20My%20Index%20is%20${averageScore}%.%20I%20would%20like%20to%20review%20my%20somatic%20profile.`} variant="solid" className="flex items-center space-x-2 border-green-500 hover:bg-green-600">
                       <MessageCircle className="w-4 h-4 text-green-400 fill-green-400 group-hover:text-white" />
                       <span>Review Score on WhatsApp</span>
                     </Button>

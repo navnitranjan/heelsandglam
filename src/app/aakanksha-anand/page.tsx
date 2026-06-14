@@ -240,7 +240,7 @@ export default function FounderExperiencePage() {
               Apply for Next Cohort
             </Button>
             <Button 
-              href="https://wa.me/919880012345" 
+              href="https://wa.me/919742232322" 
               variant="outline" 
               className="border-green-500/50 hover:bg-green-600"
               onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Founder Page WhatsApp Consult' })}

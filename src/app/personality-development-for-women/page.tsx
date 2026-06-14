@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'social etiquette course',
     'communication coaching for women',
     'confidence and posture course'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/personality-development-for-women',
+  }
 };
 
 export default function PersonalityDevelopmentForWomenPage() {
@@ -48,7 +51,7 @@ export default function PersonalityDevelopmentForWomenPage() {
     },
     {
       q: "Are the classes offline or online?",
-      a: "We offer offline Flagship Masterclasses at our luxury atelier in Lavelle Road, Bangalore, alongside hybrid and private 1-on-1 mentorship paths."
+      a: "We offer offline Flagship Masterclasses at our luxury atelier in Electronic City, Bangalore, alongside hybrid and private 1-on-1 mentorship paths."
     }
   ];
 

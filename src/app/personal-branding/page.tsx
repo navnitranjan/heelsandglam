@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'digital presence coaching',
     'camera confidence classes',
     'female leader branding'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/personal-branding',
+  }
 };
 
 export default function PersonalBrandingPage() {

@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'pageant walk training',
     'pageant Q&A prep',
     'gown carriage mechanics'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/pageant-training',
+  }
 };
 
 export default function PageantTrainingPage() {

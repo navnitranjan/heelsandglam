@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'photoshoot posing training',
     'lookbook creation for models',
     'modelling casting prep'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/modelling-classes',
+  }
 };
 
 export default function ModellingClassesPage() {

@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'pageant catwalk coach',
     'posture alignment for walk',
     'ramp walk tutorials India'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/ramp-walk-training',
+  }
 };
 
 export default function RampWalkTrainingPage() {

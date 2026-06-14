@@ -250,7 +250,7 @@ export default function RootLayout({
                     "name": "Are classes online or offline?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Program formats vary by batch. We offer both offline flagship masterclasses in Lavelle Road, Bangalore, and hybrid cohort formats."
+                      "text": "Program formats vary by batch. We offer both offline flagship masterclasses in Electronic City, Bangalore, and hybrid cohort formats."
                     }
                   },
                   {

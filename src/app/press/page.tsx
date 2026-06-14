@@ -13,7 +13,10 @@ export const metadata: Metadata = {
     'grooming academy awards',
     'modelling events Bangalore',
     'press kit download'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/press',
+  }
 };
 
 export default function PressPage() {
@@ -41,7 +44,7 @@ export default function PressPage() {
   const workshops = [
     {
       title: "Autumn Poise & Silhouette Masterclass",
-      location: "Lavelle Road Atelier, Bangalore",
+      location: "Electronic City Atelier, Bangalore",
       date: "September 15-18, 2026",
       type: "Offline Flagship"
     },
@@ -53,7 +56,7 @@ export default function PressPage() {
     },
     {
       title: "Elite Pageant Walk & Gown Carriage Intensive",
-      location: "Lavelle Road Atelier, Bangalore",
+      location: "Electronic City Atelier, Bangalore",
       date: "November 10-12, 2026",
       type: "Pageant Guild"
     }

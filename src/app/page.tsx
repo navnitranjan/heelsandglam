@@ -248,7 +248,7 @@ const FOUNDER_CHAPTERS = [
   {
     id: "chap-5",
     title: "Chapter 5: The Future",
-    content: "Heels & Glam is expanding the Lavelle Road flagship atelier, integrating AI gait metrics, and introducing private styling retreats to make luxury poise training accessible to ambitious leaders across India."
+    content: "Heels & Glam is expanding the Electronic City flagship atelier, integrating AI gait metrics, and introducing private styling retreats to make luxury poise training accessible to ambitious leaders across India."
   }
 ];
 
@@ -267,7 +267,7 @@ const FILM_SCENES = [
     sceneNum: "01",
     title: "Arrival",
     timecode: "00:02:14",
-    subtitle: "Stepping into the Lavelle Road flagship atelier. The scent of jasmine, warm gold lighting, and the quiet weight of transformation.",
+    subtitle: "Stepping into the Electronic City flagship atelier. The scent of jasmine, warm gold lighting, and the quiet weight of transformation.",
     image: "/images/founder-portrait-red-half.jpg",
     action: "Somatic check-in initiates."
   },
@@ -2199,7 +2199,7 @@ export default function Home() {
               
               <div className="space-y-4 pt-2">
                 {[
-                  { title: "Elite Networking Assemblies", desc: "Private physical cohort connection assemblies at our Lavelle Road Flagship." },
+                  { title: "Elite Networking Assemblies", desc: "Private physical cohort connection assemblies at our Electronic City Flagship." },
                   { title: "Catwalk Mastery Workshops", desc: "Alumnae refresher clinics checking muscle decompression and straight-knee strikes." },
                   { title: "Sovereign Mentorship", desc: "Direct dialogue boards and portfolio reviews coached by Aakanksha Anand." }
                 ].map((item, idx) => (

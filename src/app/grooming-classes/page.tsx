@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'etiquette and grooming training',
     'wardrobe styling course',
     'makeup and skincare basics'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/grooming-classes',
+  }
 };
 
 export default function GroomingClassesPage() {

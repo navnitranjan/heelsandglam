@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'voice projection class',
     'public speaking anxiety relief',
     'self image reconstruction'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/confidence-coaching',
+  }
 };
 
 export default function ConfidenceCoachingPage() {

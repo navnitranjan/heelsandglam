@@ -14,7 +14,10 @@ export const metadata: Metadata = {
     'heels walk training framework',
     'grooming academy values',
     'why Heels & Glam'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/academy',
+  }
 };
 
 export default function AcademyPage() {

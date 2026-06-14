@@ -147,7 +147,7 @@ export default function TermsOfAdmissionPage() {
         'For any enquiries regarding these Terms of Admission, please contact:',
         '**Heels & Glam Academy**',
         'Founder: Aakanksha Anand',
-        'Location: Lavelle Road, Bangalore, Karnataka 560001, India',
+        'Location: SNN RAJ GREENBAY, Phase II, Electronic City, Doddanagamangala Village, Bangalore, Karnataka 560100, India',
         'WhatsApp: +91 9742232322',
         'Email: heelsandglam@gmail.com',
       ],

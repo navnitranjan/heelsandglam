@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'personal color mapping',
     'lookbook photography posing',
     'fashion design and grooming'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/fashion-grooming',
+  }
 };
 
 export default function FashionGroomingPage() {

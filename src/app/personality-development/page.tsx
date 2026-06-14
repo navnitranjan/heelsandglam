@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     'social etiquette course',
     'communication coaching for women',
     'confidence and posture course'
-  ]
+  ],
+  alternates: {
+    canonical: 'https://heelsandglam.com/personality-development',
+  }
 };
 
 export default function PersonalityDevelopmentPage() {

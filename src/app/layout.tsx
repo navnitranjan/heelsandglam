@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 import ExitIntentModal from '@/components/features/ExitIntentModal';
 import FloatingWhatsAppButton from '@/components/layout/FloatingWhatsAppButton';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Version: 1.1.1 - Final Production Deployment
 
@@ -288,6 +289,9 @@ export default function RootLayout({
 
         {/* Global Exit Intent Dialog */}
         <ExitIntentModal />
+
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );

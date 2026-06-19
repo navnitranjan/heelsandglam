@@ -53,7 +53,7 @@ export default function AcademyPage() {
               alt="Aakanksha Anand - Founder & Head Coach posing in a red dress"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_20%]"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-abyss/80 via-transparent to-transparent" />
@@ -63,7 +63,12 @@ export default function AcademyPage() {
         {/* Founder message */}
         <div className="lg:col-span-7 flex flex-col space-y-6">
           <span className="text-xs uppercase tracking-widest text-gold font-sans font-medium">FOUNDER MESSAGE</span>
-          <h2 className="text-3xl md:text-5xl font-serif text-white uppercase">Aakanksha Anand</h2>
+          <div className="space-y-1">
+            <h2 className="text-3xl md:text-5xl font-serif text-white uppercase">Aakanksha Anand</h2>
+            <span className="text-[10px] uppercase tracking-widest text-pearl/50 font-sans block font-semibold">
+              Founder • Luxury Presence Mentor • Transformation Coach
+            </span>
+          </div>
           <div className="w-12 h-[1px] bg-gold/40" />
 
           <blockquote className="text-lg font-serif italic text-champagne/95 leading-relaxed pl-6 border-l border-gold/20">
@@ -231,7 +236,7 @@ export default function AcademyPage() {
               alt="Community group session and styling alignment"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover object-[50%_25%]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-abyss/85 via-transparent to-transparent z-10" />
           </div>

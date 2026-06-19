@@ -74,8 +74,8 @@ export default function FounderClient() {
               <span className="font-serif text-2xl text-white italic tracking-wider">
                 Aakanksha Anand
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-alabaster/40 font-sans">
-                Founder, Heels & Glam Academy
+              <span className="text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">
+                Founder • Luxury Presence Mentor • Transformation Coach
               </span>
             </div>
           </div>

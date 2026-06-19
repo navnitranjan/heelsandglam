@@ -9,6 +9,10 @@ import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 import ExitIntentModal from '@/components/features/ExitIntentModal';
 import FloatingWhatsAppButton from '@/components/layout/FloatingWhatsAppButton';
+import AnalyticsTracker from '@/components/features/AnalyticsTracker';
+import PWAInstallBanner from '@/components/features/PWAInstallBanner';
+import { Suspense } from 'react';
+
 
 // Version: 1.1.1 - Final Production Deployment
 
@@ -45,15 +49,22 @@ export const metadata: Metadata = {
     'grooming and etiquette classes karnataka',
     'Aakanksha Anand'
   ],
-  manifest: '/site.webmanifest',
+  manifest: '/manifest.json',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
+    shortcut: '/shortcut-icon.png',
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'maskable-icon',
+        url: '/maskable-icon.png',
+      },
     ],
   },
   alternates: {
@@ -119,6 +130,12 @@ export default function RootLayout({
               });
             `,
           }}
+        />
+
+        {/* Google reCAPTCHA Enterprise Integration */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.google.com/recaptcha/enterprise.js?render=6LcuWygtAAAAAPC2f52c47XetIJe44hKjSUG1OUn"
         />
 
         {/* Global JSON-LD Schema Markup */}
@@ -285,6 +302,11 @@ export default function RootLayout({
         {/* Custom Luxury Cursor Pointer */}
         <CustomCursor />
 
+        {/* Global Analytics Tracking */}
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
+
         {/* Preloader animation screen */}
         <Preloader />
 
@@ -302,6 +324,9 @@ export default function RootLayout({
 
         {/* Global Exit Intent Dialog */}
         <ExitIntentModal />
+
+        {/* PWA Installation Promotion */}
+        <PWAInstallBanner />
       </body>
     </html>
   );

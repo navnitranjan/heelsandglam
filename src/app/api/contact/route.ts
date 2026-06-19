@@ -52,10 +52,41 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { formType, data } = body;
+    const { formType, data, recaptchaToken } = body;
 
     if (!formType || !data) {
       return NextResponse.json({ error: 'Missing formType or data' }, { status: 400 });
+    }
+
+    // Google reCAPTCHA Enterprise Verification
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (recaptchaSecret) {
+      if (!recaptchaToken) {
+        console.warn('[reCAPTCHA Warning] Token missing from request body');
+        return NextResponse.json({ error: 'Verification token is missing. Please refresh and try again.' }, { status: 400 });
+      }
+
+      try {
+        const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`;
+        const verifyRes = await fetch(verifyUrl, { method: 'POST' });
+        const verifyData = await verifyRes.json();
+
+        if (!verifyData.success) {
+          console.warn('[reCAPTCHA Validation Failed]', verifyData);
+          return NextResponse.json({ error: 'Security validation failed. Please try again.' }, { status: 400 });
+        }
+
+        // Check score (typical range is 0.0 to 1.0; low scores imply bots)
+        if (verifyData.score !== undefined && verifyData.score < 0.5) {
+          console.warn('[reCAPTCHA Low Score Blocked]', verifyData);
+          return NextResponse.json({ error: 'Your request has been classified as spam. Submission blocked.' }, { status: 400 });
+        }
+      } catch (err) {
+        console.error('[reCAPTCHA Verification Exception]', err);
+        return NextResponse.json({ error: 'Verification service error. Please try again.' }, { status: 500 });
+      }
+    } else {
+      console.warn('[reCAPTCHA Setup Warning] RECAPTCHA_SECRET_KEY env variable is not set. Bypassing check.');
     }
 
     // Honeypot field check — if filled, it's a bot

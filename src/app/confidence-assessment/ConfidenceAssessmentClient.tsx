@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { trackEvent } from '@/lib/gtag';
+import { getRecaptchaToken } from '@/lib/recaptcha';
 
 // CUSTOM SVG WHATSAPP ICON
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -128,11 +129,13 @@ export default function ConfidenceAssessmentClient() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      const token = await getRecaptchaToken('submit_assessment');
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'assessment',
+          recaptchaToken: token,
           data: {
             name: leadForm.name,
             phone: leadForm.phone,

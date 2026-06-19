@@ -1,63 +1,121 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight, Compass, ShieldCheck, Heart, Sparkles, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, ArrowRight, Star, Compass } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
-// CUSTOM SVG WHATSAPP ICON
-const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={props.className}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-  </svg>
-);
-
-const DETAILED_STORIES = [
+const DOCUMENTARY_STORIES = [
   {
     name: "Aparna Sharma",
     role: "Pageant Finalist & Alumna",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800",
-    before: "Chronic cervical neck slumping (tech-neck), bent knees catwalk gait, and lack of visual self-possession during interviews.",
-    challenges: "Postural fatigue after 10 minutes in 4-inch heels, chest breathing, and nervous visual darting under studio lights.",
-    journey: "12-week somatic calibration coached by Aakanksha Anand. Focused on core decompression, center of gravity checks, and delayed gaze turn mechanics.",
-    breakthrough: "Acquired straight-knee walk verticality and shoulder plate stabilization. Conquered gown carriage weight balance.",
-    confidence: "Top 5 national pageant placement. Walks catwalk events for prominent clothing labels.",
-    metrics: { posture: "98% Symmetry", heels: "100% Stability", vocal: "92% Resonance" }
+    metrics: { posture: "98% Symmetry", heels: "100% Stability", vocal: "92% Resonance" },
+    timeline: {
+      before: {
+        title: "01. The Stature Baseline",
+        desc: "Experienced chronic cervical spine slumping (tech-neck), walked with bent knees in high heels, and lacked confidence-driven presence during social gatherings."
+      },
+      training: {
+        title: "02. Posture Engineering",
+        desc: "Mentored directly by Aakanksha Anand. Focused on musculoskeletal decompression, center of gravity checks, linear step mechanics, and fabric gown carriage."
+      },
+      breakthrough: {
+        title: "03. Catwalk Precision",
+        desc: "Realigned skeletal verticality. Successfully walked with straight-knee catwalk precision, correcting hip drop posture."
+      },
+      transformation: {
+        title: "04. Stage Dominance",
+        desc: "Placed in the Top 5 of national beauty pageants and began walking runway events for prominent designer clothing labels."
+      },
+      today: {
+        title: "05. Stature Mentorship",
+        desc: "Currently runs a boutique poise atelier, coaching upcoming models on catwalk kinetics and sharing her confidence path."
+      }
+    }
   },
   {
     name: "Dr. Nikita Lal",
     role: "VP, Corporate Operations",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-    before: "Rapid pace of speech under executive meeting stress, uptalk sentence endings, and dropped chin stance when entering assemblies.",
-    challenges: "Using verbal filler words, chest tightening during presentation openings, and structured styling coordinates mismatch.",
-    journey: "Private vocal pitch training and capsule wardrobe draping mapping. Coached in table dining etiquette and international boardroom stance mechanics.",
-    breakthrough: "Mastery of diaphragmatic pitch resonance and deliberate pause placement. Styled into structural blazer capsule wardrobe.",
-    confidence: "Commands global executive meetings. Delivers keynote addresses with vocal poise and posture authority.",
-    metrics: { posture: "95% Symmetry", heels: "85% Stability", vocal: "98% Resonance" }
+    metrics: { posture: "95% Symmetry", heels: "85% Stability", vocal: "98% Resonance" },
+    timeline: {
+      before: {
+        title: "01. The Stature Baseline",
+        desc: "Felt intense vocal shaking under high-stakes boardroom pressure, spoke at a rapid pace, and slumped her shoulders when entering corporate assemblies."
+      },
+      training: {
+        title: "02. Posture Engineering",
+        desc: "Trained in diaphragmatic breathing projection, vocal pitch modulation checks, formal table dining etiquette, and boardroom carriage stance."
+      },
+      breakthrough: {
+        title: "03. Catwalk Precision",
+        desc: "Mastered lower vocal pitch resonance and deliberate pause placement. Styled into structural blazer capsule wardrobe coordinates."
+      },
+      transformation: {
+        title: "04. Stage Dominance",
+        desc: "Began commanding global corporate meetings. Delivers keynote addresses with absolute vocal poise and posture authority."
+      },
+      today: {
+        title: "05. Stature Mentorship",
+        desc: "Senior Executive and board member, serving as a corporate mentor for upcoming female leaders in spatial confidence."
+      }
+    }
   },
   {
     name: "Rhea Sen",
     role: "Founder, Creators Atelier",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
-    before: "Camera lens avoidance, shallow visual profile, and lack of signature brand aesthetic statement on digital grid channels.",
-    challenges: "Self-conscious posture freezes in front of video cameras, lack of skin tone styling analysis, and rapid script delivery.",
-    journey: "Color theory styling profiling, on-camera eye delay scripts training, and musculoskeletal carriage alignment.",
-    breakthrough: "Coordinated camera lens focus delay. Hand gesture controls and posture symmetry calibrated under intense studio lights.",
-    confidence: "Scaled creative agency with 150k+ followers, coordinates premium brand deals, and presents digital videos naturally.",
-    metrics: { posture: "96% Symmetry", heels: "90% Stability", vocal: "95% Resonance" }
+    metrics: { posture: "96% Symmetry", heels: "90% Stability", vocal: "95% Resonance" },
+    timeline: {
+      before: {
+        title: "01. The Stature Baseline",
+        desc: "Avoided camera lenses, lacked a clear visual style statement, suffered from rapid script delivery, and had shallow posture alignment."
+      },
+      training: {
+        title: "02. Posture Engineering",
+        desc: "Coached in personal color theory styling, on-camera eye delay scripts, musculoskeletal carriage alignment, and gesture controls."
+      },
+      breakthrough: {
+        title: "03. Catwalk Precision",
+        desc: "Acquired control over video presence. Coordinated camera lens focus delay and controlled hand gesture stabilization under studio lights."
+      },
+      transformation: {
+        title: "04. Stage Dominance",
+        desc: "Grew her creative brand atelier channel to 150k+ followers, coordinate premium brand styling deals, and host video interviews."
+      },
+      today: {
+        title: "05. Stature Mentorship",
+        desc: "Creative director and producer, hosting media workshops on digital positioning and video content confidence."
+      }
+    }
   }
 ];
 
 export default function TransformationStoriesClient() {
+  const [activeStoryIdx, setActiveStoryIdx] = useState(0);
+  const [activeStages, setActiveStages] = useState<{ [key: number]: keyof typeof DOCUMENTARY_STORIES[0]['timeline'] }>({
+    0: 'before',
+    1: 'before',
+    2: 'before'
+  });
+
+  const handleStageSelect = (storyIdx: number, stageKey: keyof typeof DOCUMENTARY_STORIES[0]['timeline']) => {
+    setActiveStages(prev => ({ ...prev, [storyIdx]: stageKey }));
+  };
+
+  const currentStory = DOCUMENTARY_STORIES[activeStoryIdx];
+  const currentStage = activeStages[activeStoryIdx];
+
+  const stages: { key: keyof typeof DOCUMENTARY_STORIES[0]['timeline']; label: string }[] = [
+    { key: 'before', label: 'Before' },
+    { key: 'training', label: 'Training' },
+    { key: 'breakthrough', label: 'Breakthrough' },
+    { key: 'transformation', label: 'Transformation' },
+    { key: 'today', label: 'Today' }
+  ];
+
   return (
     <div className="min-h-screen bg-obsidian text-pearl py-12 md:py-24 relative overflow-hidden">
       {/* Background glow backdrops */}
@@ -79,110 +137,141 @@ export default function TransformationStoriesClient() {
         </p>
       </div>
 
-      {/* Case studies list */}
-      <section className="luxury-container space-y-32 md:space-y-44 relative z-10 mb-20">
-        {DETAILED_STORIES.map((story, idx) => {
-          const waStoryMessage = encodeURIComponent(
-            `Hi Aakanksha! I read the transformation story of ${story.name} on the website.\n\n` +
-            `I am experiencing similar challenges: ${story.before}\n\n` +
-            `I want to schedule my postural check call to target similar outcomes.`
-          );
+      {/* Student Selector Tabs */}
+      <div className="luxury-container max-w-2xl flex justify-center space-x-6 mb-16 border-b border-rosegold/15 pb-4 relative z-10 font-sans text-xs">
+        {DOCUMENTARY_STORIES.map((s, idx) => (
+          <button
+            key={s.name}
+            onClick={() => setActiveStoryIdx(idx)}
+            className={`pb-2 transition-all cursor-pointer font-medium uppercase tracking-widest ${
+              activeStoryIdx === idx ? 'text-rosegold border-b-2 border-rosegold font-semibold' : 'text-pearl/40 hover:text-white'
+            }`}
+          >
+            {s.name.split(' ')[0]}
+          </button>
+        ))}
+      </div>
 
-          return (
-            <div 
-              key={story.name}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ${
-                idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
-            >
-              {/* Image Column */}
-              <div className={`lg:col-span-5 relative aspect-[3/4] border border-rosegold/15 overflow-hidden shadow-2xl ${
-                idx % 2 === 1 ? 'lg:order-last' : ''
-              }`}>
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 to-transparent z-10" />
-                <Image 
-                  src={story.image}
-                  alt={story.name}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover transition-transform duration-700 hover:scale-103"
-                />
-                
-                {/* Diagnostics overlays */}
-                <div className="absolute top-6 left-6 z-20 flex flex-col space-y-2">
-                  {Object.entries(story.metrics).map(([key, val]) => (
-                    <span 
-                      key={key} 
-                      className="px-2.5 py-1 bg-obsidian/80 border border-rosegold/20 text-[9px] uppercase tracking-widest font-sans font-semibold text-rosegold rounded-xs"
-                    >
-                      {key}: {val}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="absolute bottom-6 left-6 right-6 z-20">
-                  <span className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-bold block mb-1">
-                    {story.role}
-                  </span>
-                  <h3 className="text-3xl font-serif text-white">
-                    {story.name}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Text Case Folder Column */}
-              <div className="lg:col-span-7 flex flex-col space-y-6">
-                <span className="text-xs uppercase tracking-widest text-rosegold font-sans font-bold">Admissions Case File #{idx + 1}</span>
-                <div className="w-12 h-[1px] bg-rosegold/40" />
-
-                {/* Grid of details */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 border border-rosegold/15 bg-burgundy/5">
-                  <div>
-                    <span className="block text-[8px] uppercase tracking-widest text-red-400 font-bold mb-1">Before Presence</span>
-                    <p className="text-xs text-pearl/70 leading-relaxed italic font-sans">&ldquo;{story.before}&rdquo;</p>
-                  </div>
-                  <div>
-                    <span className="block text-[8px] uppercase tracking-widest text-green-400 font-bold mb-1">Transformation Outcome</span>
-                    <p className="text-xs text-white leading-relaxed italic font-sans font-semibold">&ldquo;{story.confidence}&rdquo;</p>
-                  </div>
-                </div>
-
-                {/* Bullet steps */}
-                <div className="space-y-4 text-xs font-sans">
-                  <div>
-                    <h4 className="font-semibold text-rosegold uppercase tracking-wider text-[9px] mb-1">The Core Challenges</h4>
-                    <p className="text-pearl/60 leading-relaxed">{story.challenges}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-rosegold uppercase tracking-wider text-[9px] mb-1">Somatic Alignment Journey</h4>
-                    <p className="text-pearl/70 leading-relaxed">{story.journey}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-rosegold uppercase tracking-wider text-[9px] mb-1">Transformation Breakthrough</h4>
-                    <p className="text-pearl/60 leading-relaxed">{story.breakthrough}</p>
-                  </div>
-                </div>
-
-                <div className="pt-6 flex flex-wrap gap-4 items-center">
-                  <a 
-                    href={`https://wa.me/919742232322?text=${waStoryMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg"
-                  >
-                    <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
-                    <span>Inquire About Similar Outcome</span>
-                  </a>
-                  <Button href="/apply" variant="outline">
-                    Initiate Admissions Pre-Screening
-                  </Button>
-                </div>
-              </div>
+      {/* Main Documentary Board */}
+      <section className="luxury-container relative z-10 mb-20 max-w-5xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Visual Profile Folder */}
+          <div className="lg:col-span-5 relative aspect-[3/4] border border-rosegold/15 overflow-hidden shadow-2xl bg-black">
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent z-10" />
+            <Image 
+              src={currentStory.image}
+              alt={currentStory.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover object-top transition-transform duration-700 hover:scale-103"
+            />
+            
+            {/* Top diagnostic pills */}
+            <div className="absolute top-6 left-6 z-20 flex flex-col space-y-2">
+              {Object.entries(currentStory.metrics).map(([k, v]) => (
+                <span 
+                  key={k} 
+                  className="px-2.5 py-1 bg-obsidian/80 border border-rosegold/20 text-[9px] uppercase tracking-widest font-sans font-semibold text-rosegold"
+                >
+                  {k}: {v}
+                </span>
+              ))}
             </div>
-          );
-        })}
-      </section>
 
+            <div className="absolute bottom-6 left-6 right-6 z-20">
+              <span className="text-[9px] uppercase tracking-widest text-rosegold font-sans font-bold block mb-1">
+                {currentStory.role}
+              </span>
+              <h3 className="text-3xl font-serif text-white">
+                {currentStory.name}
+              </h3>
+            </div>
+          </div>
+
+          {/* Chronological Timeline Folder */}
+          <div className="lg:col-span-7 flex flex-col space-y-8">
+            <div className="flex items-center space-x-2 text-rosegold">
+              <Compass className="w-5 h-5 animate-spin-slow" />
+              <span className="text-xs uppercase tracking-widest font-sans font-bold">Documentary Timeline</span>
+            </div>
+            
+            {/* Timeline Steps Indicator (Horizontal Track) */}
+            <div className="relative font-sans text-xs flex justify-between items-center border-b border-rosegold/10 pb-6">
+              {/* Horizontal Line Connector */}
+              <div className="absolute top-[14px] left-[15px] right-[15px] h-[1px] bg-rosegold/15 z-0" />
+              
+              {stages.map((stage) => {
+                const isActive = currentStage === stage.key;
+                return (
+                  <button
+                    key={stage.key}
+                    onClick={() => handleStageSelect(activeStoryIdx, stage.key)}
+                    className="relative z-10 flex flex-col items-center group cursor-pointer focus:outline-none"
+                  >
+                    {/* Circle Node */}
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                      isActive 
+                        ? 'bg-rosegold border-rosegold text-abyss scale-110 shadow-lg shadow-rosegold/20' 
+                        : 'bg-obsidian border-rosegold/30 text-rosegold group-hover:border-rosegold'
+                    }`}>
+                      <Star className={`w-3 h-3 ${isActive ? 'fill-abyss' : 'fill-none'}`} />
+                    </div>
+                    {/* Label */}
+                    <span className={`text-[10px] mt-2 uppercase tracking-widest transition-colors ${
+                      isActive ? 'text-rosegold font-semibold' : 'text-pearl/40 group-hover:text-white'
+                    }`}>
+                      {stage.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Active Stage Description Card */}
+            <div className="min-h-[160px] p-6 border border-rosegold/15 bg-burgundy/5 relative overflow-hidden rounded-sm">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-rosegold/3 rounded-full blur-xl pointer-events-none" />
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStage}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-3"
+                >
+                  <span className="text-[10px] uppercase tracking-widest text-rosegold font-bold font-sans">
+                    {stages.find(s => s.key === currentStage)?.label} Phase
+                  </span>
+                  <h4 className="text-xl font-serif text-white uppercase tracking-wider">
+                    {currentStory.timeline[currentStage].title}
+                  </h4>
+                  <p className="text-sm text-pearl/70 leading-relaxed font-sans font-light">
+                    {currentStory.timeline[currentStage].desc}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="pt-4 flex flex-wrap gap-4 items-center">
+              <a 
+                href={`https://wa.me/919742232322?text=${encodeURIComponent(`Hi Aakanksha! I completed reading the transformation timeline of ${currentStory.name} on the website.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-3 px-6 bg-green-600 hover:bg-green-700 text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg"
+              >
+                <span>Consult on Similar Journey</span>
+              </a>
+              <Button href="/apply" variant="outline">
+                Begin Pre-Screening Call
+              </Button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
     </div>
   );
 }

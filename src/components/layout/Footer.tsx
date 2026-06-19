@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { trackEvent } from '@/lib/gtag';
+import { getRecaptchaToken } from '@/lib/recaptcha';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,11 +16,13 @@ export default function Footer() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
+      const token = await getRecaptchaToken('submit_newsletter');
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'newsletter',
+          recaptchaToken: token,
           data: { email, _honey: honey }
         })
       });

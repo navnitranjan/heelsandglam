@@ -49,6 +49,16 @@ export default function CustomCursor() {
 
   return (
     <>
+      {/* Luxury gold cursor glow backdrop */}
+      <motion.div
+        className="fixed top-0 left-0 w-80 h-80 rounded-full pointer-events-none z-40 bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.06)_0%,rgba(197,160,89,0)_65%)] blur-2xl"
+        animate={{
+          x: position.x - 160,
+          y: position.y - 160,
+          scale: isHovering ? 1.25 : 1,
+        }}
+        transition={{ type: "tween", ease: "backOut", duration: 0.2 }}
+      />
       <motion.div
         className="fixed top-0 left-0 w-2.5 h-2.5 bg-gold rounded-full pointer-events-none z-50 mix-blend-difference"
         animate={{

@@ -85,7 +85,7 @@ export default function ModellingClassesPage() {
             alt="Modelling catwalk posture styling session"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="object-cover"
+            className="object-cover object-[50%_20%]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent z-10" />

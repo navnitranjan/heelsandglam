@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#AA7C11" />
+      <stop offset="30%" stop-color="#F1E4C3" />
+      <stop offset="50%" stop-color="#C5A059" />
+      <stop offset="70%" stop-color="#F1E4C3" />
+      <stop offset="100%" stop-color="#86610E" />
+    </linearGradient>
+  </defs>
   <rect width="512" height="512" fill="#0B0B0C"/>
-  <text x="256" y="340" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="300" font-size="340" fill="#C5A059" letter-spacing="-10">H</text>
-  <text x="256" y="450" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="300" font-size="80" fill="#C89E88" letter-spacing="20">G</text>
+  
+  <circle cx="256" cy="256" r="236" fill="none" stroke="url(#gold)" stroke-width="4" />
+  <circle cx="256" cy="256" r="226" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.6" />
+  
+  
+  <!-- Interlocking luxury serif H&G Monogram -->
+  <text x="210" y="325" font-family="'Georgia', 'Times New Roman', serif" font-weight="300" font-size="260" text-anchor="middle" fill="url(#gold)">H</text>
+  <text x="305" y="355" font-family="'Georgia', 'Times New Roman', serif" font-weight="300" font-size="260" text-anchor="middle" fill="url(#gold)">G</text>
+  
+  <!-- Sleek connection vector line -->
+  <line x1="225" y1="240" x2="290" y2="240" stroke="url(#gold)" stroke-width="3.5" opacity="0.7" />
 </svg>

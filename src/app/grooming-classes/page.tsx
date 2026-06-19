@@ -85,7 +85,7 @@ export default function GroomingClassesPage() {
             alt="Traditional saree styling and grooming workshop"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="object-cover"
+            className="object-cover object-[50%_25%]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent z-10" />

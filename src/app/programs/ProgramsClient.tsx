@@ -248,7 +248,7 @@ export default function ProgramsClient() {
                 alt={program.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover transition-transform duration-700 hover:scale-105"
+                className="object-cover object-[50%_20%] transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-abyss/90 border border-gold/30 text-[9px] uppercase tracking-widest text-gold font-sans font-semibold">
                 Cohort price: {program.price}

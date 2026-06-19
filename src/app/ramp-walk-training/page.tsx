@@ -85,7 +85,7 @@ export default function RampWalkTrainingPage() {
             alt="Ramp walk training student session in red saree"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="object-cover"
+            className="object-cover object-[50%_15%]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent z-10" />

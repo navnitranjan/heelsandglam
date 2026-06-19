@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import GoldParticles from '@/components/ui/GoldParticles';
+import TrustWidget from '@/components/features/TrustWidget';
 import { 
   ArrowRight, 
   Check, 
@@ -24,6 +26,7 @@ import {
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { trackEvent } from '@/lib/gtag';
+import { getRecaptchaToken } from '@/lib/recaptcha';
 
 // CUSTOM SVG BRAND ICONS
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -102,6 +105,9 @@ const FLAGSHIP_PROGRAMS = [
 ];
 
 export default function Home() {
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 1000], [0, 250]);
+
   // Testimonial Navigation
   const [testimonialIdx, setTestimonialIdx] = useState(0);
 
@@ -114,11 +120,13 @@ export default function Home() {
     e.preventDefault();
     setIsSubmittingContact(true);
     try {
+      const token = await getRecaptchaToken('submit_consultation');
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'contact',
+          recaptchaToken: token,
           data: {
             name: contactForm.name,
             email: contactForm.email,
@@ -159,6 +167,7 @@ export default function Home() {
       <section id="hero" className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
         <motion.div 
           className="absolute inset-0 z-0"
+          style={{ y: backgroundY }}
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
@@ -169,9 +178,13 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[50%_15%]"
           />
         </motion.div>
+        
+        {/* Floating Ambient Gold Particles */}
+        <GoldParticles />
+        
         <div className="absolute inset-0 bg-gradient-to-b from-abyss/85 via-abyss/45 to-abyss z-10" />
 
         <div className="luxury-container relative z-20 flex flex-col items-center text-center px-4 max-w-5xl">
@@ -199,7 +212,7 @@ export default function Home() {
             </span>
             <span className="block overflow-hidden">
               <motion.span
-                className="block text-gold italic"
+                className="block gold-shimmer-text italic"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
@@ -299,8 +312,8 @@ export default function Home() {
               <span className="font-serif italic text-gold text-2xl tracking-widest block mb-1">
                 Aakanksha Anand
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-pearl/40 font-sans font-semibold">
-                Founder & Head Coach, Heels & Glam
+              <span className="text-[10px] uppercase tracking-widest text-pearl/40 font-sans font-semibold block">
+                Founder • Luxury Presence Mentor • Transformation Coach
               </span>
             </div>
 
@@ -618,6 +631,11 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ═══════════════════════════════════════════════════════════════
+          TRUST & VERIFICATION QR CTAS
+      ═══════════════════════════════════════════════════════════════ */}
+      <TrustWidget />
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 7: ADMISSIONS CTA

@@ -166,13 +166,13 @@ To project absolute authority, practice spatial presence. Stand with your feet a
   },
   {
     id: 8,
-    title: "Breaking the Glass Runway: The Aparna Sharma Story",
+    title: "Breaking the Glass Runway: The Aakanskha Anand Story",
     slug: "women-empowerment-decisive-carriage",
     date: "March 01, 2026",
     readTime: "7 min read",
     category: "Women Empowerment",
     type: "Student Story",
-    excerpt: "Physical poise is a vehicle for personal empowerment. Read how Aparna Sharma conquered postural slumping to walk Milan runways and lead corporate sessions.",
+    excerpt: "Physical poise is a vehicle for personal empowerment. Read how Aakanskha Anand conquered postural slumping to walk Milan runways and lead corporate sessions.",
     imageSrc: "/images/fashion-week-runway-jeans.jpg",
     isComplete: true,
     content: `[BEFORE] Experienced chronic cervical spine slumping (tech-neck), walked with bent knees in high heels, and lacked confidence-driven presence during social gatherings.

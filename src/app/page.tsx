@@ -6,19 +6,19 @@ import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import GoldParticles from '@/components/ui/GoldParticles';
 import TrustWidget from '@/components/features/TrustWidget';
-import { 
-  ArrowRight, 
-  Check, 
-  ChevronRight, 
-  ChevronLeft, 
-  Sparkles, 
-  Compass, 
-  Star, 
-  MapPin, 
-  Mail, 
-  Award, 
-  Clock, 
-  ShieldCheck, 
+import {
+  ArrowRight,
+  Check,
+  ChevronRight,
+  ChevronLeft,
+  Sparkles,
+  Compass,
+  Star,
+  MapPin,
+  Mail,
+  Award,
+  Clock,
+  ShieldCheck,
   Users,
   Maximize2,
   Mic,
@@ -46,21 +46,21 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 // TRANSFORMATION STORIES DATA (3 strongest)
 const TRANSFORMATION_STORIES = [
   {
-    name: "Aparna Sharma",
+    name: "Aakanskha Anand",
     role: "Pageant Finalist & Alumna",
     image: "/images/founder-red-half-circle.jpg",
     quote: "Secured Top 5 National Pageant placement and runs catwalks with 98% posture symmetry.",
     summary: "From skeletal slumping and tech-neck to commanding runway stages with straight-knee precision and delayed eye gaze pivots."
   },
   {
-    name: "Dr. Nikita Lal",
+    name: "Aakanskha Anand",
     role: "VP, Corporate Operations",
     quote: "Commands international operational assemblies with absolute vocal poise and posture composure.",
     image: "/images/founder-red-leaning.jpg",
     summary: "Overcame rapid speaking speed and collapsed shoulders. Now delivers executive presentations with diaphragmatic vocal projection."
   },
   {
-    name: "Rhea Sen",
+    name: "Aakanskha Anand",
     role: "Founder, Creators Atelier",
     quote: "Expanded her atelier brand to 150k+ followers with clean camera-facing confidence.",
     image: "/images/founder-red-wind.jpg",
@@ -140,7 +140,7 @@ export default function Home() {
       if (res.ok) {
         setContactSubmitted(true);
         trackEvent({ action: 'form_submit_consultation', category: 'Lead Generation', label: 'Request Consultation Form' });
-        
+
         const waMsg = encodeURIComponent(
           `Hi Aakanksha! I requested a private consultation on Heels & Glam.\n\n` +
           `*Name:* ${contactForm.name}\n` +
@@ -165,7 +165,7 @@ export default function Home() {
           One powerful statement. Two CTAs. Full viewport.
       ═══════════════════════════════════════════════════════════════ */}
       <section id="hero" className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 z-0"
           style={{ y: backgroundY }}
           initial={{ scale: 1.05 }}
@@ -181,10 +181,10 @@ export default function Home() {
             className="object-cover object-[50%_15%]"
           />
         </motion.div>
-        
+
         {/* Floating Ambient Gold Particles */}
         <GoldParticles />
-        
+
         <div className="absolute inset-0 bg-gradient-to-b from-abyss/85 via-abyss/45 to-abyss z-10" />
 
         <div className="luxury-container relative z-20 flex flex-col items-center text-center px-4 max-w-5xl">
@@ -198,7 +198,7 @@ export default function Home() {
               India&apos;s Premier Poise & Presence Academy
             </motion.span>
           </span>
-          
+
           <h1 className="text-5xl md:text-8xl font-serif tracking-luxury text-white uppercase leading-none mb-8">
             <span className="block overflow-hidden">
               <motion.span
@@ -222,7 +222,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <motion.p 
+          <motion.p
             className="text-base md:text-lg text-champagne/80 font-sans tracking-wide max-w-2xl leading-[1.8] mb-10"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -231,23 +231,23 @@ export default function Home() {
             Grooming, confidence, runway training, and personal branding — mentored by Aakanksha Anand in Bangalore.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center z-30"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Button 
-              href="/apply" 
-              variant="solid" 
+            <Button
+              href="/apply"
+              variant="solid"
               className="w-full sm:w-auto"
               onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Hero Primary CTA' })}
             >
               Begin Your Transformation
             </Button>
-            <Button 
-              href="/programs" 
-              variant="outline" 
+            <Button
+              href="/programs"
+              variant="outline"
               className="w-full sm:w-auto"
               onClick={() => trackEvent({ action: 'click_explore_programs', category: 'Engagement', label: 'Hero Secondary CTA' })}
             >
@@ -266,17 +266,17 @@ export default function Home() {
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 bg-gold/3 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 items-center">
-          
+
           {/* Portrait */}
           <div className="lg:col-span-5 relative w-full aspect-[3/4] overflow-hidden border border-gold/20 shadow-2xl group">
             <div className="absolute inset-0 bg-gold/5 z-10 transition-colors group-hover:bg-transparent duration-500" />
             <div className="absolute inset-3 border border-gold/15 z-20 pointer-events-none" />
-            <motion.div 
+            <motion.div
               className="relative w-full h-full"
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Image 
+              <Image
                 src="/images/founder-turquoise-oval.png"
                 alt="Aakanksha Anand - Founder & Head Coach, Heels & Glam Academy"
                 fill
@@ -292,11 +292,11 @@ export default function Home() {
             <span className="text-[11px] tracking-[0.25em] text-gold uppercase font-sans font-bold block">
               Meet the Founder
             </span>
-            
+
             <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
               Elegance is <span className="text-gold italic">Silent Authority.</span>
             </h2>
-            
+
             <div className="w-12 h-[1px] bg-gold/40" />
 
             <p className="text-base md:text-lg text-champagne/80 font-serif italic leading-[1.8] border-l-2 border-gold/30 pl-6">
@@ -354,22 +354,22 @@ export default function Home() {
               { icon: ShieldCheck, title: "Confidence", desc: "Re-pattern subconscious slumping, address impostor habits, and live your stature unconditionally." },
               { icon: Award, title: "Personal Brand", desc: "Align digital profile aesthetics, media assets, and offline presentation into a unified authority." }
             ].map((pillar, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="p-8 border border-gold/15 bg-editorial-grey/5 flex flex-col space-y-4 relative group hover:border-gold/30 transition-all duration-300"
               >
                 <div className="p-3 bg-gold/5 border border-gold/15 text-gold w-fit rounded-full group-hover:bg-gold group-hover:text-abyss transition-colors duration-300">
                   <pillar.icon className="w-5 h-5" />
                 </div>
-                
+
                 <span className="text-[10px] text-gold tracking-widest uppercase font-bold">
                   Pillar 0{idx + 1}
                 </span>
-                
+
                 <h3 className="text-xl font-serif text-white uppercase tracking-wider">
                   {pillar.title}
                 </h3>
-                
+
                 <p className="text-[15px] text-pearl/60 leading-[1.7]">
                   {pillar.desc}
                 </p>
@@ -418,7 +418,7 @@ export default function Home() {
                   {/* Photo */}
                   <div className="lg:col-span-5 relative w-full aspect-[3/4] overflow-hidden border border-gold/20 shadow-2xl bg-black">
                     <div className="absolute inset-3 border border-gold/10 pointer-events-none z-10" />
-                    <Image 
+                    <Image
                       src={story.image}
                       alt={story.name}
                       fill
@@ -454,8 +454,8 @@ export default function Home() {
                     </div>
 
                     <div className="pt-2">
-                      <Button 
-                        href="/apply" 
+                      <Button
+                        href="/apply"
                         variant="solid"
                         onClick={() => trackEvent({ action: 'click_apply', category: 'Engagement', label: 'Transformation CTA' })}
                       >
@@ -470,7 +470,7 @@ export default function Home() {
 
           {/* Navigation Controls */}
           <div className="flex justify-center items-center space-x-6 mt-10">
-            <button 
+            <button
               onClick={() => setTestimonialIdx((prev) => (prev - 1 + TRANSFORMATION_STORIES.length) % TRANSFORMATION_STORIES.length)}
               className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center text-gold hover:bg-gold hover:text-abyss transition-all cursor-pointer"
               aria-label="Previous Story"
@@ -480,7 +480,7 @@ export default function Home() {
             <span className="text-[11px] uppercase tracking-widest text-gold font-sans font-bold">
               {testimonialIdx + 1} of {TRANSFORMATION_STORIES.length}
             </span>
-            <button 
+            <button
               onClick={() => setTestimonialIdx((prev) => (prev + 1) % TRANSFORMATION_STORIES.length)}
               className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center text-gold hover:bg-gold hover:text-abyss transition-all cursor-pointer"
               aria-label="Next Story"
@@ -515,7 +515,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {FLAGSHIP_PROGRAMS.map((program) => (
-              <Link 
+              <Link
                 key={program.id}
                 href={program.href}
                 className="group relative flex flex-col border border-gold/10 hover:border-gold/40 transition-all duration-500 overflow-hidden bg-abyss"
@@ -523,7 +523,7 @@ export default function Home() {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image 
+                  <Image
                     src={program.image}
                     alt={program.name}
                     fill
@@ -531,7 +531,7 @@ export default function Home() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-abyss via-abyss/30 to-transparent z-10" />
-                  
+
                   {/* Duration Badge */}
                   <div className="absolute top-4 left-4 z-20 px-3 py-1.5 bg-abyss/90 border border-gold/30 flex items-center space-x-1.5">
                     <Clock className="w-3 h-3 text-gold" />
@@ -566,7 +566,7 @@ export default function Home() {
       <section id="social-proof" className="relative py-20 md:py-28 border-t border-gold/10 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[130px] pointer-events-none" />
         <div className="luxury-container max-w-5xl relative z-10">
-          
+
           <div className="text-center mb-14 space-y-4">
             <span className="text-[11px] uppercase tracking-[0.3em] text-gold font-bold block">
               Verified Trust
@@ -607,18 +607,18 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a 
-                href="https://g.page/r/CQ-UR9T15uCeEBM/review" 
-                target="_blank" 
+              <a
+                href="https://g.page/r/CQ-UR9T15uCeEBM/review"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="py-3 px-6 bg-gold text-abyss hover:bg-white hover:text-abyss text-xs uppercase tracking-luxury font-sans font-semibold transition-all text-center"
                 onClick={() => trackEvent({ action: 'click_google_review_cta', category: 'Trust', label: 'Social Proof Review CTA' })}
               >
                 Write a Review
               </a>
-              <a 
-                href="https://g.page/r/CQ-UR9T15uCeEBM/review" 
-                target="_blank" 
+              <a
+                href="https://g.page/r/CQ-UR9T15uCeEBM/review"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="py-3 px-6 border border-gold/30 hover:border-gold text-gold hover:text-white text-xs uppercase tracking-luxury font-sans font-semibold transition-all text-center"
                 onClick={() => trackEvent({ action: 'click_google_profile_cta', category: 'Trust', label: 'Social Proof Google Profile' })}
@@ -643,7 +643,7 @@ export default function Home() {
       ═══════════════════════════════════════════════════════════════ */}
       <section id="contact" className="relative py-20 md:py-28 border-t border-gold/10 bg-editorial-grey/5 scroll-mt-24">
         <div className="luxury-container grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12">
-          
+
           {/* Details Column */}
           <div className="lg:col-span-5 flex flex-col justify-center space-y-6">
             <span className="text-[11px] uppercase tracking-[0.3em] text-gold font-sans font-bold">
@@ -674,10 +674,10 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="block text-green-400 uppercase tracking-widest text-[10px] font-semibold">WhatsApp Admissions</span>
-                  <a 
-                    href="https://wa.me/919742232322" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/919742232322"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-alabaster/80 hover:text-gold transition-colors font-medium text-[15px]"
                     onClick={() => trackEvent({ action: 'click_whatsapp', category: 'Lead Generation', label: 'Admissions WhatsApp Link' })}
                   >
@@ -698,8 +698,8 @@ export default function Home() {
             </div>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <a 
-                href="https://wa.me/919742232322" 
+              <a
+                href="https://wa.me/919742232322"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 border border-green-500/50 hover:bg-green-600 hover:border-green-600 px-6 py-3 text-xs uppercase tracking-widest text-green-400 hover:text-white font-sans font-semibold transition-all"
@@ -716,7 +716,7 @@ export default function Home() {
             <div className="glass-panel p-8 md:p-12 border border-gold/10 relative overflow-hidden">
               <AnimatePresence mode="wait">
                 {!contactSubmitted ? (
-                  <motion.form 
+                  <motion.form
                     key="form"
                     onSubmit={handleContactSubmit}
                     className="flex flex-col space-y-6"
@@ -726,14 +726,14 @@ export default function Home() {
                   >
                     <h3 className="text-2xl font-serif text-white uppercase tracking-wide">Request Consultation</h3>
                     <p className="text-[15px] text-alabaster/55 font-sans -mt-4 leading-[1.7]">Submit your details below to schedule your alignment screening.</p>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col space-y-2">
                         <label htmlFor="contact-name" className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">FULL NAME</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           id="contact-name"
-                          required 
+                          required
                           value={contactForm.name}
                           onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-sm text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
@@ -742,10 +742,10 @@ export default function Home() {
                       </div>
                       <div className="flex flex-col space-y-2">
                         <label htmlFor="contact-email" className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">EMAIL ADDRESS</label>
-                        <input 
-                          type="email" 
+                        <input
+                          type="email"
                           id="contact-email"
-                          required 
+                          required
                           value={contactForm.email}
                           onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-sm text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
@@ -757,10 +757,10 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col space-y-2">
                         <label htmlFor="contact-phone" className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">PHONE NUMBER</label>
-                        <input 
-                          type="tel" 
+                        <input
+                          type="tel"
                           id="contact-phone"
-                          required 
+                          required
                           value={contactForm.phone}
                           onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
                           className="w-full bg-editorial-grey/30 border border-gold/20 px-4 py-3 text-sm text-alabaster font-sans focus:outline-none focus:border-gold transition-colors"
@@ -769,7 +769,7 @@ export default function Home() {
                       </div>
                       <div className="flex flex-col space-y-2">
                         <label htmlFor="contact-cohort" className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">COHORT SELECTION</label>
-                        <select 
+                        <select
                           id="contact-cohort"
                           value={contactForm.cohort}
                           onChange={(e) => setContactForm({ ...contactForm, cohort: e.target.value })}
@@ -786,9 +786,9 @@ export default function Home() {
 
                     <div className="flex flex-col space-y-2">
                       <label htmlFor="contact-message" className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">WHAT COMPELS YOU TO RE-PATTERN YOUR PRESENCE?</label>
-                      <textarea 
+                      <textarea
                         id="contact-message"
-                        rows={3} 
+                        rows={3}
                         required
                         value={contactForm.message}
                         onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
@@ -801,8 +801,8 @@ export default function Home() {
 
                     {/* Honeypot field — hidden from humans, catches bots */}
                     <div className="absolute -left-[9999px]" aria-hidden="true">
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         name="_honey"
                         tabIndex={-1}
                         autoComplete="off"
@@ -816,7 +816,7 @@ export default function Home() {
                     </Button>
                   </motion.form>
                 ) : (
-                  <motion.div 
+                  <motion.div
                     key="success"
                     className="flex flex-col items-center justify-center py-12 text-center"
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -830,7 +830,7 @@ export default function Home() {
                     <p className="text-[15px] text-alabaster/60 font-sans max-w-sm leading-[1.7] mb-6">
                       Thank you. Our head registrar will review your goals and schedule a consultation.
                     </p>
-                    <button 
+                    <button
                       onClick={() => {
                         setContactSubmitted(false);
                         setContactForm({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '', _honey: '' });

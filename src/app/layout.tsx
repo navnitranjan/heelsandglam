@@ -12,6 +12,7 @@ import ExitIntentModal from '@/components/features/ExitIntentModal';
 import FloatingWhatsAppButton from '@/components/layout/FloatingWhatsAppButton';
 import AnalyticsTracker from '@/components/features/AnalyticsTracker';
 import PWAInstallBanner from '@/components/features/PWAInstallBanner';
+import { FAQS } from '@/data/conversionTrust';
 import { Suspense } from 'react';
 
 
@@ -254,48 +255,14 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
-                "mainEntity": [
-                  {
-                    "@type": "Question",
-                    "name": "Who can join Heels & Glam?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Any woman seeking confidence, grooming, communication or personal presence development."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "Do I need modelling experience to apply?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "No. Beginners are welcome. Our programs are designed to teach foundational alignment, walk kinetics, and presentation from scratch."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "Is Heels & Glam only for aspiring models?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "No. Our programs benefit students, corporate professionals, entrepreneurs, content creators, and women seeking to strengthen their personal presence."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "Are classes online or offline?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "Program formats vary by batch. We offer both offline flagship masterclasses in Electronic City, Bangalore, and hybrid cohort formats."
-                    }
-                  },
-                  {
-                    "@type": "Question",
-                    "name": "How do I apply for the academy programs?",
-                    "acceptedAnswer": {
-                      "@type": "Answer",
-                      "text": "You can fill out the admissions profile on our Apply page or book a free poise assessment callback through our admissions desk."
-                    }
+                "mainEntity": FAQS.map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
                   }
-                ]
+                }))
               }
             ])
           }}

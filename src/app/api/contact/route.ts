@@ -213,6 +213,35 @@ export async function POST(request: Request) {
         ],
       });
 
+    } else if (formType === 'lead_magnet') {
+      const name = sanitize(data.name);
+      const email = sanitize(data.email);
+      const phone = sanitize(data.phone);
+      const guide = sanitize(data.guide);
+
+      if (!name || name.length < 2) {
+        return NextResponse.json({ error: 'Please provide a valid name' }, { status: 400 });
+      }
+      if (!isValidEmail(email)) {
+        return NextResponse.json({ error: 'Please provide a valid email address' }, { status: 400 });
+      }
+      if (phone && !isValidPhone(phone)) {
+        return NextResponse.json({ error: 'Please provide a valid phone number' }, { status: 400 });
+      }
+
+      subject = `New Confidence Guide Download - ${name}`;
+      replyTo = email;
+      html = buildEmailTemplate({
+        formLabel: 'Lead Magnet Download',
+        heading: `${name} downloaded the confidence guide`,
+        fields: [
+          { label: 'Name', value: name },
+          { label: 'Email', value: `<a href="mailto:${email}">${email}</a>` },
+          { label: 'Phone', value: phone ? `<a href="tel:${phone}">${phone}</a>` : 'Not provided' },
+          { label: 'Guide', value: guide || 'The 7 Confidence Secrets Every Woman Should Know' },
+        ],
+      });
+
     } else {
       return NextResponse.json({ error: 'Invalid form type' }, { status: 400 });
     }

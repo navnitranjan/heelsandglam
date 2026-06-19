@@ -67,6 +67,7 @@ export default function Button({
         className={styles}
         ref={buttonRef as any}
         {...motionHandlers}
+        {...(props as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>)}
       >
         {innerContent}
       </Link>

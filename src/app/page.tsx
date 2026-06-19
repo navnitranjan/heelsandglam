@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import GoldParticles from '@/components/ui/GoldParticles';
 import TrustWidget from '@/components/features/TrustWidget';
+import ConversionTrustSections from '@/components/features/ConversionTrustSections';
 import {
   ArrowRight,
   Check,
@@ -19,7 +20,6 @@ import {
   Award,
   Clock,
   ShieldCheck,
-  Users,
   Maximize2,
   Mic,
   Fingerprint
@@ -46,25 +46,34 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 // TRANSFORMATION STORIES DATA (3 strongest)
 const TRANSFORMATION_STORIES = [
   {
-    name: "Aakanskha Anand",
-    role: "Pageant Finalist & Alumna",
+    name: "Pageant Aspirant",
+    role: "From camera hesitation to stage readiness",
     image: "/images/founder-red-half-circle.jpg",
-    quote: "Secured Top 5 National Pageant placement and runs catwalks with 98% posture symmetry.",
-    summary: "From skeletal slumping and tech-neck to commanding runway stages with straight-knee precision and delayed eye gaze pivots."
+    before: "She arrived with a guarded posture, rushed introductions, and no prior ramp walk discipline.",
+    challenge: "Her biggest block was visibility: she wanted pageant presence, but froze whenever attention turned toward her.",
+    training: "Aakanksha rebuilt her entrance, shoulder alignment, walking rhythm, gaze timing, and answer delivery through repeated stage simulations.",
+    breakthrough: "The shift happened when she stopped performing confidence and started holding her space with calm control.",
+    outcome: "She completed her portfolio shoot with composed expressions, stronger turns, and a stage presence her family immediately noticed."
   },
   {
-    name: "Aakanskha Anand",
-    role: "VP, Corporate Operations",
-    quote: "Commands international operational assemblies with absolute vocal poise and posture composure.",
+    name: "Corporate Leader",
+    role: "From soft-spoken meetings to executive presence",
     image: "/images/founder-red-leaning.jpg",
-    summary: "Overcame rapid speaking speed and collapsed shoulders. Now delivers executive presentations with diaphragmatic vocal projection."
+    before: "She was accomplished at work, but her body language made her look smaller than her role.",
+    challenge: "Fast speech, collapsed shoulders, and nervous hand movement were diluting her authority in senior rooms.",
+    training: "The coaching combined diaphragmatic voice work, pause control, posture decompression, and wardrobe refinement for leadership settings.",
+    breakthrough: "She learned to slow down, look up, and let silence support her message instead of rushing to fill it.",
+    outcome: "Her presentations became more grounded, her team feedback improved, and she began entering meetings with visible ease."
   },
   {
-    name: "Aakanskha Anand",
-    role: "Founder, Creators Atelier",
-    quote: "Expanded her atelier brand to 150k+ followers with clean camera-facing confidence.",
+    name: "Creator & Founder",
+    role: "From inconsistent image to signature personal brand",
     image: "/images/founder-red-wind.jpg",
-    summary: "Defeated camera anxiety and fragmented style. Curated a signature digital lookbook and calibrated gaze delay transitions."
+    before: "Her work had quality, but her online presence felt scattered and she avoided polished video introductions.",
+    challenge: "She needed a recognisable personal style, camera confidence, and a repeatable way to show up online.",
+    training: "Aakanksha refined her colour story, silhouette choices, camera angles, expression control, and founder introduction script.",
+    breakthrough: "She began seeing styling as strategy rather than decoration, which made content creation feel less intimidating.",
+    outcome: "Her brand visuals became more consistent, her founder reels felt assured, and her audience started associating her with polish."
   }
 ];
 
@@ -307,6 +316,19 @@ export default function Home() {
               Aakanksha Anand founded Heels & Glam as an elite transformation guild where corporate leaders, creators, and pageant contenders acquire the physical kinetics of authority. Through precise posture decompression, vocal resonance training, and bespoke styling, she prepares women to claim spatial authority — whether commanding a boardroom or walking a high-fashion runway.
             </p>
 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans">
+              {[
+                { label: "Philosophy", text: "Elegance is discipline made visible. Every correction helps a woman feel composed before she is noticed." },
+                { label: "Methodology", text: "Posture mapping, gait correction, vocal pacing, styling intelligence, and camera confidence are trained as one system." },
+                { label: "Signature Approach", text: "Aakanksha blends precise feedback with private mentorship, so transformation feels personal rather than performative." }
+              ].map((item) => (
+                <div key={item.label} className="p-5 border border-gold/15 bg-editorial-grey/5 space-y-2">
+                  <span className="text-[10px] uppercase tracking-widest text-gold font-bold">{item.label}</span>
+                  <p className="text-[13px] text-pearl/55 leading-[1.7]">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
             {/* Signature */}
             <div className="pt-4 border-t border-gold/15">
               <span className="font-serif italic text-gold text-2xl tracking-widest block mb-1">
@@ -438,18 +460,28 @@ export default function Home() {
 
                   {/* Story Content */}
                   <div className="lg:col-span-7 flex flex-col space-y-6">
-                    <p className="text-base md:text-lg text-alabaster/70 font-sans leading-[1.8]">
-                      {story.summary}
-                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans">
+                      {[
+                        { label: "Before", text: story.before },
+                        { label: "Challenge", text: story.challenge },
+                        { label: "Training", text: story.training },
+                        { label: "Breakthrough", text: story.breakthrough }
+                      ].map((item) => (
+                        <div key={item.label} className="p-5 border border-gold/15 bg-editorial-grey/5 space-y-2">
+                          <span className="text-[10px] uppercase tracking-widest text-gold font-bold">{item.label}</span>
+                          <p className="text-[13px] text-pearl/60 leading-[1.7]">{item.text}</p>
+                        </div>
+                      ))}
+                    </div>
 
                     <div className="p-6 border border-gold/25 bg-gold/5 relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-gold/3 rounded-full blur-xl pointer-events-none" />
                       <span className="text-[10px] uppercase tracking-widest text-gold font-bold flex items-center space-x-2 mb-3">
                         <Sparkles className="w-3.5 h-3.5 text-gold" />
-                        <span>Transformation Outcome</span>
+                        <span>Outcome</span>
                       </span>
                       <p className="text-lg text-white leading-[1.7] font-serif italic font-medium">
-                        &ldquo;{story.quote}&rdquo;
+                        &ldquo;{story.outcome}&rdquo;
                       </p>
                     </div>
 
@@ -635,6 +667,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════
           TRUST & VERIFICATION QR CTAS
       ═══════════════════════════════════════════════════════════════ */}
+      <ConversionTrustSections />
+
       <TrustWidget />
 
       {/* ═══════════════════════════════════════════════════════════════

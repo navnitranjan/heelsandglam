@@ -36,7 +36,6 @@
   
   --animate-fade-up: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-fade-in: fadeIn 0.8s ease-out forwards;
-  --animate-marquee: marquee 20s linear infinite;
 }
 
 @keyframes fadeUp {
@@ -59,20 +58,21 @@
   }
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 @layer base {
   * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+  }
+  
+  html {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
   }
   
   html, body {
@@ -89,6 +89,11 @@
   h1, h2, h3, h4, h5, h6, .font-serif {
     font-family: var(--font-serif);
     font-weight: 300;
+  }
+
+  /* Luxury body typography */
+  p, li, blockquote {
+    line-height: 1.8;
   }
 
   /* Thin Elegant Gold Scrollbar */
@@ -188,4 +193,3 @@
     outline: 2px solid ButtonText;
   }
 }
-

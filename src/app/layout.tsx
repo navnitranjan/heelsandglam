@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
@@ -12,6 +13,7 @@ import FloatingWhatsAppButton from '@/components/layout/FloatingWhatsAppButton';
 import AnalyticsTracker from '@/components/features/AnalyticsTracker';
 import PWAInstallBanner from '@/components/features/PWAInstallBanner';
 import { Suspense } from 'react';
+
 
 
 // Version: 1.1.1 - Final Production Deployment
@@ -327,6 +329,7 @@ export default function RootLayout({
 
         {/* PWA Installation Promotion */}
         <PWAInstallBanner />
+        <Analytics />
       </body>
     </html>
   );

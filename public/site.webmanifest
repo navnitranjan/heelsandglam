@@ -1,0 +1,21 @@
+{
+  "name": "Heels & Glam",
+  "short_name": "Heels & Glam",
+  "description": "India's Premier Poise & Presence Academy — Grooming, Confidence, Modelling & Personal Branding by Aakanksha Anand",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B0C",
+  "theme_color": "#C5A059",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

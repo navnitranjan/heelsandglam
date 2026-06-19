@@ -45,7 +45,8 @@ export default function ApplyClient() {
     city: '',
     cohort: 'personal-grooming',
     experience: 'beginner',
-    targets: ''
+    targets: '',
+    _honey: ''
   });
 
   const [calculatorStarted, setCalculatorStarted] = useState(false);
@@ -97,7 +98,8 @@ export default function ApplyClient() {
           formType: 'admissions',
           data: {
             ...formData,
-            score: potentialScore
+            score: potentialScore,
+            _honey: formData._honey
           }
         })
       });
@@ -433,6 +435,18 @@ export default function ApplyClient() {
                   />
                 </div>
 
+                {/* Honeypot field — hidden from humans, catches bots */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <input 
+                    type="text" 
+                    name="_honey"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData._honey}
+                    onChange={(e) => setFormData({ ...formData, _honey: e.target.value })}
+                  />
+                </div>
+
                 <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury mt-2" disabled={isSubmitting}>
                   {isSubmitting ? 'Submitting Request...' : 'Submit Request for Invitation'}
                 </Button>
@@ -486,7 +500,8 @@ export default function ApplyClient() {
                       city: '',
                       cohort: 'personal-grooming',
                       experience: 'beginner',
-                      targets: ''
+                      targets: '',
+                      _honey: ''
                     });
                   }}
                   className="text-xs uppercase tracking-luxury text-rosegold hover:text-white transition-colors font-sans mt-8 cursor-pointer"

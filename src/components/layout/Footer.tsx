@@ -7,6 +7,7 @@ import { trackEvent } from '@/lib/gtag';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
+  const [honey, setHoney] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,7 +20,7 @@ export default function Footer() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           formType: 'newsletter',
-          data: { email }
+          data: { email, _honey: honey }
         })
       });
       if (res.ok) {
@@ -163,6 +164,10 @@ export default function Footer() {
                   className="w-full bg-editorial-grey/40 border border-gold/20 px-4 py-3 text-xs text-alabaster tracking-widest focus:outline-none focus:border-gold transition-colors font-sans placeholder:opacity-50"
                   disabled={isSubmitting}
                 />
+                {/* Honeypot */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <input type="text" name="_hp" tabIndex={-1} autoComplete="off" value={honey} onChange={(e) => setHoney(e.target.value)} />
+                </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}

@@ -106,7 +106,7 @@ export default function Home() {
   const [testimonialIdx, setTestimonialIdx] = useState(0);
 
   // Contact Form State
-  const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '' });
+  const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '', _honey: '' });
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [contactSubmitted, setContactSubmitted] = useState(false);
 
@@ -124,7 +124,8 @@ export default function Home() {
             email: contactForm.email,
             phone: contactForm.phone,
             cohort: contactForm.cohort,
-            message: contactForm.message
+            message: contactForm.message,
+            _honey: contactForm._honey
           }
         })
       });
@@ -157,14 +158,20 @@ export default function Home() {
       ═══════════════════════════════════════════════════════════════ */}
       <section id="hero" className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden">
         <motion.div 
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: `url('/images/runway-saree-lotus.jpg')`,
-          }}
+          className="absolute inset-0 z-0"
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
-        />
+        >
+          <Image
+            src="/images/runway-saree-lotus.jpg"
+            alt="Heels & Glam Academy — Runway Poise Showcase"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-abyss/85 via-abyss/45 to-abyss z-10" />
 
         <div className="luxury-container relative z-20 flex flex-col items-center text-center px-4 max-w-5xl">
@@ -402,6 +409,7 @@ export default function Home() {
                       src={story.image}
                       alt={story.name}
                       fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover object-top transition-transform duration-700 hover:scale-103"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-15" />
@@ -772,6 +780,19 @@ export default function Home() {
                       />
                     </div>
 
+
+                    {/* Honeypot field — hidden from humans, catches bots */}
+                    <div className="absolute -left-[9999px]" aria-hidden="true">
+                      <input 
+                        type="text" 
+                        name="_honey"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={contactForm._honey}
+                        onChange={(e) => setContactForm({ ...contactForm, _honey: e.target.value })}
+                      />
+                    </div>
+
                     <Button type="submit" variant="solid" className="w-full py-4 font-semibold text-xs tracking-luxury" disabled={isSubmittingContact}>
                       {isSubmittingContact ? 'Submitting Request...' : 'Request Your Invitation'}
                     </Button>
@@ -794,7 +815,7 @@ export default function Home() {
                     <button 
                       onClick={() => {
                         setContactSubmitted(false);
-                        setContactForm({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '' });
+                        setContactForm({ name: '', email: '', phone: '', cohort: 'personal-grooming', message: '', _honey: '' });
                       }}
                       className="text-xs uppercase tracking-luxury text-gold hover:text-white transition-colors font-sans cursor-pointer"
                     >

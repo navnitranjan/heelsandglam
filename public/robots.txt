@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
 
 # Sitemap Location
 Sitemap: https://heelsandglam.com/sitemap.xml

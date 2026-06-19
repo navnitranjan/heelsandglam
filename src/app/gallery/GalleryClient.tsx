@@ -159,6 +159,7 @@ export default function GalleryClient() {
                   src={selectedImage.url}
                   alt={selectedImage.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>

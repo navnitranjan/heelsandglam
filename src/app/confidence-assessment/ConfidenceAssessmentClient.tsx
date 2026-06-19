@@ -92,7 +92,7 @@ export default function ConfidenceAssessmentClient() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState<number[]>([]);
   const [leadCaptured, setLeadCaptured] = useState(false);
-  const [leadForm, setLeadForm] = useState({ name: '', phone: '', email: '' });
+  const [leadForm, setLeadForm] = useState({ name: '', phone: '', email: '', _honey: '' });
   const [results, setResults] = useState<{ score: number; category: string; desc: string } | null>(null);
 
   const handleOptionSelect = (score: number) => {
@@ -139,7 +139,8 @@ export default function ConfidenceAssessmentClient() {
             email: leadForm.email,
             score: results?.score,
             category: results?.category,
-            description: results?.desc
+            description: results?.desc,
+            _honey: leadForm._honey
           }
         })
       });
@@ -274,6 +275,18 @@ export default function ConfidenceAssessmentClient() {
                    <Button type="submit" variant="solid" className="w-full py-4 text-xs font-semibold tracking-luxury mt-2" disabled={isSubmitting}>
                      {isSubmitting ? 'Revealing...' : 'Reveal Somatic Score'}
                    </Button>
+
+                   {/* Honeypot field — hidden from humans, catches bots */}
+                   <div className="absolute -left-[9999px]" aria-hidden="true">
+                     <input 
+                       type="text" 
+                       name="_honey"
+                       tabIndex={-1}
+                       autoComplete="off"
+                       value={leadForm._honey}
+                       onChange={(e) => setLeadForm({ ...leadForm, _honey: e.target.value })}
+                     />
+                   </div>
                  </form>
               </motion.div>
             ) : results ? (
@@ -308,7 +321,7 @@ export default function ConfidenceAssessmentClient() {
                       setScores([]);
                       setCurrentQuestion(0);
                       setQuizStarted(false);
-                      setLeadForm({ name: '', phone: '', email: '' });
+                      setLeadForm({ name: '', phone: '', email: '', _honey: '' });
                       trackEvent({ action: 'assessment_retake', category: 'Engagement', label: 'Confidence Assessment Retake' });
                     }}
                     className="text-xs uppercase tracking-luxury text-rosegold hover:text-white transition-colors font-sans py-2.5 px-6 border border-rosegold/25 hover:border-rosegold cursor-pointer"
